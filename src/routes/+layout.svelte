@@ -38,7 +38,7 @@
   <meta name="twitter:image:alt" content={appName} />
 </svelte:head>
 
-<div data-theme={$themeStore.selectedTheme} class="min-h-screen">
+<div class="min-h-screen bg-zinc-100">
   <Notifications />
 
   {#if $sessionStore.loading}

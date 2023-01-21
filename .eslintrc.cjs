@@ -31,8 +31,8 @@ module.exports = {
     "@typescript-eslint/ban-ts-comment": ['error', { 'ts-ignore': 'allow-with-description'}],
     '@typescript-eslint/member-delimiter-style': ['error', {
       'multiline': {
-        'delimiter': 'semicolon',
-        'requireLast': true
+        'delimiter': 'none',
+        'requireLast': false
       }
     }],
     '@typescript-eslint/no-use-before-define': ['off'],
