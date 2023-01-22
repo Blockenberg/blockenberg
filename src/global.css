@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+  font-family: 'Work Sans', sans-serif;
+}
 
 h1, h2, h3 {
   font-family: 'Cormorant', serif;

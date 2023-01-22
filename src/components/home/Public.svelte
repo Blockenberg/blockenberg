@@ -36,7 +36,7 @@
 							<div class="flex flex-wrap justify-center">
 								<a
 									href="/register"
-									class="px-8 py-3 m-2 text-lg font-semibold  bg-violet-400 text-gray-50"
+									class="px-8 py-3 m-2 text-lg   bg-violet-400 text-gray-50"
 									>Register</a
 								>
 								<a
@@ -69,7 +69,7 @@
 						>
 							1
 						</div>
-						<p class="text-2xl font-semibold">
+						<p class="text-2xl ">
 							<b>Your data.</b>Blockenberg publish your data to your
 							decentralized account.
 						</p>
@@ -80,7 +80,7 @@
 						>
 							2
 						</div>
-						<p class="text-2xl font-semibold">
+						<p class="text-2xl ">
 							<b>Easy to use.</b>Your content creators don't need to understand
 							blockchain, nor the world of development.
 						</p>
@@ -91,7 +91,7 @@
 						>
 							3
 						</div>
-						<p class="text-2xl font-semibold">
+						<p class="text-2xl ">
 							<b>Deploy anywhere.</b>Build your app, use your favorite
 							framework, deploy on our favorite service.
 						</p>
