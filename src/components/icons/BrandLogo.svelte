@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 700" class="w-10">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 700" class="w-6 h-6 dark:text-violet-400">
   <path
     fill="none"
     stroke-miterlimit="10"

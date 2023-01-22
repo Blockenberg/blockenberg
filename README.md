@@ -1,8 +1,7 @@
-# Webnative App Template
+# Blockenberg
 
 [![Built by FISSION](https://img.shields.io/badge/⌘-Built_by_FISSION-purple.svg)](https://fission.codes) [![Built by FISSION](https://img.shields.io/badge/webnative-v0.34.1-purple.svg)](https://github.com/fission-suite/webnative) [![Discord](https://img.shields.io/discord/478735028319158273.svg)](https://discord.gg/zAQBDEq) [![Discourse](https://img.shields.io/discourse/https/talk.fission.codes/topics)](https://talk.fission.codes)
 
-![Webnative UI Screenshot](static/webnative-ui.png)
 
 The Webnative App Template is a clone-and-go template for building a web application using Webnative, fast. Clone, customize, and deploy to have a running distributed app in mere minutes.
 
@@ -35,7 +34,6 @@ The app template is built with modern web technologies:
 -   [SvelteKit](https://kit.svelte.dev/) (powered by [Vite](https://vitejs.dev/) under the hood)
 -   [TypeScript](https://www.typescriptlang.org/)
 -   [Tailwind](https://tailwindcss.com/)
--   [DaisyUI](https://daisyui.com/)
 
 ### 👩‍🏫 A simple Webnative demo to learn from
 
