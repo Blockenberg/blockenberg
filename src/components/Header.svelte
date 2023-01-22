@@ -1,12 +1,7 @@
 <script lang="ts">
-	import { goto } from "$app/navigation";
-	import { page } from "$app/stores";
 	import { sessionStore } from "../stores";
 	import Avatar from "$components/settings/Avatar.svelte";
 	import BrandLogo from "$components/icons/BrandLogo.svelte";
-	import BrandWordmark from "$components/icons/BrandWordmark.svelte";
-	import Hamburger from "$components/icons/Hamburger.svelte";
-	import Shield from "$components/icons/Shield.svelte";
 </script>
 
 <header

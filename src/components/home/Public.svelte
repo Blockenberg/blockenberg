@@ -41,7 +41,7 @@
 								>
 								<a
 									href="/recover"
-									class="px-8 py-3 m-2 text-lg border  text-gray-900 border-gray-300"
+									class="px-8 py-3 m-2 text-lg border  text-gray-900 border-gray-300 dark:text-gray-50"
 									>Recover</a
 								>
 							</div>
