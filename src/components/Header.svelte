@@ -19,12 +19,12 @@
 		</div>
     {/if}
 		{#if !$sessionStore.loading && $sessionStore.backupCreated === false}
-			<a href="/delegate-account" class="px-4 py-2 bg-gray-50 dark:bg-violet-400 dark:text-gray-900"
+			<a href="/delegate-account" class="px-4 py-2 bg-gray-50 dark:bg-violet-600 dark:text-gray-900"
 				>Backup</a
 			>
 		{/if}
 		{#if !$sessionStore.session}
-			<a  href="/register" class="px-4 py-2 bg-gray-50 dark:bg-violet-400 dark:text-gray-900 "
+			<a  href="/register" class="px-4 py-2 bg-gray-50 dark:bg-violet-600 dark:text-gray-900 "
 				>Register</a
 			>
 		{/if}

@@ -7,7 +7,7 @@
 		<div class="container mx-auto space-y-16">
 			<section class="grid gap-6 text-center lg:grid-cols-2 xl:grid-cols-5">
 				<div class="w-full p-6 sm:p-16 xl:col-span-2 dark:bg-gray-900 bg-gray-50">
-					<span class="block mb-2 dark:text-violet-400"
+					<span class="block mb-2 dark:text-violet-600"
 						>Blockenberg content management system</span
 					>
 					<h1 class="text-5xl font-extrabold dark:text-gray-50">
@@ -36,7 +36,7 @@
 							<div class="flex flex-wrap justify-center">
 								<a
 									href="/register"
-									class="px-8 py-3 m-2 text-lg   bg-violet-400 text-gray-50"
+									class="px-8 py-3 m-2 text-lg   bg-violet-600 text-gray-50"
 									>Register</a
 								>
 								<a
@@ -56,16 +56,16 @@
 			</section>
 			<section>
 				<span
-					class="block mb-2 text-xs font-medium tracking-widest uppercase lg:text-center dark:text-violet-400"
+					class="block mb-2 text-xs font-medium tracking-widest uppercase lg:text-center dark:text-violet-600"
 					>How it works</span
 				>
 				<h2 class="text-5xl font-bold lg:text-center dark:text-gray-50">
-					Building with Blockenberg
+					Building with Blockenberg is simple
 				</h2>
 				<div class="grid gap-6 my-16 lg:grid-cols-3">
 					<div class="flex flex-col p-8 space-y-4 dark:bg-gray-900 bg-gray-50">
 						<div
-							class="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold bg-violet-400 text-gray-100 dark:bg-violet-400 dark:text-gray-900"
+							class="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold bg-violet-600 text-gray-100 dark:bg-violet-600 dark:text-gray-900"
 						>
 							1
 						</div>
@@ -76,7 +76,7 @@
 					</div>
 					<div class="flex flex-col p-8 space-y-4 dark:bg-gray-900 bg-gray-50">
 						<div
-							class="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold bg-violet-400 text-gray-100 dark:bg-violet-400 dark:text-gray-900"
+							class="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold bg-violet-600 text-gray-100 dark:bg-violet-600 dark:text-gray-900"
 						>
 							2
 						</div>
@@ -87,7 +87,7 @@
 					</div>
 					<div class="flex flex-col p-8 space-y-4 dark:bg-gray-900 bg-gray-50">
 						<div
-							class="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold bg-violet-400 text-gray-100 dark:bg-violet-400 dark:text-gray-900"
+							class="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold bg-violet-600 text-gray-100 dark:bg-violet-600 dark:text-gray-900"
 						>
 							3
 						</div>
@@ -110,7 +110,7 @@
 					<img
 						src="https://upload.wikimedia.org/wikipedia/en/7/72/Mark_Wing-Davey_as_Zaphod_Beeblebrox.jpg"
 						alt=""
-						class="object-cover w-20 h-20 bg-violet-400 text-gray-100 dark:bg-gray-500"
+						class="object-cover w-20 h-20 bg-violet-600 text-gray-100 dark:bg-gray-500"
 					/>
 					<blockquote class="max-w-lg text-lg italic font-medium text-center">
 						"Future of CMS!"
@@ -153,7 +153,7 @@
 							class="p-6 space-y-6 lg:p-8 md:flex md:flex-col dark:bg-gray-900 bg-gray-50"
 						>
 							<span
-								class="self-start px-3 py-1 text-sm dark:bg-violet-400 dark:text-gray-900 bg-violet-400 text-gray-100"
+								class="self-start px-3 py-1 text-sm dark:bg-violet-600 dark:text-gray-900 bg-violet-600 text-gray-100"
 								>Technology</span
 							>
 							<h2 class="text-3xl font-bold md:flex-1">
@@ -166,7 +166,7 @@
 						</div>
 					</div>
 					<div class="p-6 lg:p-8 lg:py-12 dark:bg-gray-900 bg-gray-50">
-						<p class="inline font-medium dark:text-gray-50 text-violet-400">
+						<p class="inline font-medium dark:text-gray-50 text-violet-600">
 							Fission.
 						</p>
 						<p class="inline">
@@ -174,17 +174,17 @@
 						</p>
 					</div>
 					<div class="p-6 lg:p-8 lg:py-12 dark:bg-gray-900 bg-gray-50">
-						<p class="inline font-medium dark:text-gray-50 text-violet-400">
+						<p class="inline font-medium dark:text-gray-50 text-violet-600">
 							Filecoin.
 						</p>
 						<p class="inline">Using Filecoin decentralized storage.</p>
 					</div>
 					<div class="p-6 lg:p-8 lg:py-12 dark:bg-gray-900 bg-gray-50">
-						<p class="inline font-medium dark:text-gray-50 text-violet-400">
-							Cloudflare.
+						<p class="inline font-medium dark:text-gray-50 text-violet-600">
+							Surge.
 						</p>
 						<p class="inline">
-							Hosted on Cloudflare.
+							Hosted on Surge.sh.
 						</p>
 					</div>
 				</div>
