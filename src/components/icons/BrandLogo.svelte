@@ -1,7 +1,7 @@
 <svg
 	xmlns="http://www.w3.org/2000/svg"
 	viewBox="0 0 700 700"
-	class="w-6 h-6  text-violet-600"
+	class="w-6 h-6  text-violet-600 dark:text-gray-50"
 >
 	<path
 		fill="none"

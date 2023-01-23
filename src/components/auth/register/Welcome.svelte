@@ -1,39 +1,32 @@
 <script lang="ts">
-  import { appName } from '$lib/app-info'
-  import { sessionStore } from '../../../stores'
-  import WelcomeCheckIcon from '$components/icons/WelcomeCheckIcon.svelte'
+	import { sessionStore } from "../../../stores";
 </script>
 
-<input type="checkbox" id="link-device-modal" checked class="modal-toggle" />
-<div class="modal">
-  <div class="modal-box w-narrowModal relative text-center">
-    <div>
-      <h3 class="mb-14 text-base">
-        Welcome, {$sessionStore.username.trimmed}!
-      </h3>
-      <div class="flex justify-center mb-11 text-base-content">
-        <WelcomeCheckIcon />
-      </div>
-      <div>
-        <p class="mb-4 text-left">Your account has been created.</p>
-
-        <div class="mb-8 text-left">
-          <input type="checkbox" id="password-message" class="peer hidden" />
-          <label
-            class="text-blue-500 underline mb-8 hover:cursor-pointer peer-checked:hidden"
-            for="password-message"
-          >
-            Wait&mdash;what's my password?
-          </label>
-          <p class="hidden peer-checked:block">
-            You don't need a password! <br />
-            {appName} uses public key cryptography to authenticate you with this
-            device.
-          </p>
-        </div>
-
-        <a class="btn btn-primary" href="/backup">Continue</a>
-      </div>
-    </div>
-  </div>
-</div>
+<section class="p-6 min-h-[calc(100vh-128px)] ">
+	<div
+		class="container grid gap-6 mx-auto text-center lg:grid-cols-2 xl:grid-cols-5"
+	>
+		<div
+			class="w-full px-6 py-16  sm:px-12 md:px-16 xl:col-span-2 bg-gray-50 dark:bg-gray-900"
+		>
+			<span class="block mb-2 text-violet-600">Blockenberg</span>
+			<h1 class="text-5xl font-bold text-gray-900 dark:text-gray-50">
+				Welcome, {$sessionStore.username.trimmed}!
+			</h1>
+			<p class="my-8">
+				<span class="font-bold text-gray-900 dark:text-gray-50"
+					>Your account is ready.</span
+				> You don't need any password, your identity is now secured on this computer.
+			</p>
+			<a
+				class="px-8 py-3 mt-12  bg-violet-600 text-gray-50 hover:bg-violet-500"
+				href="/delegate-account">Continue</a
+			>
+		</div>
+		<img
+			src="https://images.unsplash.com/photo-1465420513954-e331ffa275ec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80"
+			alt=""
+			class="object-cover w-full  xl:col-span-3 bg-gray-500"
+		/>
+	</div>
+</section>

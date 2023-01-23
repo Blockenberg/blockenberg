@@ -18,22 +18,22 @@
 {#if $accountSettingsStore.avatar}
   {#if $accountSettingsStore.loading}
     <div
-      class="flex items-center justify-center object-cover rounded-full border-2 border-base-content {sizeClasses}"
+      class="flex items-center justify-center object-cover border-2 border-base-content {sizeClasses}"
     >
       <span
-        class="animate-spin ease-linear rounded-full border-2 border-t-2 border-t-orange-500 border-base-content {loaderSizeClasses}"
+        class="animate-spin ease-linear border-2 border-t-2 border-t-orange-500 border-base-content {loaderSizeClasses}"
       />
     </div>
   {:else}
     <img
-      class="object-cover rounded-full border-2 border-base-content {sizeClasses}"
+      class="object-cover border-2 border-base-content {sizeClasses}"
       src={$accountSettingsStore.avatar.src}
       alt="User Avatar"
     />
   {/if}
 {:else}
   <div
-    class="flex items-center justify-center bg-base-content text-base-100 uppercase font-bold rounded-full {sizeClasses}"
+    class="flex items-center justify-center bg-violet-600 text-gray-50 dark:text-gray-900 uppercase font-bold {sizeClasses}"
   >
     {$sessionStore.username.trimmed[0]}
   </div>

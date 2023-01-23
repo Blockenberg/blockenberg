@@ -74,7 +74,7 @@
 {#if initializingFilesystem}
 	<FilesystemActivity activity="Initializing" />
 {:else}
-	<section class="p-6 bg-gray-100 text-gray-800">
+	<section class="p-6 min-h-[calc(100vh-128px)]">
 		<div
 			class="container grid gap-6 mx-auto text-center lg:grid-cols-2 xl:grid-cols-5"
 		>
@@ -82,7 +82,7 @@
 				<span class="block mb-2 text-violet-600"
 					>Blockenberg content management system</span
 				>
-				<h1 class="text-5xl font-extrabold text-gray-900">
+				<h1 class="text-5xl font-bold text-gray-900">
 					Register with Blockenberg
 				</h1>
 				{#if !registrationSuccess}
@@ -121,13 +121,13 @@
 								!usernameAvailable ||
 								checkingUsername}
 							type="submit"
-							class="w-full py-2 font-bold bg-violet-600 text-gray-50 disabled:opacity-10 transition-all delay-150 duration-1000"
+							class="w-full py-2 font-bold bg-violet-600 hover:bg-violet-500 text-gray-50 disabled:opacity-10 transition-all delay-150 duration-1000"
 							>Register</button
 						>
 						<button
 							type="button"
 							on:click={toggleExistingAccount}
-							class="w-full py-2 font-bold bg-gray-50 text-gray-800"
+							class="w-full py-2 font-bold bg-gray-50 text-gray-800 hover:bg-violet-100"
 							>I have an account</button
 						>
 					</div>

@@ -1,6 +1,6 @@
 <footer>
   <div
-    class="container flex justify-between p-6 mx-auto lg:p-8 dark:bg-gray-900"
+    class="container flex justify-between mx-auto"
   >
     <a rel="noopener noreferrer" href="/" class="font-bold">Blockenberg</a>
     <div class="flex space-x-2">

@@ -1,50 +1,79 @@
 <script lang="ts">
-  import { goto } from '$app/navigation'
-  import clipboardCopy from 'clipboard-copy'
+	import { goto } from "$app/navigation";
+	import clipboardCopy from "clipboard-copy";
 
-  import Share from '$components/icons/Share.svelte'
-  import { addNotification } from '$lib/notifications'
+	import { filesystemStore, sessionStore } from "../../../stores";
+	import Share from "$components/icons/Share.svelte";
+	import { addNotification } from "$lib/notifications";
+	import { setBackupStatus } from "$lib/auth/backup";
 
-  export let qrcode: HTMLOrSVGElement
-  export let connectionLink: string
-  export let backupCreated: boolean
+	const skipBackup = () => {
+		setBackupStatus($filesystemStore, { created: false });
 
-  const copyLink = async () => {
-    await clipboardCopy(connectionLink)
-    addNotification('Copied to clipboard', 'success')
-  }
+		sessionStore.update((session) => ({
+			...session,
+			backupCreated: false,
+		}));
+
+		goto("/");
+	};
+
+	export let qrcode: HTMLOrSVGElement;
+	export let connectionLink: string;
+	export let backupCreated: boolean;
+	console.log(qrcode);
+
+	const copyLink = async () => {
+		await clipboardCopy(connectionLink);
+		addNotification("Copied to clipboard", "success");
+	};
 </script>
 
-<input type="checkbox" id="backup-device-modal" checked class="modal-toggle" />
-<div class="modal">
-  <div class="modal-box w-narrowModal relative text-center">
-    <div>
-      <h3 class="mb-8 text-base">Connect a backup device</h3>
-      <div class="w-max m-auto mb-7 rounded-lg overflow-hidden">
-        {@html qrcode}
-      </div>
-      <p class="mb-7 text-left">
-        Scan this code on the new device, or share the connection link.
-      </p>
-      <button class="btn btn-outline" on:click={copyLink}>
-        <Share />
-        <span class="ml-2">Share connection link</span>
-      </button>
-      {#if !backupCreated}
-        <button
-          class="btn btn-xs btn-link text-sm font-normal underline mt-4"
-          on:click={() => goto('/backup?view=are-you-sure')}
-        >
-          Skip for now
-        </button>
-      {:else}
-        <a
-          class="btn btn-xs btn-link text-sm font-normal underline mt-4"
-          href="/"
-        >
-          Cancel
-        </a>
-      {/if}
-    </div>
-  </div>
-</div>
+<section class="p-6 min-h-[calc(100vh-128px)] ">
+	<div
+		class="container grid gap-6 mx-auto text-center lg:grid-cols-2 xl:grid-cols-5"
+	>
+		<div
+			class="w-full px-6 py-16  sm:px-12 md:px-16 xl:col-span-2 bg-gray-50 dark:bg-gray-900"
+		>
+			<span class="block mb-2 text-violet-600">Blockenberg</span>
+			<h1 class="text-5xl font-bold text-gray-900 dark:text-gray-50">Backup</h1>
+
+			<div class="h-80 w-full flex justify-center my-4">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					version="1.1"
+					width="256"
+					height="256"
+				>
+					{@html qrcode}
+				</svg>
+			</div>
+			<p>
+				<span class="font-bold text-gray-900 dark:text-gray-50">Stay safe.</span
+				> You can backup your credentials to a different device in case you need
+				to restore access. We strongly recommend to scan the QR code with a mobile
+				device.
+			</p>
+			<p class="pt-2">
+				You can also click the button below and send the link to the other
+				device (another computer).
+			</p>
+			<div class="flex space-x-2 justify-center">
+				<button
+					class="px-8 py-3 mt-12  bg-violet-600 text-gray-50 hover:bg-violet-500"
+					on:click={copyLink}>Share link</button
+				>
+				<button
+					class="px-8 py-3 mt-12  bg-gray-200 text-gray-900 hover:bg-gray-100"
+					on:click={skipBackup}>Skip</button
+				>
+			</div>
+		</div>
+		<img
+			src="https://images.unsplash.com/photo-1465420513954-e331ffa275ec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80"
+			alt=""
+			class="object-cover h-full  xl:col-span-3 bg-gray-500"
+		/>
+	</div>
+</section>

@@ -10,7 +10,7 @@
 					<span class="block mb-2 dark:text-violet-600"
 						>Blockenberg content management system</span
 					>
-					<h1 class="text-5xl font-extrabold dark:text-gray-50">
+					<h1 class="text-5xl font-bold dark:text-gray-50">
 						Publish with Blockenberg
 					</h1>
 					<p class="my-8">
@@ -36,12 +36,12 @@
 							<div class="flex flex-wrap justify-center">
 								<a
 									href="/register"
-									class="px-8 py-3 m-2 text-lg   bg-violet-600 text-gray-50"
+									class="px-8 py-3 m-2 text-lg  bg-violet-600 hover:bg-violet-500 text-gray-50"
 									>Register</a
 								>
 								<a
 									href="/recover"
-									class="px-8 py-3 m-2 text-lg border  text-gray-900 border-gray-300 dark:text-gray-50"
+									class="px-8 py-3 m-2 text-lg border  text-gray-900 border-gray-300 dark:text-gray-50 hover:bg-violet-100"
 									>Recover</a
 								>
 							</div>
@@ -143,7 +143,7 @@
 			</section>
 			<section>
 				<div class="grid gap-6 lg:grid-cols-3">
-					<div class="overflow-hidden rounded lg:flex lg:col-span-3">
+					<div class="overflow-hidden lg:flex lg:col-span-3">
 						<img
 							src="https://images.unsplash.com/photo-1517061391662-b09454c10462?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2133&q=80"
 							alt=""
@@ -191,7 +191,7 @@
 			</section>
 			<section>
 				<div
-					class="container p-6 py-20 mx-auto rounded lg:px-8 dark:bg-gray-900"
+					class="container p-6 py-20 mx-auto lg:px-8 dark:bg-gray-900"
 				>
 					<h2 class="text-5xl font-bold text-center">
 						Our team is here to help you.

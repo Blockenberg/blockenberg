@@ -23,12 +23,7 @@
   }
 </script>
 
-<input
-  type="checkbox"
-  id="delegate-account-modal"
-  checked
-  class="modal-toggle"
-/>
+
 <div class="modal">
   <div class="modal-box w-narrowModal relative text-center">
     <div>
