@@ -78,11 +78,11 @@
 		<div
 			class="container grid gap-6 mx-auto text-center lg:grid-cols-2 xl:grid-cols-5"
 		>
-			<div class="w-full px-6 py-16 sm:px-12 md:px-16 xl:col-span-2 bg-gray-50">
+			<div class="w-full px-6 py-16 sm:px-12 md:px-16 xl:col-span-2 bg-gray-50 dark:bg-gray-900">
 				<span class="block mb-2 text-violet-600"
 					>Blockenberg content management system</span
 				>
-				<h1 class="text-5xl font-bold text-gray-900">
+				<h1 class="text-5xl font-bold text-gray-900 dark:text-gray-50">
 					Register with Blockenberg
 				</h1>
 				{#if !registrationSuccess}
@@ -92,7 +92,7 @@
 					</p>
 				{:else}
 					<p class="my-8">
-						<span class="font-bold text-gray-900">Easy and secure.</span> Your account
+						<span class="font-bold text-gray-900 dark:text-gray-50">Easy and secure.</span> Your account
 						is stored on this device and later you will be able to create a backup
 						device like mobile phone. Please do not use public or shared computer.
 					</p>
@@ -107,7 +107,7 @@
 							id="registration"
 							type="text"
 							placeholder="Your name"
-							class="w-full focus:ring focus:ring-violet-600 {usernameApproved &&
+							class="w-full text-gray-900 focus:ring focus:ring-violet-600 {usernameApproved &&
 								'ring-green-400'} {usernameError && 'ring-red-400'}"
 							class:input-error={username.length !== 0 &&
 								(!usernameValid || !usernameAvailable)}
@@ -121,13 +121,13 @@
 								!usernameAvailable ||
 								checkingUsername}
 							type="submit"
-							class="w-full py-2 font-bold bg-violet-600 hover:bg-violet-500 text-gray-50 disabled:opacity-10 transition-all delay-150 duration-1000"
+							class="w-full py-2 font-bold dark:bg-violet-400 dark:text-gray-900 bg-violet-600 hover:bg-violet-500 text-gray-50 disabled:opacity-10 transition-all delay-150 duration-1000"
 							>Register</button
 						>
 						<button
 							type="button"
 							on:click={toggleExistingAccount}
-							class="w-full py-2 font-bold bg-gray-50 text-gray-800 hover:bg-violet-100"
+							class="w-full py-2 font-bold bg-gray-50 dark:bg-gray-900 dark:text-gray-200 text-gray-800 hover:bg-violet-100 dark:hover:bg-gray-800"
 							>I have an account</button
 						>
 					</div>

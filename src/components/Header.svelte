@@ -5,12 +5,12 @@
 </script>
 
 <header
-	class="container flex items-center justify-between h-16 px-4 mx-auto rounded "
+	class="container flex items-center justify-between h-16 px-4 mx-auto"
 >
 	<a rel="noopener noreferrer" href="/" aria-label="Homepage" class="flex space-x-2">
 		<BrandLogo /> <p class="font-bold">Blockenberg</p>
 	</a>
-	<div class="items-center hidden space-x-8 lg:flex">
+	<div class="items-center hidden space-x-8 lg:flex justify-end flex-grow">
 		{#if $sessionStore.session}
 			<div class="space-x-4">
 				<a rel="noopener noreferrer" href="#">Create</a>
@@ -26,7 +26,7 @@
 			>
 		{/if}
 	</div>
-  <div class="flex">
+  <div class="flex ml-4">
 	{#if !$sessionStore.loading && $sessionStore.backupCreated === false}
 		<a
 			href="/delegate-account"
@@ -51,7 +51,7 @@
 				/>
 			</svg>
 		</button>
-		<a href="/settings" class="mx-2 cursor-pointer">
+		<a href="/settings" class="mx-4 cursor-pointer">
 			<Avatar size="small" />
 		</a>
 	{/if}
