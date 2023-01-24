@@ -5,7 +5,7 @@
 </script>
 
 <header
-	class="container flex items-center justify-between h-16 px-4 mx-auto"
+	class="container flex items-center justify-between h-16 mx-auto"
 >
 	<a rel="noopener noreferrer" href="/" aria-label="Homepage" class="flex space-x-2">
 		<BrandLogo /> <p class="font-bold">Blockenberg</p>

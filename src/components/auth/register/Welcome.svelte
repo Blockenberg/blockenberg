@@ -17,10 +17,12 @@
 				<span class="font-bold text-gray-900 dark:text-gray-50"
 					>Your account is ready.</span
 				> You don't need any password, your identity is now secured on this computer.
+				In the next step, we will ask you to create a backup, so you'll never loose
+				access.
 			</p>
 			<a
 				class="px-8 py-3 mt-12  bg-violet-600 text-gray-50 hover:bg-violet-500"
-				href="/delegate-account">Continue</a
+				href="/delegate-account">Next</a
 			>
 		</div>
 		<img
