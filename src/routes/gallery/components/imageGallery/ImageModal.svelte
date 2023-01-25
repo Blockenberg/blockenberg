@@ -2,7 +2,7 @@
   import { createEventDispatcher, onDestroy, onMount } from 'svelte'
 
   import { ipfsGatewayUrl } from '$lib/app-info';
-  import { galleryStore } from '$routes/gallery/stores'
+  import { cmsStore } from '$routes/gallery/stores'
   import { deleteImageFromWNFS, type Gallery, type Image } from '$routes/gallery/lib/gallery'
   import Download from '$components/icons/Download.svelte'
   import Trash from '$components/icons/Trash.svelte'
@@ -17,7 +17,7 @@
 
   const dispatch = createEventDispatcher()
 
-  const unsubcribe = galleryStore.subscribe(newState => (gallery = newState))
+  const unsubcribe = cmsStore.subscribe(newState => (gallery = newState))
 
   /**
    * Close the modal, clear the image state vars, set `isModalOpen` to false
@@ -85,7 +85,7 @@
     setCarouselState()
   })
 
-  // Unsubscribe from galleryStore updates
+  // Unsubscribe from cmsStore updates
   onDestroy(unsubcribe)
 </script>
 

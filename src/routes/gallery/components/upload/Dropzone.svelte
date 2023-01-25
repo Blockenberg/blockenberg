@@ -39,7 +39,7 @@
       })
     )
 
-    // Refetch images and update galleryStore
+    // Refetch images and update cmsStore
     await getImagesFromWNFS()
 
     // Disable isDragging state

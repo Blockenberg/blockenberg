@@ -5,7 +5,7 @@ import type PrivateFile from 'webnative/fs/v1/PrivateFile'
 import { isFile } from 'webnative/fs/types/check'
 
 import { filesystemStore } from '$src/stores'
-import { AREAS, galleryStore } from '$routes/gallery/stores'
+import { AREAS, cmsStore } from '$routes/gallery/stores'
 import { addNotification } from '$lib/notifications'
 import { fileToUint8Array } from '$lib/utils'
 
@@ -40,10 +40,10 @@ const FILE_SIZE_LIMIT = 20
  */
 export const getImagesFromWNFS: () => Promise<void> = async () => {
   try {
-    // Set loading: true on the galleryStore
-    galleryStore.update(store => ({ ...store, loading: true }))
+    // Set loading: true on the cmsStore
+    cmsStore.update(store => ({ ...store, loading: true }))
 
-    const { selectedArea } = getStore(galleryStore)
+    const { selectedArea } = getStore(cmsStore)
     const isPrivate = selectedArea === AREAS.PRIVATE
     const fs = getStore(filesystemStore)
 
@@ -91,8 +91,8 @@ export const getImagesFromWNFS: () => Promise<void> = async () => {
     images = images.filter(a => !!a)
     images.sort((a, b) => b.ctime - a.ctime)
 
-    // Push images to the galleryStore
-    galleryStore.update(store => ({
+    // Push images to the cmsStore
+    cmsStore.update(store => ({
       ...store,
       ...(isPrivate
         ? {
@@ -105,7 +105,7 @@ export const getImagesFromWNFS: () => Promise<void> = async () => {
     }))
   } catch (error) {
     console.error(error)
-    galleryStore.update(store => ({
+    cmsStore.update(store => ({
       ...store,
       loading: false
     }))
@@ -120,7 +120,7 @@ export const uploadImageToWNFS: (
   image: File
 ) => Promise<void> = async image => {
   try {
-    const { selectedArea } = getStore(galleryStore)
+    const { selectedArea } = getStore(cmsStore)
     const fs = getStore(filesystemStore)
 
     // Reject files over 20MB
@@ -161,7 +161,7 @@ export const deleteImageFromWNFS: (
   name: string
 ) => Promise<void> = async name => {
   try {
-    const { selectedArea } = getStore(galleryStore)
+    const { selectedArea } = getStore(cmsStore)
     const fs = getStore(filesystemStore)
 
     const imageExists = await fs.exists(
@@ -177,7 +177,7 @@ export const deleteImageFromWNFS: (
 
       addNotification(`${name} image has been deleted`, 'success')
 
-      // Refetch images and update galleryStore
+      // Refetch images and update cmsStore
       await getImagesFromWNFS()
     } else {
       throw new Error(`${name} image has already been deleted`)
@@ -200,6 +200,6 @@ export const handleFileInput: (
     })
   )
 
-  // Refetch images and update galleryStore
+  // Refetch images and update cmsStore
   await getImagesFromWNFS()
 }

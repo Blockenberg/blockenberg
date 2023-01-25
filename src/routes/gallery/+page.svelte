@@ -3,7 +3,7 @@
   import { goto } from '$app/navigation'
 
   import { sessionStore } from '$src/stores'
-  import { AREAS, galleryStore } from '$routes/gallery/stores'
+  import { AREAS, cmsStore } from '$routes/gallery/stores'
   import Dropzone from '$routes/gallery/components/upload/Dropzone.svelte'
   import ImageGallery from '$routes/gallery/components/imageGallery/ImageGallery.svelte'
 
@@ -12,7 +12,7 @@
    * @param area
    */
   const handleChangeTab: (area: AREAS) => void = area =>
-    galleryStore.update(store => ({
+    cmsStore.update(store => ({
       ...store,
       selectedArea: area
     }))
@@ -34,7 +34,7 @@
         {#each Object.keys(AREAS) as area}
           <button
             on:click={() => handleChangeTab(AREAS[area])}
-            class="tab h-10 font-bold text-sm ease-in {$galleryStore.selectedArea ===
+            class="tab h-10 font-bold text-sm ease-in {$cmsStore.selectedArea ===
             AREAS[area]
               ? 'tab-active bg-base-content text-base-100'
               : 'bg-base-100 text-base-content'}"

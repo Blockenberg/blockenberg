@@ -4,11 +4,12 @@ import type { Writable } from 'svelte/store'
 import type { Gallery } from '$routes/gallery/lib/gallery'
 
 export enum AREAS {
-  PUBLIC = 'Public',
-  PRIVATE = 'Private'
+
+  PRIVATE = 'In Progress',
+  PUBLIC = 'Published'
 }
 
-export const galleryStore: Writable<Gallery> = writable({
+export const cmsStore: Writable<Gallery> = writable({
   loading: true,
   publicImages: [],
   privateImages: [],
