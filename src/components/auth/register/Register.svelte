@@ -74,7 +74,7 @@
 {#if initializingFilesystem}
 	<FilesystemActivity activity="Initializing" />
 {:else}
-	<section class="p-6 min-h-[calc(100vh-128px)]">
+	<section>
 		<div
 			class="container grid gap-6 mx-auto text-center lg:grid-cols-2 xl:grid-cols-5"
 		>

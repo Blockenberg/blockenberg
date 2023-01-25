@@ -11,7 +11,7 @@ export enum AREAS {
 
 export const cmsStore: Writable<Gallery> = writable({
   loading: true,
-  publicImages: [],
-  privateImages: [],
+  publicDocuments: [],
+  privateDocuments: [],
   selectedArea: AREAS.PUBLIC,
 })

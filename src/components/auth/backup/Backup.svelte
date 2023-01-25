@@ -12,7 +12,6 @@
   }
 </script>
 
-<input type="checkbox" id="backup-modal" checked class="modal-toggle" />
 <div class="modal">
   <div class="modal-box w-narrowModal relative text-center">
     <div id="backup-message" class="peer-checked:hidden">

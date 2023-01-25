@@ -19,8 +19,8 @@ export type Image = {
 }
 
 export type Gallery = {
-  publicImages: Image[] | null
-  privateImages: Image[] | null
+  publicDocuments: Image[] | null
+  privateDocuments: Image[] | null
   selectedArea: AREAS
   loading: boolean
 }
@@ -96,10 +96,10 @@ export const getImagesFromWNFS: () => Promise<void> = async () => {
       ...store,
       ...(isPrivate
         ? {
-          privateImages: images
+          privateDocuments: images
         }
         : {
-          publicImages: images
+          publicDocuments: images
         }),
       loading: false
     }))

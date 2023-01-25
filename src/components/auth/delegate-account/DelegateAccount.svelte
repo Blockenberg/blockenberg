@@ -23,7 +23,7 @@
 	};
 </script>
 
-<section class="p-6 min-h-[calc(100vh-128px)]">
+<section>
 	<div
 		class="container mx-auto flex flex-col items-center px-4 py-16 text-center md:py-32 md:px-10 lg:px-32 xl:max-w-3xl"
 	>

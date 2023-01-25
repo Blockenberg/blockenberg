@@ -44,8 +44,8 @@
    */
   const setCarouselState = () => {
     const imageList = image.private
-      ? gallery.privateImages
-      : gallery.publicImages
+      ? gallery.privateDocuments
+      : gallery.publicDocuments
     const currentIndex = imageList.findIndex(val => val.cid === image.cid)
     previousImage =
       imageList[currentIndex - 1] ?? imageList[imageList.length - 1]

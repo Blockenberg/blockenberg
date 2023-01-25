@@ -3,7 +3,6 @@
 	import { onDestroy } from "svelte";
 	import { goto } from "$app/navigation";
 	import { AREAS, cmsStore } from "$routes/gallery/stores";
-	import Dropzone from "$routes/gallery/components/upload/Dropzone.svelte";
 	import ImageGallery from "$routes/gallery/components/imageGallery/ImageGallery.svelte";
 
 	/**
@@ -45,7 +44,7 @@
 					on:click={() => handleChangeTab(AREAS[area])}
 					class="px-4 py-2 font-bold text-gray-900 ease-in {$cmsStore.selectedArea ===
 					AREAS[area]
-						? ' dark:bg-violet-400'
+						? ' dark:bg-violet-400 text-violet-400 dark:text-gray-900 underline dark:no-underline'
 						: 'dark:text-gray-100'}"
 				>
 					{AREAS[area]}

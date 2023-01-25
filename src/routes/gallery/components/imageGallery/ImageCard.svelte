@@ -9,7 +9,7 @@
 
 <button
 	on:click={handleOpenModal}
-	class="max-w-sm mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900"
+	class="max-w-sm mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900 bg-gray-50"
 >
 	<img
 		role="presentation"

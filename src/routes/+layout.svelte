@@ -39,14 +39,14 @@
 	<meta name="twitter:image:alt" content={appName} />
 </svelte:head>
 
-<div class="min-h-screen dark:bg-gray-800 bg-gray-100 dark:text-gray-100">
+<div class="dark:bg-gray-800 bg-gray-100 dark:text-gray-100">
 	{#if $sessionStore.loading}
 		<FullScreenLoadingSpinner />
 	{:else}
-		<Header />
-		<div class="px-4">
+		<div class="flex flex-col justify-between min-h-screen">
+			<Header />
 			<slot />
+			<Footer />
 		</div>
 	{/if}
-	<Footer />
 </div>

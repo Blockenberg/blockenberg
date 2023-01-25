@@ -49,7 +49,7 @@
 </script>
 
 <div class="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  {#each $cmsStore.selectedArea === AREAS.PRIVATE ? $cmsStore.privateImages : $cmsStore.publicImages as image}
+  {#each $cmsStore.selectedArea === AREAS.PRIVATE ? $cmsStore.privateDocuments : $cmsStore.publicDocuments as image}
   <ImageCard {image} openModal={setSelectedImage} />
   {/each}
 </div>

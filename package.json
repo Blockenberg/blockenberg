@@ -59,6 +59,7 @@
   "dependencies": {
     "clipboard-copy": "^4.0.1",
     "qrcode-svg": "^1.1.0",
+    "quill": "^1.3.7",
     "uint8arrays": "^4.0.2",
     "webnative": "^0.35.1"
   },

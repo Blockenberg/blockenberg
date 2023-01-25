@@ -13,7 +13,7 @@
 	<div class="items-center hidden space-x-8 lg:flex justify-end flex-grow">
 		{#if $sessionStore.session}
 			<div class="space-x-4">
-				<a rel="noopener noreferrer" href="#">Create</a>
+				<a rel="noopener noreferrer" href="/create">Create</a>
 				<a rel="noopener noreferrer" href="#">Manage</a>
 				<a rel="noopener noreferrer" href="#">Publish</a>
 			</div>
