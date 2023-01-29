@@ -13,5 +13,5 @@ export const cmsStore: Writable<Gallery> = writable({
   loading: true,
   publicDocuments: [],
   privateDocuments: [],
-  selectedArea: AREAS.PUBLIC,
+  selectedArea: AREAS.PRIVATE,
 })

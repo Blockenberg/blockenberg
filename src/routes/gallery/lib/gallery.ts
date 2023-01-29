@@ -53,6 +53,7 @@ export const getImagesFromWNFS: () => Promise<void> = async () => {
     cmsStore.update((store) => ({ ...store, loading: true }));
 
     const { selectedArea } = getStore(cmsStore);
+    //console.log(selectedArea);
     const isPrivate = selectedArea === AREAS.PRIVATE;
     const fs = getStore(filesystemStore);
 
@@ -122,15 +123,15 @@ export const getImagesFromWNFS: () => Promise<void> = async () => {
 };
 
 /**
- * Upload an image to the user's private or public WNFS
+ * Upload the doc to the user's private WNFS
  * @param image
  */
 export const uploadDocumentToWNFS: (
   doc: ContentDoc,
 ) => Promise<string> = async (doc) => {
   try {
-    console.log(doc);
-    const { selectedArea } = getStore(cmsStore);
+    //console.log(doc);
+    const selectedArea = AREAS.PRIVATE; //we always upload to private
     const fs = getStore(filesystemStore);
 
     // Reject the upload if the image already exists in the directory
@@ -160,7 +161,7 @@ export const uploadDocumentToWNFS: (
 };
 
 /**
- * Upload an image to the user's private or public WNFS
+ * Upload an image to the user's private  WNFS
  * @param image
  */
 export const uploadImageToWNFS: (
@@ -168,7 +169,7 @@ export const uploadImageToWNFS: (
 ) => Promise<string> = async (image) => {
   try {
     //console.log(image)
-    const { selectedArea } = getStore(cmsStore);
+    const selectedArea = AREAS.PRIVATE;
     const fs = getStore(filesystemStore);
 
     // Reject files over 20MB

@@ -1,27 +1,31 @@
 <script lang="ts">
-	import { cmsStore } from "$routes/gallery/stores";
+	import { onDestroy } from "svelte";
+	import { AREAS, cmsStore } from "$routes/gallery/stores";
 	import {
 		uploadImageToWNFS,
 		uploadDocumentToWNFS,
 	} from "$routes/gallery/lib/gallery";
 	import type { ContentDoc } from "$routes/gallery/lib/gallery";
+	import ImagePicker from "$routes/gallery/components/imageGallery/ImagePicker.svelte";
 
 	// Handle files uploaded directly through the file input
 	let files: FileList;
 	let preview;
 	let imageResult;
 	let contentHeader, contentText;
+	let galleryModal: boolean = false;
 
 	$: if (files) {
-		imageResult = uploadImg(files[0]);
+		uploadImg(files[0]);
 	}
 
 	async function uploadImg(file: File) {
-		return await uploadImageToWNFS(file);
+		imageResult = await uploadImageToWNFS(file);
+		//console.log(await imageResult);
 	}
 
 	async function uploadDoc() {
-		console.log(contentHeader, contentText);
+		console.log(imageResult);
 		const doc: ContentDoc = {
 			image: imageResult,
 			header: contentHeader,
@@ -41,28 +45,54 @@
 </script>
 
 <section class="flex flex-col space-y-2 container mx-auto lg:max-w-5xl">
-	<label
-		for="upload-file"
-		class="flex flex-col justify-center items-center object-cover cursor-pointer "
+	<div
+		class="flex flex-col justify-end items-end py-4 h-60 container"
+		style="background: no-repeat center url('{preview || '../Pix.gif'}')"
 	>
-		<div
-			class="flex flex-col justify-end items-end py-4 h-60 container"
-			style="background: no-repeat center url('{preview || '../Pix.gif'}')"
+		<button
+			class="bg-gray-100 text-center p-4 hover:bg-gray-200"
+			on:click={() =>
+				galleryModal ? (galleryModal = false) : (galleryModal = true)}
 		>
-			<div class="bg-gray-100 text-center p-4 hover:bg-gray-200">
-				<span class="font-bold text-sm">Cover Photo</span>
-			</div>
+			<span class="font-bold text-sm">Cover Photo</span>
+		</button>
+	</div>
+	{#if galleryModal}
+		<div class="flex">
+			<label
+				for="upload-file"
+				class="flex flex-col justify-center items-center object-cover cursor-pointer p-6 hover:bg-gray-200 "
+			>
+				<span class="font-bold text-sm flex"
+					><svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 20 20"
+						fill="currentColor"
+						class="w-5 h-5 mr-2"
+					>
+						<path
+							fill-rule="evenodd"
+							d="M13.75 7h-3V3.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0L6.2 4.74a.75.75 0 001.1 1.02l1.95-2.1V7h-3A2.25 2.25 0 004 9.25v7.5A2.25 2.25 0 006.25 19h7.5A2.25 2.25 0 0016 16.75v-7.5A2.25 2.25 0 0013.75 7zm-3 0h-1.5v5.25a.75.75 0 001.5 0V7z"
+							clip-rule="evenodd"
+						/>
+					</svg>
+
+					Upload</span
+				>
+			</label>
+			<input
+				bind:files
+				id="upload-file"
+				type="file"
+				multiple
+				accept="image/*"
+				class="hidden"
+				on:change={() => getBase64(files[0])}
+			/>
+			<ImagePicker />
 		</div>
-		<input
-			bind:files
-			id="upload-file"
-			type="file"
-			multiple
-			accept="image/*"
-			class="hidden"
-			on:change={() => getBase64(files[0])}
-		/>
-	</label>
+	{/if}
+
 	<input
 		type="text"
 		bind:value={contentHeader}
@@ -83,8 +113,4 @@
 			>Save</button
 		>
 	</div>
-
-	<style>
-		@import "https://cdn.quilljs.com/1.3.6/quill.bubble.css";
-	</style>
 </section>
