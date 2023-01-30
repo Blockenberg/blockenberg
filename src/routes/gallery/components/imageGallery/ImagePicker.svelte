@@ -4,17 +4,8 @@
   import { filesystemStore, sessionStore } from '$src/stores'
   import { AREAS, cmsStore } from '$routes/gallery/stores'
   import { getImagesFromWNFS, type Image } from '$routes/gallery/lib/gallery'
-  import ImageCard from '$routes/gallery/components/imageGallery/ImageCard.svelte'
-
-  /**
-   * Open the ImageModal and pass it the selected `image` from the gallery
-   * @param image
-   */
-  let selectedImage: Image
-  const setSelectedImage: (image: Image) => void = image =>
-    (selectedImage = image)
-
-  const clearSelectedImage = () => (selectedImage = null)
+ 
+  export let preview
 
   // If cmsStore.selectedArea changes from private to public, re-run getImagesFromWNFS
   let selectedArea = AREAS.PUBLIC
@@ -25,6 +16,14 @@
       await getImagesFromWNFS()
     }
   })
+
+  function getBase64(image: Blob) {
+		const reader = new FileReader();
+		reader.readAsDataURL(image);
+		reader.onload = (e) => {
+			preview = e.target.result;
+		};
+	}
 
   // Once the user has been authed, fetch the images from their file system
   let imagesFetched = false
@@ -46,14 +45,13 @@
 	class="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
 >
 	{#each $cmsStore.selectedArea === AREAS.PRIVATE ? $cmsStore.privateDocuments : $cmsStore.publicDocuments as image}
-		<ImageCard {image} openModal={setSelectedImage} />
+		<img
+			role="presentation"
+			class="object-cover w-full h-44 dark:bg-gray-500 cursor-pointer p-2 hover:bg-gray-200"
+			alt={`Gallery Image: ${image.name}`}
+			src={image.src}
+			on:click={() => (preview = image.src)}
+		/>
 	{/each}
 </div>
 
-<!-- {#if selectedImage}
-	<ImageModal
-		image={selectedImage}
-		isModalOpen={!!selectedImage}
-		on:close={clearSelectedImage}
-	/>
-{/if} -->

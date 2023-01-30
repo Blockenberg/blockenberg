@@ -36,7 +36,7 @@ module.exports = {
       }
     }],
     '@typescript-eslint/no-use-before-define': ['off'],
-    '@typescript-eslint/semi': ['error', 'never'],
+    '@typescript-eslint/semi': ['error', 'always'],
     '@typescript-eslint/quotes': ['error', 'single', {
       allowTemplateLiterals: true
     }],

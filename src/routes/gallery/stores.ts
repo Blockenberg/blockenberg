@@ -1,7 +1,7 @@
-import { writable } from 'svelte/store'
-import type { Writable } from 'svelte/store'
+import { writable } from 'svelte/store';
+import type { Writable } from 'svelte/store';
 
-import type { Gallery } from '$routes/gallery/lib/gallery'
+import type { Gallery } from '$routes/gallery/lib/gallery';
 
 export enum AREAS {
 
@@ -14,4 +14,4 @@ export const cmsStore: Writable<Gallery> = writable({
   publicDocuments: [],
   privateDocuments: [],
   selectedArea: AREAS.PRIVATE,
-})
+});
