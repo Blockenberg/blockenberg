@@ -27,9 +27,10 @@
 	async function uploadDoc() {
 		//console.log(imageResult);
 		const doc: ContentDoc = {
-			image: imageResult,
+			image: preview,
 			header: contentHeader,
 			content: contentText,
+			private: true,
 		};
 
 		uploadDocumentToWNFS(doc);
@@ -93,8 +94,11 @@
 		</div>
 	</div>
 	{#if galleryModal}
-		<button class="flex overflow-y-auto max-h-96" on:click={() => (galleryModal = false)}>
-			<ImagePicker bind:preview  />
+		<button
+			class="flex overflow-y-auto max-h-96"
+			on:click={() => (galleryModal = false)}
+		>
+			<ImagePicker bind:preview />
 		</button>
 	{/if}
 

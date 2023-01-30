@@ -3,6 +3,7 @@
 
 	export let image: Image;
 	export let openModal: (image: Image) => void;
+	//console.log(image.src);
 
 	const handleOpenModal = () => openModal(image);
 </script>
@@ -21,7 +22,7 @@
 		<h3
 			class="text-2xl font-semibold group-hover:underline group-focus:underline"
 		>
-			In usu laoreet repudiare legendos
+			{decodeURI(image.name)}
 		</h3>
 		<span class="text-xs dark:text-gray-400">January 21, 2021</span>
 		<p>

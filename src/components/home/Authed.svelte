@@ -3,7 +3,7 @@
 	import { onDestroy } from "svelte";
 	import { goto } from "$app/navigation";
 	import { AREAS, cmsStore } from "$routes/gallery/stores";
-	import ImageGallery from "$routes/gallery/components/imageGallery/ImageGallery.svelte";
+	import DocGallery from "$routes/gallery/components/imageGallery/DocGallery.svelte";
 
 	/**
 	 * Tab between the public/private areas and load associated images
@@ -53,7 +53,7 @@
 		</div>
 
 		{#if $sessionStore.session}
-			<ImageGallery />
+			<DocGallery />
 		{/if}
 	</div>
 </section>
