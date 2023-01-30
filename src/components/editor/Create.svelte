@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { onDestroy } from "svelte";
-	import { AREAS, cmsStore } from "$routes/gallery/stores";
+	import { goto } from "$app/navigation";
 	import {
 		uploadImageToWNFS,
 		uploadDocumentToWNFS,
@@ -24,7 +23,7 @@
 		//console.log(await imageResult);
 	}
 
-	async function uploadDoc() {
+	async function uploadDoc(publish: boolean) {
 		//console.log(imageResult);
 		const doc: ContentDoc = {
 			image: preview,
@@ -33,7 +32,7 @@
 			private: true,
 		};
 
-		uploadDocumentToWNFS(doc);
+		uploadDocumentToWNFS(doc, publish).then(() => goto("/"));
 	}
 
 	function getBase64(image: Blob) {
@@ -117,9 +116,13 @@
 
 	<div class="mx-auto container">
 		<button
-			on:click={uploadDoc}
+			on:click={() => uploadDoc(false)}
 			class="px-4 py-2 bg-gray-50 dark:bg-violet-600 dark:text-gray-900"
 			>Save</button
+		>
+		<button
+			on:click={() => uploadDoc(true)}
+			class="px-4 py-2 bg-gray-50 dark:text-gray-900">Publish</button
 		>
 	</div>
 </section>

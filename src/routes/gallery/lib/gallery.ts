@@ -1,48 +1,48 @@
-import { get as getStore } from 'svelte/store';
-import * as wn from 'webnative';
-import type PublicFile from 'webnative/fs/v1/PublicFile';
-import type PrivateFile from 'webnative/fs/v1/PrivateFile';
-import { isFile } from 'webnative/fs/types/check';
+import { get as getStore } from "svelte/store";
+import * as wn from "webnative";
+import type PublicFile from "webnative/fs/v1/PublicFile";
+import type PrivateFile from "webnative/fs/v1/PrivateFile";
+import { isFile } from "webnative/fs/types/check";
 
-import { filesystemStore } from '$src/stores';
-import { AREAS, cmsStore } from '$routes/gallery/stores';
-import { addNotification } from '$lib/notifications';
-import { fileToUint8Array } from '$lib/utils';
+import { filesystemStore } from "$src/stores";
+import { AREAS, cmsStore } from "$routes/gallery/stores";
+import { addNotification } from "$lib/notifications";
+import { fileToUint8Array } from "$lib/utils";
 
 export type Image = {
-  cid: string
-  ctime: number
-  name: string
-  private: boolean
-  size: number
-  src: string
+  cid: string;
+  ctime: number;
+  name: string;
+  private: boolean;
+  size: number;
+  src: string;
 };
 
 export type Gallery = {
-  publicDocuments
-  privateDocuments
-  selectedArea: AREAS
-  loading: boolean
+  publicDocuments;
+  privateDocuments;
+  selectedArea: AREAS;
+  loading: boolean;
 };
 
 export type ContentDoc = {
-  image: string
-  header: string
-  content: string
-  private: boolean
+  image: string;
+  header: string;
+  content: string;
+  private: boolean;
 };
 
 type Link = {
-  size: number
+  size: number;
 };
 
 export const GALLERY_DIRS = {
-  [AREAS.PUBLIC]: ['public', 'gallery'],
-  [AREAS.PRIVATE]: ['private', 'gallery'],
+  [AREAS.PUBLIC]: ["public", "gallery"],
+  [AREAS.PRIVATE]: ["private", "gallery"],
 };
 export const DOCS_DIRS = {
-  [AREAS.PUBLIC]: ['public', 'documents'],
-  [AREAS.PRIVATE]: ['private', 'documents'],
+  [AREAS.PUBLIC]: ["public", "documents"],
+  [AREAS.PRIVATE]: ["private", "documents"],
 };
 const FILE_SIZE_LIMIT = 20;
 
@@ -212,10 +212,11 @@ export const getImagesFromWNFS: () => Promise<void> = async () => {
  */
 export const uploadDocumentToWNFS: (
   doc: ContentDoc,
-) => Promise<string> = async (doc) => {
+  publish: boolean,
+) => Promise<string> = async (doc, publish) => {
   try {
     //console.log(doc);
-    const selectedArea = AREAS.PRIVATE; //we always upload to private
+    const selectedArea = publish ? AREAS.PUBLIC : AREAS.PRIVATE; //we always upload to private
     const fs = getStore(filesystemStore);
     const filename = encodeURI(doc.header);
 
@@ -236,11 +237,11 @@ export const uploadDocumentToWNFS: (
     // Announce the changes to the server
     await fs.publish();
 
-    addNotification(`${filename} image has been published`, 'success');
+    addNotification(`${filename} image has been published`, "success");
 
     return String(filename);
   } catch (error) {
-    addNotification(error.message, 'error');
+    addNotification(error.message, "error");
     console.error(error);
   }
 };
@@ -260,7 +261,7 @@ export const uploadImageToWNFS: (
     // Reject files over 20MB
     const imageSizeInMB = image.size / (1024 * 1024);
     if (imageSizeInMB > FILE_SIZE_LIMIT) {
-      throw new Error('Image can be no larger than 20MB');
+      throw new Error("Image can be no larger than 20MB");
     }
 
     // Reject the upload if the image already exists in the directory
@@ -280,11 +281,11 @@ export const uploadImageToWNFS: (
     // Announce the changes to the server
     await fs.publish();
 
-    addNotification(`${image.name} image has been published`, 'success');
+    addNotification(`${image.name} image has been published`, "success");
 
     return image.name;
   } catch (error) {
-    addNotification(error.message, 'error');
+    addNotification(error.message, "error");
     console.error(error);
   }
 };
@@ -311,7 +312,7 @@ export const deleteImageFromWNFS: (
       // Announce the changes to the server
       await fs.publish();
 
-      addNotification(`${name} image has been deleted`, 'success');
+      addNotification(`${name} image has been deleted`, "success");
 
       // Refetch images and update cmsStore
       await getImagesFromWNFS();
@@ -319,7 +320,7 @@ export const deleteImageFromWNFS: (
       throw new Error(`${name} image has already been deleted`);
     }
   } catch (error) {
-    addNotification(error.message, 'error');
+    addNotification(error.message, "error");
     console.error(error);
   }
 };

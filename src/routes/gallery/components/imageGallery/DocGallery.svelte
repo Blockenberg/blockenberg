@@ -39,13 +39,14 @@
 	class="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
 >
 	{#each $cmsStore.selectedArea === AREAS.PRIVATE ? $cmsStore.privateDocuments : $cmsStore.publicDocuments as doc}
-		<button
+		<a
+			href="/edit/${doc.name}"
 			class="max-w-sm mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900 bg-gray-50"
 		>
 			<img
 				role="presentation"
 				class="object-cover w-full h-44 dark:bg-gray-500"
-				alt={`Gallery Image: ${doc.name}`}
+				alt="Cover image for ${doc.name}"
 				src={doc.src}
 			/>
 			<div class="p-6 space-y-2">
@@ -66,6 +67,6 @@
 					{@html doc.content}
 				</p>
 			</div>
-		</button>
+		</a>
 	{/each}
 </div>
