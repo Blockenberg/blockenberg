@@ -10,7 +10,7 @@
 	// Handle files uploaded directly through the file input
 	let files: FileList;
 	let preview;
-	let imageResult;
+	let imageContent;
 	let contentHeader, contentText;
 	let galleryModal: boolean = false;
 
@@ -19,20 +19,20 @@
 	}
 
 	async function uploadImg(file: File) {
-		imageResult = await uploadImageToWNFS(file);
+		imageContent.name = await uploadImageToWNFS(file);
 		//console.log(await imageResult);
 	}
 
 	async function uploadDoc(publish: boolean) {
-		//console.log(imageResult);
+		console.log(imageContent);
 		const doc: ContentDoc = {
-			image: preview,
+			image: encodeURI(imageContent),
 			header: contentHeader,
 			content: contentText,
 			private: true,
 		};
 
-		uploadDocumentToWNFS(doc, publish).then(() => goto("/"));
+		//uploadDocumentToWNFS(doc, publish).then(() => goto("/"));
 	}
 
 	function getBase64(image: Blob) {
@@ -47,7 +47,7 @@
 <section class="flex flex-col space-y-2 container mx-auto lg:max-w-5xl">
 	<div
 		class="flex flex-col justify-end items-end py-4 h-60 container"
-		style="background: no-repeat center url('{preview || '../Pix.gif'}')"
+		style="background: no-repeat center/cover url('{preview || imageContent?.src || 'https://images.unsplash.com/photo-1527176930608-09cb256ab504?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1748&q=80'}')"
 	>
 		<div class="flex space-x-2">
 			{#if galleryModal}
@@ -97,7 +97,7 @@
 			class="flex overflow-y-auto max-h-96"
 			on:click={() => (galleryModal = false)}
 		>
-			<ImagePicker bind:preview />
+			<ImagePicker bind:imageContent />
 		</button>
 	{/if}
 

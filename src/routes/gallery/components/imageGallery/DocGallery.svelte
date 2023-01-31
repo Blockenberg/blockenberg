@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onDestroy } from "svelte";
-
 	import { filesystemStore, sessionStore } from "$src/stores";
 	import { AREAS, cmsStore } from "$routes/gallery/stores";
 	import { getDocsFromWNFS } from "$routes/gallery/lib/gallery";
@@ -46,7 +45,7 @@
 			<img
 				role="presentation"
 				class="object-cover w-full h-44 dark:bg-gray-500"
-				alt="Cover image for ${doc.name}"
+				alt="Cover image for ${decodeURI(doc.name)}"
 				src={doc.src}
 			/>
 			<div class="p-6 space-y-2">

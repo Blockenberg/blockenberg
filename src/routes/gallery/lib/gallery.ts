@@ -216,7 +216,7 @@ export const uploadDocumentToWNFS: (
 ) => Promise<string> = async (doc, publish) => {
   try {
     //console.log(doc);
-    const selectedArea = publish ? AREAS.PUBLIC : AREAS.PRIVATE; //we always upload to private
+    const selectedArea = publish? AREAS.PUBLIC: AREAS.PRIVATE; //we always upload to private
     const fs = getStore(filesystemStore);
     const filename = encodeURI(doc.header);
 

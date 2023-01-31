@@ -5,7 +5,7 @@
   import { AREAS, cmsStore } from '$routes/gallery/stores'
   import { getImagesFromWNFS, type Image } from '$routes/gallery/lib/gallery'
  
-  export let preview
+  export let imageContent
 
   // If cmsStore.selectedArea changes from private to public, re-run getImagesFromWNFS
   let selectedArea = AREAS.PUBLIC
@@ -16,14 +16,6 @@
       await getImagesFromWNFS()
     }
   })
-
-  function getBase64(image: Blob) {
-		const reader = new FileReader();
-		reader.readAsDataURL(image);
-		reader.onload = (e) => {
-			preview = e.target.result;
-		};
-	}
 
   // Once the user has been authed, fetch the images from their file system
   let imagesFetched = false
@@ -50,7 +42,7 @@
 			class="object-cover w-full h-44 dark:bg-gray-500 cursor-pointer p-2 hover:bg-gray-200"
 			alt={`Gallery Image: ${image.name}`}
 			src={image.src}
-			on:click={() => (preview = image.src)}
+			on:click={() => (imageContent = image)}
 		/>
 	{/each}
 </div>
