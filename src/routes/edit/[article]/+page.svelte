@@ -3,15 +3,25 @@
 	import {
 		uploadImageToWNFS,
 		uploadDocumentToWNFS,
+		deleteDocFromWNFS,
 	} from "$routes/gallery/lib/gallery";
 	import type { ContentDoc } from "$routes/gallery/lib/gallery";
 	import ImagePicker from "$routes/gallery/components/imageGallery/ImagePicker.svelte";
+
+	import type { PageData } from "./$types";
+	export let data: PageData;
 
 	// Handle files uploaded directly through the file input
 	let files: FileList;
 	let preview;
 	let imageContent;
-	let contentHeader, contentText;
+
+	function getContentHeader() {
+		if (!data || !data.article) return "";
+		else return decodeURI(data.article.name);
+	}
+	let contentHeader = getContentHeader();
+	let contentText;
 	let galleryModal: boolean = false;
 
 	$: if (files) {
@@ -33,6 +43,10 @@
 		};
 
 		uploadDocumentToWNFS(doc, publish).then(() => goto("/"));
+	}
+
+	async function deleteDoc() {
+		deleteDocFromWNFS(data.article.name);
 	}
 
 	function getBase64(image: Blob) {
@@ -116,15 +130,23 @@
 		placeholder="Content..."
 	/>
 
-	<div class="container mx-auto">
+	<div class="container mx-auto  flex">
+		<div class="flex flex-grow">
+			<button
+				on:click={() => uploadDoc(false)}
+				class="mr-2 bg-gray-50 px-4 py-2 dark:bg-violet-600 dark:text-gray-900"
+				>Save</button
+			>
+			<button
+				on:click={() => uploadDoc(true)}
+				class="bg-gray-50 px-4 py-2 dark:text-gray-900">Publish</button
+			>
+		</div>
+
 		<button
-			on:click={() => uploadDoc(false)}
-			class="bg-gray-50 px-4 py-2 dark:bg-violet-600 dark:text-gray-900"
-			>Save</button
-		>
-		<button
-			on:click={() => uploadDoc(true)}
-			class="bg-gray-50 px-4 py-2 dark:text-gray-900">Publish</button
+			on:click={() => deleteDoc()}
+			class="bg-gray-50 px-4 py-2 text-red-400 dark:text-gray-900"
+			>Delete</button
 		>
 	</div>
 </section>

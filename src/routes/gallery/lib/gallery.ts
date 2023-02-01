@@ -70,7 +70,7 @@ export const getDocsFromWNFS: () => Promise<void> = async () => {
         const file = await fs.get(
           wn.path.file(...DOCS_DIRS[selectedArea], `${name}`),
         );
-
+        //console.log(file);
         if (!isFile(file)) return null;
         //console.log(new TextDecoder().decode(file.content));
 
@@ -82,10 +82,17 @@ export const getDocsFromWNFS: () => Promise<void> = async () => {
 
         // Create a blob to use as the image `src`
         const decDoc = JSON.parse(new TextDecoder().decode(file.content));
-        // const blob = new Blob([file.content]);
-        // const src = URL.createObjectURL(blob);
-        const src = decDoc.image;
-        const content = String(decDoc.content).slice(0, 50);
+        let src;
+        const imageFragment = decDoc.image;
+        try {
+          const image = (JSON.parse(decodeURI(imageFragment)));
+          //src = image.cid;
+          //console.log(image);
+          const imagesrc = getImageFromWNFS(image.name);
+        } catch {
+          console.info("image not found");
+        }
+        const content = decodeURI(String(decDoc.content));
         const ctime = isPrivate
           ? (file as PrivateFile).header.metadata.unixMeta.ctime
           : (file as PublicFile).header.metadata.unixMeta.ctime;
@@ -125,6 +132,35 @@ export const getDocsFromWNFS: () => Promise<void> = async () => {
       ...store,
       loading: false,
     }));
+  }
+};
+
+/**
+ * Delete an image from the user's private or public WNFS
+ * @param name
+ */
+export const getImageFromWNFS: (
+  name: string,
+) => Promise<string> = async (name) => {
+  try {
+    const fs = getStore(filesystemStore);
+
+    const imageExists = await fs.exists(
+      wn.path.file(...GALLERY_DIRS[AREAS.PUBLIC], name),
+    );
+
+    if (imageExists) {
+      const file = await fs.get(
+        wn.path.file(...GALLERY_DIRS[AREAS.PUBLIC], name),
+      );
+      if (!isFile(file)) return null;
+      const blob = new Blob([file.content]);
+      return URL.createObjectURL(blob);
+    } else {
+      throw new Error(`${name} doesn't exist`);
+    }
+  } catch (error) {
+    console.error(error);
   }
 };
 
@@ -216,7 +252,7 @@ export const uploadDocumentToWNFS: (
 ) => Promise<string> = async (doc, publish) => {
   try {
     //console.log(doc);
-    const selectedArea = publish? AREAS.PUBLIC: AREAS.PRIVATE; //we always upload to private
+    const selectedArea = publish ? AREAS.PUBLIC : AREAS.PRIVATE; //we always upload to private
     const fs = getStore(filesystemStore);
     const filename = encodeURI(doc.header);
 
@@ -255,7 +291,7 @@ export const uploadImageToWNFS: (
 ) => Promise<string> = async (image) => {
   try {
     //console.log(image)
-    const selectedArea = AREAS.PRIVATE;
+    const selectedArea = AREAS.PUBLIC;
     const fs = getStore(filesystemStore);
 
     // Reject files over 20MB
@@ -308,6 +344,41 @@ export const deleteImageFromWNFS: (
     if (imageExists) {
       // Remove images from server
       await fs.rm(wn.path.file(...GALLERY_DIRS[selectedArea], name));
+
+      // Announce the changes to the server
+      await fs.publish();
+
+      addNotification(`${name} image has been deleted`, "success");
+
+      // Refetch images and update cmsStore
+      await getImagesFromWNFS();
+    } else {
+      throw new Error(`${name} image has already been deleted`);
+    }
+  } catch (error) {
+    addNotification(error.message, "error");
+    console.error(error);
+  }
+};
+
+/**
+ * Delete an image from the user's private or public WNFS
+ * @param name
+ */
+export const deleteDocFromWNFS: (
+  name: string,
+) => Promise<void> = async (name) => {
+  try {
+    const { selectedArea } = getStore(cmsStore);
+    const fs = getStore(filesystemStore);
+
+    const imageExists = await fs.exists(
+      wn.path.file(...DOCS_DIRS[selectedArea], name),
+    );
+
+    if (imageExists) {
+      // Remove images from server
+      await fs.rm(wn.path.file(...DOCS_DIRS[selectedArea], name));
 
       // Announce the changes to the server
       await fs.publish();

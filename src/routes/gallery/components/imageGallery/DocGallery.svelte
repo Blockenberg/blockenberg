@@ -35,17 +35,17 @@
 </script>
 
 <div
-	class="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+	class="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
 >
 	{#each $cmsStore.selectedArea === AREAS.PRIVATE ? $cmsStore.privateDocuments : $cmsStore.publicDocuments as doc}
 		<a
-			href="/edit/${doc.name}"
-			class="max-w-sm mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900 bg-gray-50"
+			href="/edit/{encodeURI(doc.name)}"
+			class="w-full mx-auto group hover:no-underline focus:no-underline dark:bg-gray-900 bg-gray-50"
 		>
 			<img
 				role="presentation"
 				class="object-cover w-full h-44 dark:bg-gray-500"
-				alt="Cover image for ${decodeURI(doc.name)}"
+				alt="Cover image for {decodeURI(doc.name)}"
 				src={doc.src}
 			/>
 			<div class="p-6 space-y-2">
