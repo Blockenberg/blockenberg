@@ -84,11 +84,11 @@ export const getDocsFromWNFS: () => Promise<void> = async () => {
         const decDoc = JSON.parse(new TextDecoder().decode(file.content));
         let src;
         const imageFragment = decDoc.image;
+        //console.log(decDoc);
         try {
           const image = (JSON.parse(decodeURI(imageFragment)));
-          //src = image.cid;
-          //console.log(image);
-          const imagesrc = getImageFromWNFS(image.name);
+          src = await getImageFromWNFS(image.name);
+          //console.log(imagesrc);
         } catch {
           console.info("image not found");
         }
@@ -144,7 +144,7 @@ export const getImageFromWNFS: (
 ) => Promise<string> = async (name) => {
   try {
     const fs = getStore(filesystemStore);
-
+    console.info(name);
     const imageExists = await fs.exists(
       wn.path.file(...GALLERY_DIRS[AREAS.PUBLIC], name),
     );
@@ -154,13 +154,14 @@ export const getImageFromWNFS: (
         wn.path.file(...GALLERY_DIRS[AREAS.PUBLIC], name),
       );
       if (!isFile(file)) return null;
+      console.log(file);
       const blob = new Blob([file.content]);
       return URL.createObjectURL(blob);
     } else {
       throw new Error(`${name} doesn't exist`);
     }
   } catch (error) {
-    console.error(error);
+    console.error("filesystem issue:", error);
   }
 };
 
@@ -172,13 +173,10 @@ export const getImagesFromWNFS: () => Promise<void> = async () => {
     // Set loading: true on the cmsStore
     cmsStore.update((store) => ({ ...store, loading: true }));
 
-    const { selectedArea } = getStore(cmsStore);
-    //console.log(selectedArea);
-    const isPrivate = selectedArea === AREAS.PRIVATE;
     const fs = getStore(filesystemStore);
 
     // Set path to either private or public gallery dir
-    const path = wn.path.directory(...GALLERY_DIRS[selectedArea]);
+    const path = wn.path.directory(...GALLERY_DIRS[AREAS.PUBLIC]);
 
     // Get list of links for files in the gallery dir
     const links = await fs.ls(path);
@@ -186,30 +184,26 @@ export const getImagesFromWNFS: () => Promise<void> = async () => {
     let images = await Promise.all(
       Object.entries(links).map(async ([name]) => {
         const file = await fs.get(
-          wn.path.file(...GALLERY_DIRS[selectedArea], `${name}`),
+          wn.path.file(...GALLERY_DIRS[AREAS.PUBLIC], `${name}`),
         );
 
         if (!isFile(file)) return null;
 
         // The CID for private files is currently located in `file.header.content`,
         // whereas the CID for public files is located in `file.cid`
-        const cid = isPrivate
-          ? (file as PrivateFile).header.content.toString()
-          : (file as PublicFile).cid.toString();
+        const cid = (file as PublicFile).cid.toString();
 
         // Create a blob to use as the image `src`
         const blob = new Blob([file.content]);
         const src = URL.createObjectURL(blob);
 
-        const ctime = isPrivate
-          ? (file as PrivateFile).header.metadata.unixMeta.ctime
-          : (file as PublicFile).header.metadata.unixMeta.ctime;
+        const ctime = (file as PublicFile).header.metadata.unixMeta.ctime;
 
         return {
           cid,
           ctime,
           name,
-          private: isPrivate,
+          private: false,
           size: (links[name] as Link).size,
           src,
         };
@@ -224,13 +218,9 @@ export const getImagesFromWNFS: () => Promise<void> = async () => {
     // Push images to the cmsStore
     cmsStore.update((store) => ({
       ...store,
-      ...(isPrivate
-        ? {
-          privateDocuments: images,
-        }
-        : {
-          publicDocuments: images,
-        }),
+      ...({
+        publicDocuments: images,
+      }),
       loading: false,
     }));
   } catch (error) {
@@ -290,7 +280,7 @@ export const uploadImageToWNFS: (
   image: File,
 ) => Promise<string> = async (image) => {
   try {
-    //console.log(image)
+    console.log(image);
     const selectedArea = AREAS.PUBLIC;
     const fs = getStore(filesystemStore);
 

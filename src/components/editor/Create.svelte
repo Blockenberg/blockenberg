@@ -19,14 +19,15 @@
 	}
 
 	async function uploadImg(file: File) {
-		imageContent.name = await uploadImageToWNFS(file);
-		//console.log(await imageResult);
+		const uploadres = await uploadImageToWNFS(file);
+		console.log(uploadres);
+		imageContent.name = uploadres;
 	}
 
 	async function uploadDoc(publish: boolean) {
-		//console.log(imageContent);
+		console.log(imageContent);
 		const doc: ContentDoc = {
-			image: encodeURI(JSON.stringify(imageContent)),
+			image: JSON.stringify(imageContent),
 			header: contentHeader,
 			content: contentText,
 			private: true,
@@ -44,7 +45,9 @@
 	}
 </script>
 
-<section class="container mx-auto flex flex-col space-y-2 lg:max-w-5xl">
+<section
+	class="container mx-auto flex flex-col items-start justify-start space-y-2 lg:max-w-5xl"
+>
 	<div
 		class="container flex h-60 flex-col items-end justify-end py-4"
 		style="background: no-repeat center/cover url('{preview ||
@@ -106,8 +109,9 @@
 	<input
 		type="text"
 		bind:value={contentHeader}
-		class="container mx-auto border-none bg-gray-100 text-3xl text-gray-900 dark:bg-gray-700/50 dark:text-gray-50 focus:dark:bg-gray-900"
+		class="container mx-auto border-none bg-gray-100 text-3xl text-gray-900 focus:ring-gray-900 dark:bg-gray-700/50 dark:text-gray-50 focus:dark:bg-gray-900"
 		placeholder="Header"
+		tabindex={0}
 	/>
 	<div
 		contenteditable="true"

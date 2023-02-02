@@ -7,10 +7,13 @@
  
   export let imageContent
 
-  // If cmsStore.selectedArea changes from private to public, re-run getImagesFromWNFS
   let selectedArea = AREAS.PUBLIC
-  const unsubscribecmsStore = cmsStore.subscribe(async updatedStore => {
+  cmsStore.update(store => ({
+      ...store,
+      selectedArea: selectedArea
+    }))
 
+  const unsubscribeCMSStore = cmsStore.subscribe(async updatedStore => {
     if (selectedArea !== updatedStore.selectedArea) {
       selectedArea = updatedStore.selectedArea
       await getImagesFromWNFS()
@@ -23,27 +26,27 @@
     if (newState.session && $filesystemStore && !imagesFetched) {
       imagesFetched = true
       // Get images from the user's public WNFS
+     // $cmsStore.selectedArea === AREAS.PUBLIC
       getImagesFromWNFS()
     }
   })
 
   onDestroy(() => {
-    unsubscribecmsStore()
+    unsubscribeCMSStore()
     unsubscribeSessionStore()
   })
 </script>
 
 <div
-	class="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+	class="grid grid-cols-1 justify-center gap-6 sm:grid-cols-2 lg:grid-cols-3"
 >
 	{#each $cmsStore.selectedArea === AREAS.PRIVATE ? $cmsStore.privateDocuments : $cmsStore.publicDocuments as image}
 		<img
 			role="presentation"
-			class="object-cover w-full h-44 dark:bg-gray-500 cursor-pointer p-2 hover:bg-gray-200"
+			class="h-44 w-full cursor-pointer object-cover p-2 hover:bg-gray-200 dark:bg-gray-500"
 			alt={`Gallery Image: ${image.name}`}
 			src={image.src}
 			on:click={() => (imageContent = image)}
 		/>
 	{/each}
 </div>
-
