@@ -18,7 +18,7 @@ export type Image = {
   src: string;
 };
 
-export type Gallery = {
+export type DocGallery = {
   publicDocuments;
   privateDocuments;
   selectedArea: AREAS;
@@ -70,7 +70,8 @@ export const getDocsFromWNFS: () => Promise<void> = async () => {
         const file = await fs.get(
           wn.path.file(...DOCS_DIRS[selectedArea], `${name}`),
         );
-        //console.log(file);
+        console.log(name);
+        console.log(selectedArea);
         if (!isFile(file)) return null;
         //console.log(new TextDecoder().decode(file.content));
 
@@ -109,12 +110,12 @@ export const getDocsFromWNFS: () => Promise<void> = async () => {
       }),
     );
 
-    // Sort images by ctime(created at date)
+    // Sort docs by ctime(created at date)
     // NOTE: this will eventually be controlled via the UI
     docs = docs.filter((a) => !!a);
     docs.sort((a, b) => b.ctime - a.ctime);
 
-    // Push images to the cmsStore
+    // Push docs to the cmsStore
     cmsStore.update((store) => ({
       ...store,
       ...(isPrivate
@@ -136,7 +137,7 @@ export const getDocsFromWNFS: () => Promise<void> = async () => {
 };
 
 /**
- * Delete an image from the user's private or public WNFS
+ * get an image from the user's  public WNFS
  * @param name
  */
 export const getImageFromWNFS: (
@@ -144,7 +145,7 @@ export const getImageFromWNFS: (
 ) => Promise<string> = async (name) => {
   try {
     const fs = getStore(filesystemStore);
-    console.info(name);
+    //console.info(fs);
     const imageExists = await fs.exists(
       wn.path.file(...GALLERY_DIRS[AREAS.PUBLIC], name),
     );
@@ -159,6 +160,72 @@ export const getImageFromWNFS: (
       return URL.createObjectURL(blob);
     } else {
       throw new Error(`${name} doesn't exist`);
+    }
+  } catch (error) {
+    console.error("filesystem issue:", error);
+  }
+};
+
+/**
+ * Fetch the doc from the user's private or public WNFS
+ * @param name
+ */
+export const getDocFromWNFS: (
+  name: string,
+) => Promise<
+  {
+    cid: string;
+    ctime: number;
+    name: string;
+    private: boolean;
+    src: string;
+    content: string;
+  }
+> = async (name) => {
+  try {
+    const fs = getStore(filesystemStore);
+    const { selectedArea } = getStore(cmsStore);
+    console.log(fs);
+    
+    const docExists = await fs.exists(
+      wn.path.file(...DOCS_DIRS[selectedArea], name),
+    );
+
+    if (docExists) {
+      const file = await fs.get(
+        wn.path.file(...DOCS_DIRS[selectedArea], name),
+      );
+      if (!isFile(file)) return null;
+      const isPrivate = selectedArea === AREAS.PRIVATE;
+      const cid = isPrivate
+        ? (file as PrivateFile).header.content.toString()
+        : (file as PublicFile).cid.toString();
+
+      // Create a blob to use as the image `src`
+      const decDoc = JSON.parse(new TextDecoder().decode(file.content));
+      let src: string;
+      const imageFragment = decDoc.image;
+      //console.log(decDoc);
+      try {
+        const image = (JSON.parse(decodeURI(imageFragment)));
+        src = await getImageFromWNFS(image.name);
+        //console.log(imagesrc);
+      } catch {
+        console.info("image not found");
+      }
+      const content = decodeURI(String(decDoc.content));
+      const ctime = isPrivate
+        ? (file as PrivateFile).header.metadata.unixMeta.ctime
+        : (file as PublicFile).header.metadata.unixMeta.ctime;
+
+      return {
+        cid,
+        ctime,
+        name,
+        private: isPrivate,
+        src,
+        content,
+      };
     }
   } catch (error) {
     console.error("filesystem issue:", error);
