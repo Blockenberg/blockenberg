@@ -2,8 +2,8 @@
   import { onDestroy } from 'svelte'
 
   import { filesystemStore, sessionStore } from '$src/stores'
-  import { AREAS, cmsStore } from '$routes/gallery/stores'
-  import { getImagesFromWNFS, type Image } from '$routes/gallery/lib/gallery'
+  import { AREAS, cmsStore } from '$routes/cms/stores'
+  import { getImagesFromWNFS, type Image } from '$routes/cms/lib/cms'
  
   export let imageContent
 

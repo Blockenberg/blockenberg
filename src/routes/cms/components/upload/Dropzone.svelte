@@ -2,7 +2,7 @@
   import {
     getImagesFromWNFS,
     uploadImageToWNFS
-  } from '$routes/gallery/lib/gallery'
+  } from '$routes/cms/lib/cms'
   import { addNotification } from '$lib/notifications'
 
   /**

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { onDestroy } from "svelte";
 	import { filesystemStore, sessionStore } from "$src/stores";
-	import { AREAS, cmsStore } from "$routes/gallery/stores";
-	import { getDocsFromWNFS } from "$routes/gallery/lib/gallery";
+	import { AREAS, cmsStore } from "$routes/cms/stores";
+	import { getDocsFromWNFS } from "$routes/cms/lib/cms";
 
 	// If cmsStore.selectedArea changes from private to public, re-run getDocsFromWNFS
 	let selectedArea = null;

@@ -4,9 +4,9 @@
 		uploadImageToWNFS,
 		uploadDocumentToWNFS,
 		deleteDocFromWNFS,
-	} from "$routes/gallery/lib/gallery";
-	import type { ContentDoc } from "$routes/gallery/lib/gallery";
-	import ImagePicker from "$routes/gallery/components/imageGallery/ImagePicker.svelte";
+	} from "$routes/cms/lib/cms";
+	import type { ContentDoc } from "$routes/cms/lib/cms";
+	import ImagePicker from "$routes/cms/components/imageGallery/ImagePicker.svelte";
 
 	import type { PageData } from "./$types";
 	export let data: PageData;

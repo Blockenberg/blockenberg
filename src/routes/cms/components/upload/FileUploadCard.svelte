@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { cmsStore } from '$routes/gallery/stores'
-  import { handleFileInput } from '$routes/gallery/lib/gallery'
-  import FileUploadIcon from '$routes/gallery/components/icons/FileUploadIcon.svelte'
+  import { cmsStore } from '$routes/cms/stores'
+  import { handleFileInput } from '$routes/cms/lib/cms'
+  import FileUploadIcon from '$routes/cms/components/icons/FileUploadIcon.svelte'
 
   // Handle files uploaded directly through the file input
   let files: FileList

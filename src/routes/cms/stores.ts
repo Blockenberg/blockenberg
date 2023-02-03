@@ -1,7 +1,7 @@
 import { writable } from "svelte/store";
 import type { Writable } from "svelte/store";
 
-import type { Gallery } from "$routes/gallery/lib/gallery";
+import type { Gallery } from "$routes/cms/lib/cms";
 
 export enum AREAS {
   PRIVATE = "In Progress",

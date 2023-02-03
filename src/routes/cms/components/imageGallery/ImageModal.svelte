@@ -2,8 +2,8 @@
   import { createEventDispatcher, onDestroy, onMount } from 'svelte'
 
   import { ipfsGatewayUrl } from '$lib/app-info';
-  import { cmsStore } from '$routes/gallery/stores'
-  import { deleteImageFromWNFS, type Gallery, type Image } from '$routes/gallery/lib/gallery'
+  import { cmsStore } from '$routes/cms/stores'
+  import { deleteImageFromWNFS, type Gallery, type Image } from '$routes/cms/lib/cms'
   import Download from '$components/icons/Download.svelte'
   import Trash from '$components/icons/Trash.svelte'
 

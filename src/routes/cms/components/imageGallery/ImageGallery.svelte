@@ -2,11 +2,11 @@
   import { onDestroy } from 'svelte'
 
   import { filesystemStore, sessionStore } from '$src/stores'
-  import { AREAS, cmsStore } from '$routes/gallery/stores'
-  import { getImagesFromWNFS, type Image } from '$routes/gallery/lib/gallery'
-  import FileUploadCard from '$routes/gallery/components/upload/FileUploadCard.svelte'
-  import ImageCard from '$routes/gallery/components/imageGallery/ImageCard.svelte'
-  import ImageModal from '$routes/gallery/components/imageGallery/ImageModal.svelte'
+  import { AREAS, cmsStore } from '$routes/cms/stores'
+  import { getImagesFromWNFS, type Image } from '$routes/cms/lib/cms'
+  import FileUploadCard from '$routes/cms/components/upload/FileUploadCard.svelte'
+  import ImageCard from '$routes/cms/components/imageGallery/ImageCard.svelte'
+  import ImageModal from '$routes/cms/components/imageGallery/ImageModal.svelte'
 
   /**
    * Open the ImageModal and pass it the selected `image` from the gallery

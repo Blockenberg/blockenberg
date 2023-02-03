@@ -5,7 +5,7 @@ import type PrivateFile from "webnative/fs/v1/PrivateFile";
 import { isFile } from "webnative/fs/types/check";
 
 import { filesystemStore } from "$src/stores";
-import { AREAS, cmsStore } from "$routes/gallery/stores";
+import { AREAS, cmsStore } from "$routes/cms/stores";
 import { addNotification } from "$lib/notifications";
 import { fileToUint8Array } from "$lib/utils";
 

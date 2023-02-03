@@ -19,11 +19,6 @@
       icon: Home
     },
     {
-      label: 'Photo Gallery Demo',
-      href: '/gallery/',
-      icon: PhotoGallery
-    },
-    {
       label: 'Account Settings',
       href: '/settings/',
       icon: Settings

@@ -2,8 +2,8 @@
 	import { sessionStore } from "../../stores";
 	import { onDestroy } from "svelte";
 	import { goto } from "$app/navigation";
-	import { AREAS, cmsStore } from "$routes/gallery/stores";
-	import DocGallery from "$routes/gallery/components/imageGallery/DocGallery.svelte";
+	import { AREAS, cmsStore } from "$routes/cms/stores";
+	import DocGallery from "$routes/cms/components/imageGallery/DocGallery.svelte";
 
 	/**
 	 * Tab between the public/private areas and load associated images
