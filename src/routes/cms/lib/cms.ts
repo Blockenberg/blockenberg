@@ -155,7 +155,7 @@ export const getImageFromWNFS: (
         wn.path.file(...GALLERY_DIRS[AREAS.PUBLIC], name),
       );
       if (!isFile(file)) return null;
-      console.log(file);
+      //console.log(file);
       const blob = new Blob([file.content]);
       return URL.createObjectURL(blob);
     } else {
@@ -183,10 +183,8 @@ export const getDocFromWNFS: (
   }
 > = async (name) => {
   try {
-    const fs = getStore(filesystemStore);
     const { selectedArea } = getStore(cmsStore);
-    console.log(fs);
-    
+    const fs = getStore(filesystemStore);
     const docExists = await fs.exists(
       wn.path.file(...DOCS_DIRS[selectedArea], name),
     );
@@ -306,7 +304,8 @@ export const getImagesFromWNFS: () => Promise<void> = async () => {
 export const uploadDocumentToWNFS: (
   doc: ContentDoc,
   publish: boolean,
-) => Promise<string> = async (doc, publish) => {
+  overwrite: boolean,
+) => Promise<string> = async (doc, publish, overwrite) => {
   try {
     //console.log(doc);
     const selectedArea = publish ? AREAS.PUBLIC : AREAS.PRIVATE; //we always upload to private
@@ -314,11 +313,11 @@ export const uploadDocumentToWNFS: (
     const filename = encodeURI(doc.header);
 
     // Reject the upload if doc with same name already exists in the directory
-    const imageExists = await fs.exists(
+    const docExists = await fs.exists(
       wn.path.file(...DOCS_DIRS[selectedArea], filename),
     );
-    if (imageExists) {
-      throw new Error(`${filename} image already exists`);
+    if (!overwrite && docExists) {
+      throw new Error(`${filename} already exists`);
     }
 
     // Create a sub directory and add some content

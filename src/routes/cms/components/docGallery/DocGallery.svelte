@@ -18,11 +18,11 @@
 		}
 	});
 
-	// Once the user has been authed, fetch the images from their file system
-	let imagesFetched = false;
+	// Once the user has been authed, fetch the docs from their file system
+	let docsFetched = false;
 	const unsubscribeSessionStore = sessionStore.subscribe((newState) => {
-		if (newState.session && $filesystemStore && !imagesFetched) {
-			imagesFetched = true;
+		if (newState.session && $filesystemStore && !docsFetched) {
+			docsFetched = true;
 			// Get images from the user's public WNFS
 			getDocsFromWNFS();
 		}

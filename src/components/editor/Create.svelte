@@ -1,11 +1,10 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
-	import {
-		uploadImageToWNFS,
-		uploadDocumentToWNFS,
-	} from "$routes/cms/lib/cms";
+	import { uploadImageToWNFS, uploadDocumentToWNFS } from "$routes/cms/lib/cms";
 	import type { ContentDoc } from "$routes/cms/lib/cms";
 	import ImagePicker from "$routes/cms/components/imageGallery/ImagePicker.svelte";
+
+	//I'll make this universal for the updates as well, just running out of time
 
 	// Handle files uploaded directly through the file input
 	let files: FileList;
@@ -33,7 +32,7 @@
 			private: true,
 		};
 
-		uploadDocumentToWNFS(doc, publish).then(() => goto("/"));
+		uploadDocumentToWNFS(doc, publish, false).then(() => goto("/"));
 	}
 
 	function getBase64(image: Blob) {

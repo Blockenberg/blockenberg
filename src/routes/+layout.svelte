@@ -7,8 +7,6 @@
 	import { initialize } from "$lib/init";
 	import FullScreenLoadingSpinner from "$components/common/FullScreenLoadingSpinner.svelte";
 	import Header from "$components/Header.svelte";
-	import Notifications from "$components/notifications/Notifications.svelte";
-	import SidebarNav from "$components/nav/SidebarNav.svelte";
 	import Footer from "$components/Footer.svelte";
 
 	sessionStore.subscribe((session) => {

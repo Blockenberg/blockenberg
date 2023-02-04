@@ -3,7 +3,7 @@
 	import { onDestroy } from "svelte";
 	import { goto } from "$app/navigation";
 	import { AREAS, cmsStore } from "$routes/cms/stores";
-	import DocGallery from "$routes/cms/components/imageGallery/DocGallery.svelte";
+	import DocGallery from "$routes/cms/components/docGallery/DocGallery.svelte";
 
 	/**
 	 * Tab between the public/private areas and load associated images

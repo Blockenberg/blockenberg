@@ -4,24 +4,38 @@
 		uploadImageToWNFS,
 		uploadDocumentToWNFS,
 		deleteDocFromWNFS,
+		getDocFromWNFS,
 	} from "$routes/cms/lib/cms";
+
+	import { AREAS, cmsStore } from "$routes/cms/stores";
+	import { filesystemStore, sessionStore } from "$src/stores";
 	import type { ContentDoc } from "$routes/cms/lib/cms";
 	import ImagePicker from "$routes/cms/components/imageGallery/ImagePicker.svelte";
 
 	import type { PageData } from "./$types";
 	export let data: PageData;
+	$: contentText = "";
+	const doc = getDocFromWNFS(data.article.name).then((d) => getContent(d));
+	console.log(doc);
 
 	// Handle files uploaded directly through the file input
 	let files: FileList;
 	let preview;
-	let imageContent;
+	$: imageContent = { name: "", src: null };
 
 	function getContentHeader() {
 		if (!data || !data.article) return "";
 		else return decodeURI(data.article.name);
 	}
+
+	async function getContent(doc) {
+		contentText = doc.content || "";
+		console.log(doc);
+		imageContent.src = doc.src;
+	}
+
 	let contentHeader = getContentHeader();
-	let contentText;
+
 	let galleryModal: boolean = false;
 
 	$: if (files) {
@@ -42,7 +56,7 @@
 			private: true,
 		};
 
-		uploadDocumentToWNFS(doc, publish).then(() => goto("/"));
+		uploadDocumentToWNFS(doc, publish, true).then(() => goto("/"));
 	}
 
 	async function deleteDoc() {
