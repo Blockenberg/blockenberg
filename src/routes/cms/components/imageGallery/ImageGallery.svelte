@@ -4,7 +4,6 @@
   import { filesystemStore, sessionStore } from '$src/stores'
   import { AREAS, cmsStore } from '$routes/cms/stores'
   import { getImagesFromWNFS, type Image } from '$routes/cms/lib/cms'
-  import FileUploadCard from '$routes/cms/components/upload/FileUploadCard.svelte'
   import ImageCard from '$routes/cms/components/imageGallery/ImageCard.svelte'
   import ImageModal from '$routes/cms/components/imageGallery/ImageModal.svelte'
 
@@ -56,7 +55,6 @@
 	
 
 {#if selectedImage}
-	<FileUploadCard />
 	<ImageModal
 		image={selectedImage}
 		isModalOpen={!!selectedImage}

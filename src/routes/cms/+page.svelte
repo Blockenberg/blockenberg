@@ -4,7 +4,6 @@
 
 	import { sessionStore } from "$src/stores";
 	import { AREAS, cmsStore } from "$routes/cms/stores";
-	import Dropzone from "$routes/cms/components/upload/Dropzone.svelte";
 	import ImageGallery from "$routes/cms/components/imageGallery/ImageGallery.svelte";
 
 	/**
@@ -45,8 +44,6 @@
 			</div>
 		</div>
 
-		<Dropzone>
-			<ImageGallery />
-		</Dropzone>
+		<ImageGallery />
 	{/if}
 </div>
