@@ -9,7 +9,7 @@
 	// Handle files uploaded directly through the file input
 	let files: FileList;
 	let preview;
-	let imageContent;
+	let imageContent = { name: "", src: null };
 	let contentHeader, contentText;
 	let galleryModal: boolean = false;
 

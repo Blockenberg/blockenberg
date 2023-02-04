@@ -30,7 +30,7 @@
 
 	async function getContent(doc) {
 		contentText = doc.content || "";
-		console.log(doc);
+		//console.log(doc);
 		imageContent.src = doc.src;
 	}
 
@@ -60,7 +60,11 @@
 	}
 
 	async function deleteDoc() {
-		deleteDocFromWNFS(data.article.name);
+		try {
+			deleteDocFromWNFS(data.article.name).then(() => goto("/"));
+		} catch (e) {
+			console.error(e);
+		}
 	}
 
 	function getBase64(image: Blob) {
