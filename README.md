@@ -5,6 +5,8 @@
 
 The Blockenberg provides an interface for editing documents that are uploaded to IPFS storage, allowing for a decentralized but user friendly content publishing. Our application is built on top of Webnative App Template and utilize a lot of built in webnative functions.   
 
+The app is [deployed](https://blockenberg.vercel.app/) on Vercel for convenience, but there is also a decentralized version at https://small-square-tin-fish.fission.app/ 
+
 ## 🤔 What's Webnative?
 
 [The Webnative SDK](https://github.com/fission-codes/webnative) empowers developers to build fully distributed web applications without needing a complex back-end. The SDK provides:
