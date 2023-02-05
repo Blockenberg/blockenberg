@@ -89,7 +89,7 @@ export const getDocsFromWNFS: () => Promise<void> = async () => {
         try {
           const image = JSON.parse(decodeURI(imageFragment));
           src = await getImageFromWNFS(image.name);
-          console.log(image);
+          //console.log(image);
         } catch {
           console.info("image not found");
         }
