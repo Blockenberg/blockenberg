@@ -62,7 +62,7 @@
 						day: "numeric",
 					})}</span
 				>
-				<p>
+				<p class="h-60 overflow-clip text-ellipsis">
 					{@html doc.content}
 				</p>
 			</div>
