@@ -70,8 +70,8 @@ export const getDocsFromWNFS: () => Promise<void> = async () => {
         const file = await fs.get(
           wn.path.file(...DOCS_DIRS[selectedArea], `${name}`),
         );
-        console.log(name);
-        console.log(selectedArea);
+        //console.log(name);
+        //console.log(selectedArea);
         if (!isFile(file)) return null;
         //console.log(new TextDecoder().decode(file.content));
 
@@ -85,15 +85,15 @@ export const getDocsFromWNFS: () => Promise<void> = async () => {
         const decDoc = JSON.parse(new TextDecoder().decode(file.content));
         let src;
         const imageFragment = decDoc.image;
-        //console.log(decDoc);
+        //console.log(imageFragment);
         try {
-          const image = (JSON.parse(decodeURI(imageFragment)));
+          const image = JSON.parse(decodeURI(imageFragment));
           src = await getImageFromWNFS(image.name);
-          //console.log(imagesrc);
+          console.log(image);
         } catch {
           console.info("image not found");
         }
-        const content = decodeURI(String(decDoc.content));
+        const content = String(decDoc.content);
         const ctime = isPrivate
           ? (file as PrivateFile).header.metadata.unixMeta.ctime
           : (file as PublicFile).header.metadata.unixMeta.ctime;
@@ -205,7 +205,7 @@ export const getDocFromWNFS: (
       const imageFragment = decDoc.image;
       //console.log(decDoc);
       try {
-        const image = (JSON.parse(decodeURI(imageFragment)));
+        const image = JSON.parse(decodeURI(imageFragment));
         src = await getImageFromWNFS(image.name);
         //console.log(imagesrc);
       } catch {

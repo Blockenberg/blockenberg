@@ -114,7 +114,7 @@
 	/>
 	<div
 		contenteditable="true"
-		class="container mx-auto h-80 p-4 text-gray-900 dark:bg-gray-700/50 dark:text-gray-50  focus:dark:bg-gray-900"
+		class="container mx-auto h-80 p-4 text-gray-900 dark:bg-gray-700/50 dark:text-gray-50  focus:dark:bg-gray-900 overflow-y-scroll"
 		bind:innerHTML={contentText}
 		placeholder="Content..."
 	/>
