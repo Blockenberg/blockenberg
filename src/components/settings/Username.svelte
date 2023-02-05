@@ -3,7 +3,7 @@
 
 	import { sessionStore } from "$src/stores";
 	import { addNotification } from "$lib/notifications";
-	import { prepareUsername } from "$lib/auth/account";
+	//import { prepareUsername } from "$lib/auth/account";
 	import ClipboardIcon from "$components/icons/ClipboardIcon.svelte";
 	import TruncatedUsername from "$components/settings/TruncatedUsername.svelte";
 
@@ -11,6 +11,11 @@
 		await clipboardCopy($sessionStore.username.hashed);
 		addNotification("Copied to clipboard", "success");
 	};
+
+	// const userHash = async (): Promise<string> => {
+	// 	return await prepareUsername($sessionStore.username.full);
+	// };
+	// console.log(userHash());
 </script>
 
 <div class="flex flex-col items-center justify-center text-center">
@@ -22,6 +27,7 @@
 		<p class="text-base text-gray-400">
 			{$sessionStore.username.hashed}
 		</p>
+
 		<button class="pl-2" on:click={handleCopyUserHash}>
 			<ClipboardIcon />
 		</button>
