@@ -2,15 +2,25 @@
 	import { onMount, onDestroy } from "svelte";
 	import { Editor } from "@tiptap/core";
 	import StarterKit from "@tiptap/starter-kit";
-
+	import Image from "@tiptap/extension-image";
+	let dialog;
+	let imgurl;
 	let element;
 	let editor;
+	
 	export let editorcontent;
+
+	function loadImage() {
+		if (imgurl) {
+			console.log(imgurl);
+			editor.chain().focus().setImage({ src: imgurl }).run();
+		}
+	}
 
 	onMount(() => {
 		editor = new Editor({
 			element: element,
-			extensions: [StarterKit],
+			extensions: [StarterKit, Image],
 			editorProps: {
 				attributes: {
 					class: "prose m-5 focus:outline-none",
@@ -23,7 +33,7 @@
 			},
 			onUpdate: ({ editor }) => {
 				editorcontent = editor.getHTML();
-                //console.log(editorcontent)
+				//console.log(editorcontent)
 			},
 		});
 	});
@@ -234,19 +244,14 @@
 					/></svg
 				>
 			</button>
-			<button
-				on:click={() => editor.chain().focus().toggleCodeBlock().run()}
-				class={editor.isActive("codeBlock")
-					? "editor-btn-selected"
-					: "editor-btn-primary"}
-			>
+			<button on:click={() => dialog.showModal()} class="editor-btn-primary">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 24 24"
 					class="h-5 w-5 text-gray-900 dark:text-gray-50"
 					><path fill="none" d="M0 0h24v24H0z" /><path
 						fill="currentColor"
-						d="M24 12l-5.657 5.657-1.414-1.414L21.172 12l-4.243-4.243 1.414-1.414L24 12zM2.828 12l4.243 4.243-1.414 1.414L0 12l5.657-5.657L7.07 7.757 2.828 12zm6.96 9H7.66l6.552-18h2.128L9.788 21z"
+						d="M21 15v3h3v2h-3v3h-2v-3h-3v-2h3v-3h2zm.008-12c.548 0 .992.445.992.993v9.349A5.99 5.99 0 0 0 20 13V5H4l.001 14 9.292-9.293a.999.999 0 0 1 1.32-.084l.093.085 3.546 3.55a6.003 6.003 0 0 0-3.91 7.743L2.992 21A.993.993 0 0 1 2 20.007V3.993A1 1 0 0 1 2.992 3h18.016zM8 7a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"
 					/></svg
 				>
 			</button>
@@ -297,8 +302,37 @@
 		</div>
 	</div>
 {/if}
-
+<dialog
+	id="urlDialog"
+	class="h-screen w-full bg-gray-50 backdrop:bg-gray-50 dark:bg-gray-900 dark:backdrop:bg-gray-900 "
+	bind:this={dialog}
+	on:close={() => loadImage()}
+>
+	<form method="dialog">
+		<p>
+			<input
+				class="container mx-auto border-none bg-gray-50 p-4 text-gray-900 focus:ring-gray-900 dark:bg-gray-700/50 dark:text-gray-50 focus:dark:bg-gray-700"
+				type="url"
+				placeholder="image url..."
+				bind:value={imgurl}
+			/>
+		</p>
+		<div class="container mt-2 flex justify-end space-x-2">
+			<button
+				class="bg-gray-50 px-4 py-2 transition-all delay-150 duration-1000 disabled:opacity-10 dark:bg-violet-600 dark:text-gray-900"
+				value="cancel"
+				on:click={() => (imgurl = null)}>Cancel</button
+			>
+			<button
+				disabled={!imgurl}
+				class="bg-gray-50 px-4 py-2 transition-all  delay-150 duration-1000 disabled:opacity-10 dark:text-gray-900"
+				id="confirmBtn"
+				value="default">Insert</button
+			>
+		</div>
+	</form>
+</dialog>
 <article
 	bind:this={element}
-	class="mx-auto min-w-full h-96 overflow-y-scroll overflow-x-hidden bg-gray-50"
+	class="mx-auto h-96 min-w-full overflow-x-hidden overflow-y-scroll bg-gray-50"
 />
