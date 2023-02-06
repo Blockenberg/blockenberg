@@ -2,10 +2,13 @@
 
 [![Built on FISSION](https://img.shields.io/badge/⌘-Built_by_FISSION-purple.svg)](https://fission.codes) [![Built by FISSION](https://img.shields.io/badge/webnative-v0.34.1-purple.svg)](https://github.com/fission-suite/webnative) 
 
+What is this project [about](https://blockenberg.vercel.app/)  in human language?
+How do I [display content](https://github.com/vorcigernix/blockenblog) from this CMS?
 
 The Blockenberg provides an interface for editing documents that are uploaded to IPFS storage, allowing for a decentralized but user friendly content publishing. Our application is built on top of Webnative App Template and utilize a lot of built in webnative functions.   
 
 The app is [deployed](https://blockenberg.vercel.app/) on Vercel for convenience, but there is also a decentralized version at https://small-square-tin-fish.fission.app/ 
+
 
 ## 🤔 What's Webnative?
 
