@@ -3,6 +3,7 @@
 	import { uploadImageToWNFS, uploadDocumentToWNFS } from "$routes/cms/lib/cms";
 	import type { ContentDoc } from "$routes/cms/lib/cms";
 	import ImagePicker from "$routes/cms/components/imageGallery/ImagePicker.svelte";
+	import TipTap from "./TipTap.svelte";
 
 	//I'll make this universal for the updates as well, just running out of time
 
@@ -31,6 +32,7 @@
 			content: contentText,
 			private: true,
 		};
+		console.log(doc);
 
 		uploadDocumentToWNFS(doc, publish, false).then(() => goto("/"));
 	}
@@ -108,26 +110,30 @@
 	<input
 		type="text"
 		bind:value={contentHeader}
-		class="container mx-auto border-none bg-gray-100 text-3xl text-gray-900 focus:ring-gray-900 dark:bg-gray-700/50 dark:text-gray-50 focus:dark:bg-gray-900"
+		class="container mx-auto border-none bg-gray-50 p-4 text-3xl text-gray-900 focus:ring-gray-900 dark:bg-gray-700/50 dark:text-gray-50 focus:dark:bg-gray-900"
 		placeholder="Header"
 		tabindex={0}
 	/>
 	<div
 		contenteditable="true"
-		class="container mx-auto h-80 p-4 text-gray-900 dark:bg-gray-700/50 dark:text-gray-50  focus:dark:bg-gray-900 overflow-y-scroll"
+		class="container mx-auto hidden h-80 overflow-y-scroll p-4 text-gray-900 dark:bg-gray-700/50  dark:text-gray-50 focus:dark:bg-gray-900"
 		bind:innerHTML={contentText}
 		placeholder="Content..."
 	/>
 
+	<TipTap bind:editorcontent={contentText} />
+
 	<div class="container mx-auto">
 		<button
 			on:click={() => uploadDoc(false)}
-			class="bg-gray-50 px-4 py-2 dark:bg-violet-600 dark:text-gray-900"
+			disabled={!contentHeader || !contentText}
+			class="bg-gray-50 px-4 py-2 dark:bg-violet-600 dark:text-gray-900 disabled:opacity-10" 
 			>Save</button
 		>
 		<button
 			on:click={() => uploadDoc(true)}
-			class="bg-gray-50 px-4 py-2 dark:text-gray-900">Publish</button
+			disabled={!contentHeader || !contentText}
+			class="bg-gray-50 px-4 py-2 dark:text-gray-900  disabled:opacity-10">Publish</button
 		>
 	</div>
 </section>

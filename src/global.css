@@ -2,14 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-  font-family: 'Work Sans', sans-serif;
-}
+@layer components {
+  body {
+    font-family: 'Work Sans', sans-serif;
+  }
 
-h1, h2, h3 {
-  font-family: 'Cormorant', serif;
-}
+  h1,
+  h2,
+  h3 {
+    font-family: 'Cormorant', serif;
+    @apply text-4xl
+  }
 
-h4, h5, h6 {
-  @apply font-medium;
+  h4,
+  h5,
+  h6 {
+    @apply font-bold;
+  }
+
+  .editor-btn-primary {
+    @apply hover:bg-violet-600 p-2 m-1;  }
+
+  .editor-btn-selected{
+    @apply bg-violet-500 hover:bg-violet-600 outline-none ring ring-violet-300 p-2 m-1;
+  }
 }

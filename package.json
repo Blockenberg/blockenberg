@@ -18,7 +18,7 @@
     "@sveltejs/adapter-static": "^1.0.0",
     "@sveltejs/kit": "^1.0.1",
     "@tailwindcss/forms": "^0.5.3",
-    "@tailwindcss/typography": "^0.5.2",
+    "@tailwindcss/typography": "^0.5.9",
     "@types/qrcode-svg": "^1.1.1",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
@@ -58,6 +58,9 @@
     ]
   },
   "dependencies": {
+    "@tiptap/core": "^2.0.0-beta.212",
+    "@tiptap/pm": "^2.0.0-beta.212",
+    "@tiptap/starter-kit": "^2.0.0-beta.212",
     "clipboard-copy": "^4.0.1",
     "qrcode-svg": "^1.1.0",
     "uint8arrays": "^4.0.2",
