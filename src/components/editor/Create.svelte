@@ -127,13 +127,13 @@
 		<button
 			on:click={() => uploadDoc(false)}
 			disabled={!contentHeader || !contentText}
-			class="bg-gray-50 px-4 py-2 dark:bg-violet-600 dark:text-gray-900 disabled:opacity-10" 
+			class="bg-gray-50 px-4 py-2 dark:bg-violet-600 dark:text-gray-900 disabled:opacity-10 transition-all delay-150 duration-1000" 
 			>Save</button
 		>
 		<button
 			on:click={() => uploadDoc(true)}
 			disabled={!contentHeader || !contentText}
-			class="bg-gray-50 px-4 py-2 dark:text-gray-900  disabled:opacity-10">Publish</button
+			class="bg-gray-50 px-4 py-2 dark:text-gray-900  disabled:opacity-10 transition-all delay-150 duration-1000">Publish</button
 		>
 	</div>
 </section>

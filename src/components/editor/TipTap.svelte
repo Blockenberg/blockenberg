@@ -300,5 +300,5 @@
 
 <article
 	bind:this={element}
-	class="mx-auto min-w-full bg-gray-50"
+	class="mx-auto min-w-full h-96 overflow-y-scroll overflow-x-hidden bg-gray-50"
 />
