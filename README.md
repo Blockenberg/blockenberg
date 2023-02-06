@@ -7,7 +7,7 @@ How do I [display content](https://github.com/vorcigernix/blockenblog) from this
 
 The Blockenberg provides an interface for editing documents that are uploaded to IPFS storage, allowing for a decentralized but user friendly content publishing. Our application is built on top of Webnative App Template and utilize a lot of built in webnative functions.   
 
-The app is [deployed](https://blockenberg.vercel.app/) on Vercel for convenience, but there is also a decentralized version at https://small-square-tin-fish.fission.app/ 
+The app is [deployed](https://blockenberg.fission.app) on Fission and you can use it in any way you want. If you want your own instance, you can clone this repository and change the app name in `/src/lib/app-info.ts`, but there is a little reason to do that - the data you publish are published under your own credentials on IPFS and I do not own them in any way. You'd need a "client" side to display content, there is a minimalistic version of the code for this mentioned above.
 
 
 ## 🤔 What's Webnative?
