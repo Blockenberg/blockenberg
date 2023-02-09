@@ -5,13 +5,12 @@
 	import ImagePicker from "$routes/cms/components/imageGallery/ImagePicker.svelte";
 	import TipTap from "./TipTap.svelte";
 
-	//I'll make this universal for the updates as well, just running out of time
-
 	// Handle files uploaded directly through the file input
 	let files: FileList;
 	let preview;
-	let imageContent = { name: "", src: null };
-	let contentHeader, contentText;
+	export let imageContent = { name: "", src: null };
+	export let contentHeader: string, contentText: string;
+	//console.log(contentText);
 	let galleryModal: boolean = false;
 
 	$: if (files) {
@@ -20,21 +19,21 @@
 
 	async function uploadImg(file: File) {
 		const uploadres = await uploadImageToWNFS(file);
-		console.log(uploadres);
+		console.log(file);
 		imageContent.name = uploadres;
 	}
 
 	async function uploadDoc(publish: boolean) {
-		console.log(imageContent);
+		//console.log(imageContent);
 		const doc: ContentDoc = {
 			image: JSON.stringify(imageContent),
 			header: contentHeader,
 			content: contentText,
 			private: true,
 		};
-		console.log(doc);
+		//console.log(doc);
 
-		uploadDocumentToWNFS(doc, publish, false).then(() => goto("/"));
+		uploadDocumentToWNFS(doc, publish, true).then(() => goto("/"));
 	}
 
 	function getBase64(image: Blob) {
@@ -121,13 +120,14 @@
 		<button
 			on:click={() => uploadDoc(false)}
 			disabled={!contentHeader || !contentText}
-			class="bg-gray-50 px-4 py-2 dark:bg-violet-600 dark:text-gray-900 disabled:opacity-10 transition-all delay-150 duration-1000" 
+			class="bg-gray-50 px-4 py-2 transition-all delay-150 duration-1000 disabled:opacity-10 dark:bg-violet-600 dark:text-gray-900"
 			>Save</button
 		>
 		<button
 			on:click={() => uploadDoc(true)}
 			disabled={!contentHeader || !contentText}
-			class="bg-gray-50 px-4 py-2 dark:text-gray-900  disabled:opacity-10 transition-all delay-150 duration-1000">Publish</button
+			class="bg-gray-50 px-4 py-2 transition-all  delay-150 duration-1000 disabled:opacity-10 dark:text-gray-900"
+			>Publish</button
 		>
 	</div>
 </section>

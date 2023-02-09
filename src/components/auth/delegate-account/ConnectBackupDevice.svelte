@@ -21,7 +21,7 @@
 	export let qrcode: HTMLOrSVGElement;
 	export let connectionLink: string;
 	export let backupCreated: boolean;
-	console.log(qrcode);
+	//console.log(qrcode);
 
 	const copyLink = async () => {
 		await clipboardCopy(connectionLink);

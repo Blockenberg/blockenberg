@@ -5,7 +5,7 @@
   </script>
   
   {#if $sessionStore?.session}
-    <Create />
+    <Create imageContent={{name:"",src:null}} contentHeader="" contentText=""/>
   {:else}
     <Public />
   {/if}

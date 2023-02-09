@@ -172,16 +172,15 @@ export const getImageFromWNFS: (
  */
 export const getDocFromWNFS: (
   name: string,
-) => Promise<
-  {
-    cid: string;
-    ctime: number;
-    name: string;
-    private: boolean;
-    src: string;
-    content: string;
-  }
-> = async (name) => {
+) => Promise<{
+  cid: string;
+  ctime: number;
+  name: string;
+  private: boolean;
+  imgsrc: string;
+  imgname: string;
+  content: string;
+}> = async (name) => {
   try {
     const { selectedArea } = getStore(cmsStore);
     const fs = getStore(filesystemStore);
@@ -201,12 +200,13 @@ export const getDocFromWNFS: (
 
       // Create a blob to use as the image `src`
       const decDoc = JSON.parse(new TextDecoder().decode(file.content));
-      let src: string;
+      let imgsrc, imgname: string;
       const imageFragment = decDoc.image;
       //console.log(decDoc);
       try {
         const image = JSON.parse(decodeURI(imageFragment));
-        src = await getImageFromWNFS(image.name);
+        imgname = image.name;
+        imgsrc = await getImageFromWNFS(imgname);
         //console.log(imagesrc);
       } catch {
         console.info("image not found");
@@ -221,7 +221,8 @@ export const getDocFromWNFS: (
         ctime,
         name,
         private: isPrivate,
-        src,
+        imgsrc,
+        imgname,
         content,
       };
     }

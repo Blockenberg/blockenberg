@@ -12,7 +12,7 @@
 
 	function loadImage() {
 		if (imgurl) {
-			console.log(imgurl);
+			//console.log(imgurl);
 			editor.chain().focus().setImage({ src: imgurl }).run();
 		}
 	}
@@ -26,7 +26,6 @@
 					class: "prose xl:prose-lg m-5 focus:outline-none max-w-none",
 				},
 			},
-			content: "<p>Your article... </p>",
 			onTransaction: () => {
 				// force re-render so `editor.isActive` works as expected
 				editor = editor;
@@ -36,6 +35,7 @@
 				//console.log(editorcontent)
 			},
 		});
+		editor.commands.setContent(`${editorcontent}`, false);
 	});
 
 	onDestroy(() => {
@@ -336,4 +336,3 @@
 	bind:this={element}
 	class="mx-auto h-96 w-full overflow-x-hidden overflow-y-scroll bg-gray-50"
 />
-
