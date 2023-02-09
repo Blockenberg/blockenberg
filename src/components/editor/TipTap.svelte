@@ -7,7 +7,7 @@
 	let imgurl;
 	let element;
 	let editor;
-	
+
 	export let editorcontent;
 
 	function loadImage() {
@@ -23,7 +23,7 @@
 			extensions: [StarterKit, Image],
 			editorProps: {
 				attributes: {
-					class: "prose m-5 focus:outline-none",
+					class: "prose xl:prose-lg m-5 focus:outline-none max-w-none",
 				},
 			},
 			content: "<p>Your article... </p>",
@@ -334,5 +334,6 @@
 </dialog>
 <article
 	bind:this={element}
-	class="mx-auto h-96 min-w-full overflow-x-hidden overflow-y-scroll bg-gray-50"
+	class="mx-auto h-96 w-full overflow-x-hidden overflow-y-scroll bg-gray-50"
 />
+

@@ -114,12 +114,6 @@
 		placeholder="Header"
 		tabindex={0}
 	/>
-	<div
-		contenteditable="true"
-		class="container mx-auto hidden h-80 overflow-y-scroll p-4 text-gray-900 dark:bg-gray-700/50  dark:text-gray-50 focus:dark:bg-gray-900"
-		bind:innerHTML={contentText}
-		placeholder="Content..."
-	/>
 
 	<TipTap bind:editorcontent={contentText} />
 
