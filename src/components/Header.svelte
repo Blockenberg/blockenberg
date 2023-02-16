@@ -3,9 +3,10 @@
 	import Avatar from "$components/settings/Avatar.svelte";
 	import BrandLogo from "$components/icons/BrandLogo.svelte";
 	let open;
+
 </script>
 
-<header class="container flex items-center justify-between h-16 mx-auto">
+<header class="container mx-auto flex h-16 items-center justify-between">
 	<a
 		rel="noopener noreferrer"
 		href="/"
@@ -15,27 +16,27 @@
 		<BrandLogo />
 		<p class="font-bold">Blockenberg</p>
 	</a>
-	<div class="items-center hidden space-x-8 lg:flex justify-end flex-grow">
+	<div class="hidden flex-grow items-center justify-end space-x-8 lg:flex">
 		{#if $sessionStore.session}
 			<div class="space-x-4">
+				<a rel="noopener noreferrer" href="/">Manage</a>
 				<a rel="noopener noreferrer" href="/create">Create</a>
-				<a rel="noopener noreferrer" href="/manage">Manage</a>
-				<a rel="noopener noreferrer" href="/publish">Publish</a>
+				<a rel="noopener noreferrer" href="/about">About</a>
 			</div>
 		{/if}
 		{#if !$sessionStore.session}
 			<a
 				href="/register"
-				class="px-4 py-2 bg-gray-50 dark:bg-violet-600 dark:text-gray-900 "
+				class="bg-gray-50 px-4 py-2 dark:bg-violet-600 dark:text-gray-900 "
 				>Register</a
 			>
 		{/if}
 	</div>
-	<div class="flex ml-4">
+	<div class="ml-4 flex">
 		{#if !$sessionStore.loading && $sessionStore.backupCreated === false}
 			<a
 				href="/delegate-account"
-				class="px-4 py-2 bg-gray-50 dark:bg-violet-600 dark:text-gray-900"
+				class="bg-gray-50 px-4 py-2 dark:bg-violet-600 dark:text-gray-900"
 				>Backup</a
 			>
 		{/if}
@@ -52,7 +53,7 @@
 					fill="none"
 					viewBox="0 0 24 24"
 					stroke="currentColor"
-					class="w-6 h-6 dark:text-gray-50"
+					class="h-6 w-6 dark:text-gray-50"
 				>
 					<path
 						stroke-linecap="round"
@@ -66,9 +67,7 @@
 	</div>
 </header>
 
-<div
-	class="flex-col space-y-4 md:hidden w-full p-4 {open ? 'flex' : 'hidden'}"
->
+<div class="w-full flex-col space-y-4 p-4 md:hidden {open ? 'flex' : 'hidden'}">
 	<a rel="noopener noreferrer" href="/create">Create</a>
 	<a rel="noopener noreferrer" href="/manage">Manage</a>
 	<a rel="noopener noreferrer" href="/publish">Publish</a>

@@ -23,8 +23,8 @@
 
 	async function uploadImg(file: File) {
 		const uploadres = await uploadImageToWNFS(file);
-		console.log(file);
 		imageContent.name = uploadres;
+		galleryModal = false;
 	}
 
 	async function uploadDoc(publish: boolean) {

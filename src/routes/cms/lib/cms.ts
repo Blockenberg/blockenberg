@@ -326,14 +326,6 @@ export const uploadDocumentToWNFS: (
     const content = new TextEncoder().encode(JSON.stringify(doc));
     const filename = doc.CID || CID.create(1, json.code, await sha256.digest(json.encode(content))).toString();
 
-    // let filename;
-    // if (doc.CID) {
-    //   filename = doc.CID;
-    // } else {
-    //   const bytes = json.encode(content);
-    //   const hash = await sha256.digest(bytes);
-    //   filename = CID.create(1, json.code, hash).toString();
-    // }
 
     await fs.write(
       wn.path.file(...DOCS_DIRS[selectedArea], filename),
