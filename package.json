@@ -5,6 +5,7 @@
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
+    "deploy": "vite build && fission-cli-ubuntu-20.04-x86_64 app publish",
     "test": "ava src/**/*.test.ts",
     "test:e2e": "playwright test",
     "report:e2e": "playwright show-report",
@@ -64,6 +65,7 @@
     "@tiptap/pm": "^2.0.0-beta.212",
     "@tiptap/starter-kit": "^2.0.0-beta.212",
     "clipboard-copy": "^4.0.1",
+    "multiformats": "^11.0.1",
     "qrcode-svg": "^1.1.0",
     "uint8arrays": "^4.0.2",
     "webnative": "^0.35.1"

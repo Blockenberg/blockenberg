@@ -46,7 +46,7 @@
 				<img
 					role="presentation"
 					class="h-44 w-full object-cover dark:bg-gray-500"
-					alt="Cover image for {decodeURI(doc.name)}"
+					alt="Cover image for {decodeURI(doc.header)}"
 					src={doc.src}
 				/>
 			{/if}
@@ -54,7 +54,7 @@
 				<h3
 					class="text-2xl font-semibold group-hover:underline group-focus:underline"
 				>
-					{decodeURI(doc.name)}
+					{decodeURI(doc.header)}
 				</h3>
 				<span class="text-xs dark:text-gray-400"
 					>{new Date(doc.ctime).toLocaleDateString("en-GB", {

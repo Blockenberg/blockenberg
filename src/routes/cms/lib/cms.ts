@@ -9,6 +9,10 @@ import { AREAS, cmsStore } from "$routes/cms/stores";
 import { addNotification } from "$lib/notifications";
 import { fileToUint8Array } from "$lib/utils";
 
+import { CID } from "multiformats/cid";
+import * as json from "multiformats/codecs/json";
+import { sha256 } from "multiformats/hashes/sha2";
+
 export type Image = {
   cid: string;
   ctime: number;
@@ -28,6 +32,7 @@ export type DocGallery = {
 export type ContentDoc = {
   image: string;
   header: string;
+  CID: string;
   content: string;
   private: boolean;
 };
@@ -94,6 +99,7 @@ export const getDocsFromWNFS: () => Promise<void> = async () => {
           console.info("image not found");
         }
         const content = String(decDoc.content);
+        const header = String(decDoc.header);
         const ctime = isPrivate
           ? (file as PrivateFile).header.metadata.unixMeta.ctime
           : (file as PublicFile).header.metadata.unixMeta.ctime;
@@ -102,6 +108,7 @@ export const getDocsFromWNFS: () => Promise<void> = async () => {
           cid,
           ctime,
           name,
+          header,
           private: isPrivate,
           size: (links[name] as Link).size,
           src,
@@ -162,7 +169,8 @@ export const getImageFromWNFS: (
       throw new Error(`${name} doesn't exist`);
     }
   } catch (error) {
-    console.error("filesystem issue:", error);
+    //info - the picture does not have to exist
+    console.info("filesystem issue:", error);
   }
 };
 
@@ -176,6 +184,7 @@ export const getDocFromWNFS: (
   cid: string;
   ctime: number;
   name: string;
+  header: string;
   private: boolean;
   imgsrc: string;
   imgname: string;
@@ -212,6 +221,8 @@ export const getDocFromWNFS: (
         console.info("image not found");
       }
       const content = decodeURI(String(decDoc.content));
+      const header = decodeURI(String(decDoc.header));
+      console.log(cid, name);
       const ctime = isPrivate
         ? (file as PrivateFile).header.metadata.unixMeta.ctime
         : (file as PublicFile).header.metadata.unixMeta.ctime;
@@ -220,6 +231,7 @@ export const getDocFromWNFS: (
         cid,
         ctime,
         name,
+        header,
         private: isPrivate,
         imgsrc,
         imgname,
@@ -306,25 +318,26 @@ export const uploadDocumentToWNFS: (
   doc: ContentDoc,
   publish: boolean,
   overwrite: boolean,
-) => Promise<string> = async (doc, publish, overwrite) => {
+) => Promise<string> = async (doc, publish) => {
   try {
     //console.log(doc);
     const selectedArea = publish ? AREAS.PUBLIC : AREAS.PRIVATE; //we always upload to private
     const fs = getStore(filesystemStore);
-    const filename = encodeURI(doc.header);
+    const content = new TextEncoder().encode(JSON.stringify(doc));
+    const filename = doc.CID || CID.create(1, json.code, await sha256.digest(json.encode(content))).toString();
 
-    // Reject the upload if doc with same name already exists in the directory
-    const docExists = await fs.exists(
-      wn.path.file(...DOCS_DIRS[selectedArea], filename),
-    );
-    if (!overwrite && docExists) {
-      throw new Error(`${filename} already exists`);
-    }
+    // let filename;
+    // if (doc.CID) {
+    //   filename = doc.CID;
+    // } else {
+    //   const bytes = json.encode(content);
+    //   const hash = await sha256.digest(bytes);
+    //   filename = CID.create(1, json.code, hash).toString();
+    // }
 
-    // Create a sub directory and add some content
     await fs.write(
       wn.path.file(...DOCS_DIRS[selectedArea], filename),
-      new TextEncoder().encode(JSON.stringify(doc)),
+      content,
     );
 
     // Announce the changes to the server

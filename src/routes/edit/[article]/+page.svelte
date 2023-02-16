@@ -2,7 +2,7 @@
 	import { getDocFromWNFS } from "$routes/cms/lib/cms";
 
 	import type { PageData } from "./$types";
-	import Create from "$components/editor/Create.svelte";
+	import Create from "$components/editor/Editor.svelte";
 	export let data: PageData;
 	let doc;
 	const result = new Promise(async (resolve, reject) => {
@@ -19,7 +19,8 @@
 {#await result then}
 	<Create
 		imageContent={{ name: doc.imgname, src: doc.imgsrc }}
-		contentHeader={doc.name}
+		contentHeader={doc.header}
 		contentText={doc.content}
+		CID={doc.name}
 	/>
 {/await}

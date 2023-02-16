@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
-	import { uploadImageToWNFS, uploadDocumentToWNFS } from "$routes/cms/lib/cms";
+	import {
+		uploadImageToWNFS,
+		uploadDocumentToWNFS,
+		deleteDocFromWNFS,
+	} from "$routes/cms/lib/cms";
 	import type { ContentDoc } from "$routes/cms/lib/cms";
 	import ImagePicker from "$routes/cms/components/imageGallery/ImagePicker.svelte";
 	import TipTap from "./TipTap.svelte";
@@ -9,7 +13,7 @@
 	let files: FileList;
 	let preview;
 	export let imageContent = { name: "", src: null };
-	export let contentHeader: string, contentText: string;
+	export let contentHeader: string, contentText: string, CID: string;
 	//console.log(contentText);
 	let galleryModal: boolean = false;
 
@@ -28,6 +32,7 @@
 		const doc: ContentDoc = {
 			image: JSON.stringify(imageContent),
 			header: contentHeader,
+			CID: CID,
 			content: contentText,
 			private: true,
 		};
@@ -116,18 +121,29 @@
 
 	<TipTap bind:editorcontent={contentText} />
 
-	<div class="container mx-auto">
+	<div class="container flex justify-between">
+		<div>
+			<button
+				on:click={() => uploadDoc(false)}
+				disabled={!contentHeader || !contentText}
+				class="bg-gray-50 px-4 py-2 transition-all delay-150 duration-1000 disabled:opacity-10 dark:bg-violet-600 dark:text-gray-900"
+				>Save</button
+			>
+			<button
+				on:click={() => uploadDoc(true)}
+				disabled={!contentHeader || !contentText}
+				class="bg-gray-50 px-4 py-2 transition-all  delay-150 duration-1000 disabled:opacity-10 dark:text-gray-900"
+				>Publish</button
+			>
+		</div>
 		<button
-			on:click={() => uploadDoc(false)}
-			disabled={!contentHeader || !contentText}
-			class="bg-gray-50 px-4 py-2 transition-all delay-150 duration-1000 disabled:opacity-10 dark:bg-violet-600 dark:text-gray-900"
-			>Save</button
-		>
-		<button
-			on:click={() => uploadDoc(true)}
+			on:click={() => {
+				deleteDocFromWNFS(CID);
+				goto("/");
+			}}
 			disabled={!contentHeader || !contentText}
 			class="bg-gray-50 px-4 py-2 transition-all  delay-150 duration-1000 disabled:opacity-10 dark:text-gray-900"
-			>Publish</button
+			>Delete</button
 		>
 	</div>
 </section>

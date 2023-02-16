@@ -332,6 +332,7 @@
 		</div>
 	</form>
 </dialog>
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <article
 	bind:this={element}
 	class="mx-auto h-96 w-full overflow-x-hidden overflow-y-scroll bg-gray-50"
