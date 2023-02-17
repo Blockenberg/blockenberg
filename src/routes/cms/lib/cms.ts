@@ -32,6 +32,7 @@ export type DocGallery = {
 export type ContentDoc = {
   image: string;
   header: string;
+  tags: string[];
   CID: string;
   content: string;
   private: boolean;
@@ -185,6 +186,7 @@ export const getDocFromWNFS: (
   ctime: number;
   name: string;
   header: string;
+  tags: string[];
   private: boolean;
   imgsrc: string;
   imgname: string;
@@ -232,6 +234,7 @@ export const getDocFromWNFS: (
         ctime,
         name,
         header,
+        tags: decDoc.tags,
         private: isPrivate,
         imgsrc,
         imgname,
@@ -324,8 +327,9 @@ export const uploadDocumentToWNFS: (
     const selectedArea = publish ? AREAS.PUBLIC : AREAS.PRIVATE; //we always upload to private
     const fs = getStore(filesystemStore);
     const content = new TextEncoder().encode(JSON.stringify(doc));
-    const filename = doc.CID || CID.create(1, json.code, await sha256.digest(json.encode(content))).toString();
-
+    const filename = doc.CID ||
+      CID.create(1, json.code, await sha256.digest(json.encode(content)))
+        .toString();
 
     await fs.write(
       wn.path.file(...DOCS_DIRS[selectedArea], filename),

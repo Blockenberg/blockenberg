@@ -7,7 +7,7 @@
       <a
         aria-label="Email"
         rel="noopener noreferrer"
-        href="mailto:support@blockenberg.com"
+        href="mailto:adamsobotka@duck.com"
         class="flex items-center justify-center dark:text-gray-400"
       >
         <svg
@@ -25,7 +25,7 @@
       <a
         aria-label="Twitter"
         rel="noopener noreferrer"
-        href="https://twitter.com/blockenberg"
+        href="https://twitter.com/vorcigernix"
         class="flex items-center justify-center dark:text-gray-400"
       >
         <svg

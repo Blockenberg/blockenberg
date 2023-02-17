@@ -21,6 +21,7 @@
 		imageContent={{ name: doc.imgname, src: doc.imgsrc }}
 		contentHeader={doc.header}
 		contentText={doc.content}
+		currenttags={doc.tags}
 		CID={doc.name}
 	/>
 {/await}

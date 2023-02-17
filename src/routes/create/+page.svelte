@@ -10,6 +10,7 @@
 		contentHeader=""
 		contentText=""
 		CID={null}
+		currenttags={null}
 	/>
 {:else}
 	<Public />
