@@ -5,6 +5,7 @@
 		uploadDocumentToWNFS,
 		deleteDocFromWNFS,
 	} from "$routes/cms/lib/cms";
+	import { sessionStore } from "$src/stores";
 	import type { ContentDoc } from "$routes/cms/lib/cms";
 	import ImagePicker from "$routes/cms/components/imageGallery/ImagePicker.svelte";
 	import TipTap from "./TipTap.svelte";
@@ -40,7 +41,9 @@
 			header: contentHeader,
 			tags,
 			content: contentText,
-			private: true,
+			private: !publish,
+			updated: Date.now(),
+			author: $sessionStore.username.trimmed[0],
 		};
 		//console.log(doc);
 
@@ -77,7 +80,7 @@
 			class="container flex h-60 flex-col items-end justify-end py-4"
 			style="background: no-repeat center/cover url('{preview ||
 				imageContent?.src ||
-				'https://images.unsplash.com/photo-1527176930608-09cb256ab504?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1748&q=80'}')"
+				'../placeholder.svg'}')"
 		>
 			<div class="flex space-x-2">
 				{#if galleryModal}
@@ -194,7 +197,7 @@
 			</button>
 		</div>
 	{/if}
-	<div class="w-full transition-all delay-150 duration-1000" >
+	<div class="w-full transition-all delay-150 duration-1000">
 		<TipTap bind:editorcontent={contentText} />
 	</div>
 	<div class="container flex justify-between">

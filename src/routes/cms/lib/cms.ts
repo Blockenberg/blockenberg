@@ -36,6 +36,8 @@ export type ContentDoc = {
   CID: string;
   content: string;
   private: boolean;
+  updated: number;
+  author:string;
 };
 
 type Link = {
