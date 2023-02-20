@@ -5,6 +5,7 @@
 	import ConnectedDevices from "$components/settings/ConnectedDevices.svelte";
 	import RecoveryKit from "$components/settings/RecoveryKit.svelte";
 	import Username from "$components/settings/Username.svelte";
+	import HookSettings from "$components/settings/HookSettings.svelte";
 </script>
 
 {#if $sessionStore.session}
@@ -27,6 +28,7 @@
 							<ConnectedDevices />
 
 							<RecoveryKit />
+							<HookSettings />
 						</div>
 					</div>
 				</div>

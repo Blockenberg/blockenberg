@@ -19,21 +19,21 @@ export const initialize = async (): Promise<void> => {
       // Authed
       backupStatus = await getBackupStatus(program.session.fs);
 
-      let fullUsername = await program.components.storage.getItem(
+      const fullUsername = await program.components.storage.getItem(
         USERNAME_STORAGE_KEY,
       ) as string;
 
       // If the user is migrating from a version webnative-app-template before https://github.com/webnative-examples/webnative-app-template/pull/97/files#diff-a180510e798b8f833ebfdbe691c5ec4a1095076980d3e2388de29c849b2b8361R44,
       // their username won't contain a did, so we will need to manually append a DID and add it storage here
-      if (!fullUsername) {
-        const did = await createDID(program.components.crypto);
-        fullUsername = `${program.session.username}#${did}`;
-        await program.components.storage.setItem(
-          USERNAME_STORAGE_KEY,
-          fullUsername,
-        );
-        window.location.reload();
-      }
+      // if (!fullUsername) {
+      //   const did = await createDID(program.components.crypto);
+      //   fullUsername = `${program.session.username}#${did}`;
+      //   await program.components.storage.setItem(
+      //     USERNAME_STORAGE_KEY,
+      //     fullUsername,
+      //   );
+      //   window.location.reload();
+      // }
 
       sessionStore.set({
         username: {

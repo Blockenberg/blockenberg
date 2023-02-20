@@ -462,6 +462,21 @@
 					</p>
 				</span>
 			</div>
+			<div class="space-y-2 py-6 md:grid md:grid-cols-12 md:gap-8 md:space-y-0">
+				<h3 class="font-semibold md:col-span-5">Who is paying for all this?</h3>
+				<span class="md:col-span-7 md:pl-0">
+					<p>
+						Currently, no one is paying for Blockenberg. We use the Fission
+						framework, which incentivizes running new projects on its platform.
+						However, we are aware that as the platform grows and scales, there
+						will be expenses that need to be covered. To address this, we plan
+						to introduce a paid tier for organizations that will allow for
+						sharing content across teams and account management. We are
+						committed to keeping Blockenberg accessible to everyone, and any
+						paid tier will be priced affordably and transparently.
+					</p>
+				</span>
+			</div>
 		</div>
 		<h2 class="mb-12 text-center text-4xl font-bold leading-none sm:text-5xl">
 			Tips and Tricks

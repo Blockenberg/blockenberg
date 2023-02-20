@@ -28,6 +28,7 @@ export type AccountSettings = {
 	organization: boolean;
 	hook: string;
 };
+
 interface AvatarFile extends PuttableUnixTree, WNFile {
 	cid: CID;
 	content: Uint8Array;
@@ -39,6 +40,7 @@ interface AvatarFile extends PuttableUnixTree, WNFile {
 
 export const ACCOUNT_SETTINGS_DIR = ["private", "settings"];
 const AVATAR_DIR = [...ACCOUNT_SETTINGS_DIR, "avatars"];
+const FLAGS_DIR = [...ACCOUNT_SETTINGS_DIR, "flags"];
 const AVATAR_ARCHIVE_DIR = [...AVATAR_DIR, "archive"];
 const AVATAR_FILE_NAME = "avatar";
 const FILE_SIZE_LIMIT = 20;
@@ -73,6 +75,81 @@ const archiveOldAvatar = async (): Promise<void> => {
 
 	// Announce the changes to the server
 	await fs.publish();
+};
+
+/**
+ * Get the user account flags from the user's WNFS and
+ */
+export const getFlagsFromWNFS = async (): Promise<void> => {
+	try {
+		// Set loading: true on the accountSettingsStore
+		accountSettingsStore.update((store) => ({ ...store, loading: true }));
+
+		const fs = getStore(filesystemStore);
+
+		// If the flag dir doesn't exist, silently fail and let the UI handle it
+		const flagDirExists = await fs.exists(wn.path.file(...FLAGS_DIR));
+		if (!flagDirExists) {
+			accountSettingsStore.update((store) => ({
+				...store,
+				loading: false,
+			}));
+			return;
+		}
+
+		const hookfile = await fs.get(wn.path.file(...FLAGS_DIR, `hookflag`));
+
+		const hookcontent = (hookfile as WNFile).content;
+		const hook = new TextDecoder().decode(hookcontent);
+
+		//Push url to the accountSettingsStore
+		accountSettingsStore.update((store) => ({
+			...store,
+			hook,
+			loading: false,
+		}));
+	} catch (error) {
+		console.error(error);
+		accountSettingsStore.update((store) => ({
+			...store,
+			loading: false,
+		}));
+	}
+};
+
+/**
+ * Upload flags to the user's private WNFS
+ * @param flags
+ */
+export const setHookInWNFS = async (hook: string): Promise<void> => {
+	try {
+		// Set loading: true on the accountSettingsStore
+		accountSettingsStore.update((store) => ({ ...store, loading: true }));
+
+		const fs = getStore(filesystemStore);
+
+		// Create a sub directory and add the avatar
+		await fs.write(
+			wn.path.file(...FLAGS_DIR, `hookflag`),
+			new TextEncoder().encode(hook)
+		);
+
+		// Announce the changes to the server
+		await fs.publish();
+
+		addNotification(`Your hook URL has been updated!`, "success");
+		accountSettingsStore.update((store) => ({
+			...store,
+			loading: false,
+		}));
+	} catch (error) {
+		addNotification(error.message, "error");
+		console.error(error);
+		accountSettingsStore.update((store) => ({
+			...store,
+			loading: false,
+		}));
+	}
 };
 
 /**

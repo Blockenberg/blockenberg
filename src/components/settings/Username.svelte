@@ -19,17 +19,18 @@
 </script>
 
 <div class="flex flex-col items-center justify-center text-center">
-	<h2 class="title-font mt-4 text-lg font-medium text-white">
+	<h2 class="mt-4 text-3xl font-bold text-gray-50">
 		<TruncatedUsername />
 	</h2>
-	<div class="mt-2 mb-4 h-1 w-12 rounded bg-indigo-500" />
-	<div class="flex">
-		<p class="text-base text-gray-400">
-			{$sessionStore.username.hashed}
-		</p>
+	<div class="mt-2 mb-4 h-1 w-12 bg-indigo-500" />
 
-		<button class="pl-2" on:click={handleCopyUserHash}>
-			<ClipboardIcon />
+	<div class="flex flex-col">
+		<button
+			class="flex w-full flex-row justify-center mb-2"
+			on:click={handleCopyUserHash}
+		>
+			<ClipboardIcon />&nbsp;Token
 		</button>
+		<span class=" text-gray-400 break-all w-32">{$sessionStore.username.hashed}</span>
 	</div>
 </div>
