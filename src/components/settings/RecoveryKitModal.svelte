@@ -1,35 +1,35 @@
 <script lang="ts">
-  import { sessionStore } from '$src/stores'
-  import { generateRecoveryKit } from '$lib/account-settings'
-  import Download from '$components/icons/Download.svelte'
+  import { sessionStore } from '$src/stores';
+  import { generateRecoveryKit } from '$lib/account-settings';
+  import Download from '$components/icons/Download.svelte';
 
-  export let handleToggleModal: () => void
-  $: recoveryKit = null
-  $: downloadLinkRef = null
-  $: fileURL = null
+  export let handleToggleModal: () => void;
+  $: recoveryKit = null;
+  $: downloadLinkRef = null;
+  $: fileURL = null;
 
   const prepareRecoveryKitDownload = async () => {
-    recoveryKit = await generateRecoveryKit()
+    recoveryKit = await generateRecoveryKit();
 
-    const data = new Blob([recoveryKit], { type: 'text/plain' })
+    const data = new Blob([recoveryKit], { type: 'text/plain' });
 
     // If we are replacing a previously generated file we need to
     // manually revoke the object URL to avoid memory leaks.
     if (fileURL !== null) {
-      window.URL.revokeObjectURL(fileURL)
+      window.URL.revokeObjectURL(fileURL);
     }
 
-    fileURL = window.URL.createObjectURL(data)
-  }
-  const recoveryKitPromise = prepareRecoveryKitDownload()
+    fileURL = window.URL.createObjectURL(data);
+  };
+  const recoveryKitPromise = prepareRecoveryKitDownload();
 
   $: if (downloadLinkRef && fileURL) {
     downloadLinkRef.setAttribute(
       'download',
       `Webnative-RecoveryKit-${$sessionStore.username.trimmed}.txt`
-    )
+    );
 
-    downloadLinkRef.href = fileURL
+    downloadLinkRef.href = fileURL;
   }
 </script>
 
@@ -49,17 +49,17 @@
       {#await recoveryKitPromise}
         <h3 class="mb-7 text-base">Creating your recovery kit...</h3>
 
-        <div class="flex items-center justify-center text-base-content">
+        <div class="text-base-content flex items-center justify-center">
           <span
-            class="rounded-lg border-t-2 border-l-2 border-base-content w-4 h-4 inline-block animate-spin mr-2"
+            class="border-base-content mr-2 inline-block h-4 w-4 animate-spin rounded-lg border-t-2 border-l-2"
           />
         </div>
       {:then}
         <h3 class="mb-7 text-base">Your recovery kit has been created!</h3>
 
-        <div class="text-left mb-6">
+        <div class="mb-6 text-left">
           <p class="mb-2">Please store it somewhere safe for two reasons:</p>
-          <ol class="list-decimal mb-2 pl-6">
+          <ol class="mb-2 list-decimal pl-6">
             <li>
               <strong>It is powerful:</strong>
               Anyone with this recovery kit will have access to all of your private

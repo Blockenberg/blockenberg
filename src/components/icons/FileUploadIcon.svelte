@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let classes: string = 'mb-3 w-10 h-10'
+  export let classes: string = 'mb-3 w-10 h-10';
 </script>
 
 <svg

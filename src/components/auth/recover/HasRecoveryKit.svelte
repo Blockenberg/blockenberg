@@ -1,22 +1,22 @@
 <script lang="ts">
-  import * as RootKey from 'webnative/common/root-key'
-  import * as UCAN from 'webnative/ucan/index'
-  import * as DID from 'webnative/did/index'
-  import * as uint8arrays from 'uint8arrays'
+  import * as RootKey from 'webnative/common/root-key';
+  import * as UCAN from 'webnative/ucan/index';
+  import * as DID from 'webnative/did/index';
+  import * as uint8arrays from 'uint8arrays';
 
-  import { sessionStore } from '$src/stores'
+  import { sessionStore } from '$src/stores';
   import {
     RECOVERY_STATES,
     USERNAME_STORAGE_KEY,
     loadAccount,
     prepareUsername
-  } from '$lib/auth/account'
-  import Check from '$components/icons/CheckIcon.svelte'
-  import RecoveryKitButton from './RecoveryKitButton.svelte'
+  } from '$lib/auth/account';
+  import Check from '$components/icons/CheckIcon.svelte';
+  import RecoveryKitButton from './RecoveryKitButton.svelte';
 
   let state = $sessionStore.session
     ? RECOVERY_STATES.Done
-    : RECOVERY_STATES.Ready
+    : RECOVERY_STATES.Ready;
 
   /**
    * Parse the user's `username` and `readKey` from the uploaded recovery kit and pass them into
@@ -26,10 +26,10 @@
   export const handleFileInput: (
     files: FileList
   ) => Promise<void> = async files => {
-    const reader = new FileReader()
+    const reader = new FileReader();
 
     reader.onload = async event => {
-      state = RECOVERY_STATES.Processing
+      state = RECOVERY_STATES.Processing;
 
       try {
         const {
@@ -37,41 +37,41 @@
           program: {
             components: { crypto, reference, storage }
           }
-        } = $sessionStore
+        } = $sessionStore;
 
         const parts = (event.target.result as string)
           .split('username: ')[1]
-          .split('key: ')
+          .split('key: ');
 
         const readKey = uint8arrays.fromString(
           // Trim any whitespace from the parsed readKey
           parts[1].replace(/(\r\n|\n|\r)/gm, ''),
           'base64pad'
-        )
+        );
 
         // Trim any whitespace from the parsed username
-        const oldUsername = parts[0].replace(/(\r\n|\n|\r)/gm, '')
-        const hashedOldUsername = await prepareUsername(oldUsername)
-        const newRootDID = await $sessionStore.program.agentDID()
+        const oldUsername = parts[0].replace(/(\r\n|\n|\r)/gm, '');
+        const hashedOldUsername = await prepareUsername(oldUsername);
+        const newRootDID = await $sessionStore.program.agentDID();
 
         // Construct a new username using the old `trimmed` name and `newRootDID`
-        const newUsername = `${oldUsername.split('#')[0]}#${newRootDID}`
-        const hashedNewUsername = await prepareUsername(newUsername)
+        const newUsername = `${oldUsername.split('#')[0]}#${newRootDID}`;
+        const hashedNewUsername = await prepareUsername(newUsername);
 
-        storage.setItem(USERNAME_STORAGE_KEY, newUsername)
+        storage.setItem(USERNAME_STORAGE_KEY, newUsername);
 
         // Register the user with the `hashedNewUsername`
         const { success } = await authStrategy.register({
           username: hashedNewUsername
-        })
+        });
         if (!success) {
-          throw new Error('Failed to register new user')
+          throw new Error('Failed to register new user');
         }
 
         // Build an ephemeral UCAN to authorize the dataRoot.update call
         const proof: string | null = await storage.getItem(
           storage.KEYS.ACCOUNT_UCAN
-        )
+        );
         const ucan = await UCAN.build({
           dependencies: $sessionStore.program.components,
           potency: 'APPEND',
@@ -80,46 +80,46 @@
           lifetimeInSeconds: 60 * 3, // Three minutes
           audience: newRootDID,
           issuer: newRootDID
-        })
+        });
 
-        const oldRootCID = await reference.dataRoot.lookup(hashedOldUsername)
+        const oldRootCID = await reference.dataRoot.lookup(hashedOldUsername);
 
         // Update the dataRoot of the new user
-        await reference.dataRoot.update(oldRootCID, ucan)
+        await reference.dataRoot.update(oldRootCID, ucan);
 
         // Store the accountDID, which is used to namespace the readKey
         await RootKey.store({
           accountDID: newRootDID,
           readKey,
           crypto: crypto
-        })
+        });
 
         // Load account data into sessionStore
-        await loadAccount(hashedNewUsername, newUsername)
+        await loadAccount(hashedNewUsername, newUsername);
 
-        state = RECOVERY_STATES.Done
+        state = RECOVERY_STATES.Done;
       } catch (error) {
-        console.error(error)
-        state = RECOVERY_STATES.Error
+        console.error(error);
+        state = RECOVERY_STATES.Error;
       }
-    }
+    };
 
     reader.onerror = error => {
-      console.error(error)
-      state = RECOVERY_STATES.Error
-    }
+      console.error(error);
+      state = RECOVERY_STATES.Error;
+    };
 
-    reader.readAsText(files[0])
-  }
+    reader.readAsText(files[0]);
+  };
 </script>
 
 <div
-  class="min-h-[calc(100vh-96px)] flex flex-col items-start justify-center max-w-[590px] m-auto gap-6 pb-5 text-sm"
+  class="m-auto flex min-h-[calc(100vh-96px)] max-w-[590px] flex-col items-start justify-center gap-6 pb-5 text-sm"
 >
   <h1 class="text-xl">Recover your account</h1>
 
   {#if state === RECOVERY_STATES.Done}
-    <h3 class="flex items-center gap-2 font-normal text-base text-green-600">
+    <h3 class="flex items-center gap-2 text-base font-normal text-green-600">
       <Check /> Account recovered!
     </h3>
     <p>

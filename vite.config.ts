@@ -1,5 +1,5 @@
-import { sveltekit } from '@sveltejs/kit/vite'
-import { resolve } from 'path'
+import { sveltekit } from '@sveltejs/kit/vite';
+import { resolve } from 'path';
 
 /** @type {import('vite').UserConfig} */
 const config = {
@@ -12,6 +12,6 @@ const config = {
       $static: resolve('./static')
     }
   }
-}
+};
 
-export default config
+export default config;

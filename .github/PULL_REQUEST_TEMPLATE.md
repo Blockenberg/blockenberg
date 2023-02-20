@@ -10,12 +10,12 @@ Please add a link to any relevant issues/tickets
 
 Please delete options that are not relevant.
 
-- [ ] Bug fix (non-breaking change that fixes an issue)
-- [ ] New feature (non-breaking change that adds functionality)
-- [ ] Refactor (non-breaking change that updates existing functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
-- [ ] This change requires a documentation update
-- [ ] Comments have been added/updated
+-   [ ] Bug fix (non-breaking change that fixes an issue)
+-   [ ] New feature (non-breaking change that adds functionality)
+-   [ ] Refactor (non-breaking change that updates existing functionality)
+-   [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
+-   [ ] This change requires a documentation update
+-   [ ] Comments have been added/updated
 
 ## Screenshots/Screencaps
 

@@ -1,15 +1,15 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte'
-  import { goto } from '$app/navigation'
+  import { createEventDispatcher } from 'svelte';
+  import { goto } from '$app/navigation';
 
-  import { appName } from '$lib/app-info'
-  import type { BackupView } from '$lib/views'
+  import { appName } from '$lib/app-info';
+  import type { BackupView } from '$lib/views';
 
-  const dispatch = createEventDispatcher()
+  const dispatch = createEventDispatcher();
 
   const navigate = (view: BackupView) => {
-    dispatch('navigate', { view })
-  }
+    dispatch('navigate', { view });
+  };
 </script>
 
 <div class="modal">
@@ -32,7 +32,7 @@
         Connect a backup device
       </button>
       <button
-        class="btn btn-xs btn-link text-sm underline mt-4"
+        class="btn btn-xs btn-link mt-4 text-sm underline"
         on:click={() => navigate('are-you-sure')}
       >
         Skip for now

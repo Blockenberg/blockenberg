@@ -1,7 +1,7 @@
 <script lang="ts">
-  import LoadingSpinner from '$components/common/LoadingSpinner.svelte'
+  import LoadingSpinner from '$components/common/LoadingSpinner.svelte';
 </script>
 
-<div class="w-full h-screen flex items-center justify-center">
+<div class="flex h-screen w-full items-center justify-center">
   <LoadingSpinner />
 </div>

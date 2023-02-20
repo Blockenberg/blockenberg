@@ -1,17 +1,17 @@
-import { get as getStore } from "svelte/store";
-import * as wn from "webnative";
-import type PublicFile from "webnative/fs/v1/PublicFile";
-import type PrivateFile from "webnative/fs/v1/PrivateFile";
-import { isFile } from "webnative/fs/types/check";
+import { get as getStore } from 'svelte/store';
+import * as wn from 'webnative';
+import type PublicFile from 'webnative/fs/v1/PublicFile';
+import type PrivateFile from 'webnative/fs/v1/PrivateFile';
+import { isFile } from 'webnative/fs/types/check';
 
-import { filesystemStore } from "$src/stores";
-import { AREAS, cmsStore } from "$routes/cms/stores";
-import { addNotification } from "$lib/notifications";
-import { fileToUint8Array } from "$lib/utils";
+import { filesystemStore } from '$src/stores';
+import { AREAS, cmsStore } from '$routes/cms/stores';
+import { addNotification } from '$lib/notifications';
+import { fileToUint8Array } from '$lib/utils';
 
-import { CID } from "multiformats/cid";
-import * as json from "multiformats/codecs/json";
-import { sha256 } from "multiformats/hashes/sha2";
+import { CID } from 'multiformats/cid';
+import * as json from 'multiformats/codecs/json';
+import { sha256 } from 'multiformats/hashes/sha2';
 
 export type Image = {
   cid: string;
@@ -37,7 +37,7 @@ export type ContentDoc = {
   content: string;
   private: boolean;
   updated: number;
-  author:string;
+  author: string;
 };
 
 type Link = {
@@ -45,12 +45,12 @@ type Link = {
 };
 
 export const GALLERY_DIRS = {
-  [AREAS.PUBLIC]: ["public", "gallery"],
-  [AREAS.PRIVATE]: ["private", "gallery"],
+  [AREAS.PUBLIC]: ['public', 'gallery'],
+  [AREAS.PRIVATE]: ['private', 'gallery']
 };
 export const DOCS_DIRS = {
-  [AREAS.PUBLIC]: ["public", "documents"],
-  [AREAS.PRIVATE]: ["private", "documents"],
+  [AREAS.PUBLIC]: ['public', 'documents'],
+  [AREAS.PRIVATE]: ['private', 'documents']
 };
 const FILE_SIZE_LIMIT = 20;
 
@@ -60,7 +60,7 @@ const FILE_SIZE_LIMIT = 20;
 export const getDocsFromWNFS: () => Promise<void> = async () => {
   try {
     // Set loading: true on the cmsStore
-    cmsStore.update((store) => ({ ...store, loading: true }));
+    cmsStore.update(store => ({ ...store, loading: true }));
 
     const { selectedArea } = getStore(cmsStore);
     //console.log(selectedArea);
@@ -76,7 +76,7 @@ export const getDocsFromWNFS: () => Promise<void> = async () => {
     let docs = await Promise.all(
       Object.entries(links).map(async ([name]) => {
         const file = await fs.get(
-          wn.path.file(...DOCS_DIRS[selectedArea], `${name}`),
+          wn.path.file(...DOCS_DIRS[selectedArea], `${name}`)
         );
         //console.log(name);
         //console.log(selectedArea);
@@ -99,7 +99,7 @@ export const getDocsFromWNFS: () => Promise<void> = async () => {
           src = await getImageFromWNFS(image.name);
           //console.log(image);
         } catch {
-          console.info("image not found");
+          console.info('image not found');
         }
         const content = String(decDoc.content);
         const header = String(decDoc.header);
@@ -115,33 +115,33 @@ export const getDocsFromWNFS: () => Promise<void> = async () => {
           private: isPrivate,
           size: (links[name] as Link).size,
           src,
-          content,
+          content
         };
-      }),
+      })
     );
 
     // Sort docs by ctime(created at date)
     // NOTE: this will eventually be controlled via the UI
-    docs = docs.filter((a) => !!a);
+    docs = docs.filter(a => !!a);
     docs.sort((a, b) => b.ctime - a.ctime);
 
     // Push docs to the cmsStore
-    cmsStore.update((store) => ({
+    cmsStore.update(store => ({
       ...store,
       ...(isPrivate
         ? {
-          privateDocuments: docs,
-        }
+            privateDocuments: docs
+          }
         : {
-          publicDocuments: docs,
-        }),
-      loading: false,
+            publicDocuments: docs
+          }),
+      loading: false
     }));
   } catch (error) {
     console.error(error);
-    cmsStore.update((store) => ({
+    cmsStore.update(store => ({
       ...store,
-      loading: false,
+      loading: false
     }));
   }
 };
@@ -151,18 +151,18 @@ export const getDocsFromWNFS: () => Promise<void> = async () => {
  * @param name
  */
 export const getImageFromWNFS: (
-  name: string,
-) => Promise<string> = async (name) => {
+  name: string
+) => Promise<string> = async name => {
   try {
     const fs = getStore(filesystemStore);
     //console.info(fs);
     const imageExists = await fs.exists(
-      wn.path.file(...GALLERY_DIRS[AREAS.PUBLIC], name),
+      wn.path.file(...GALLERY_DIRS[AREAS.PUBLIC], name)
     );
 
     if (imageExists) {
       const file = await fs.get(
-        wn.path.file(...GALLERY_DIRS[AREAS.PUBLIC], name),
+        wn.path.file(...GALLERY_DIRS[AREAS.PUBLIC], name)
       );
       if (!isFile(file)) return null;
       //console.log(file);
@@ -173,7 +173,7 @@ export const getImageFromWNFS: (
     }
   } catch (error) {
     //info - the picture does not have to exist
-    console.info("filesystem issue:", error);
+    console.info('filesystem issue:', error);
   }
 };
 
@@ -182,7 +182,7 @@ export const getImageFromWNFS: (
  * @param name
  */
 export const getDocFromWNFS: (
-  name: string,
+  name: string
 ) => Promise<{
   cid: string;
   ctime: number;
@@ -193,18 +193,16 @@ export const getDocFromWNFS: (
   imgsrc: string;
   imgname: string;
   content: string;
-}> = async (name) => {
+}> = async name => {
   try {
     const { selectedArea } = getStore(cmsStore);
     const fs = getStore(filesystemStore);
     const docExists = await fs.exists(
-      wn.path.file(...DOCS_DIRS[selectedArea], name),
+      wn.path.file(...DOCS_DIRS[selectedArea], name)
     );
 
     if (docExists) {
-      const file = await fs.get(
-        wn.path.file(...DOCS_DIRS[selectedArea], name),
-      );
+      const file = await fs.get(wn.path.file(...DOCS_DIRS[selectedArea], name));
       if (!isFile(file)) return null;
       const isPrivate = selectedArea === AREAS.PRIVATE;
       const cid = isPrivate
@@ -222,7 +220,7 @@ export const getDocFromWNFS: (
         imgsrc = await getImageFromWNFS(imgname);
         //console.log(imagesrc);
       } catch {
-        console.info("image not found");
+        console.info('image not found');
       }
       const content = decodeURI(String(decDoc.content));
       const header = decodeURI(String(decDoc.header));
@@ -240,11 +238,11 @@ export const getDocFromWNFS: (
         private: isPrivate,
         imgsrc,
         imgname,
-        content,
+        content
       };
     }
   } catch (error) {
-    console.error("filesystem issue:", error);
+    console.error('filesystem issue:', error);
   }
 };
 
@@ -254,7 +252,7 @@ export const getDocFromWNFS: (
 export const getImagesFromWNFS: () => Promise<void> = async () => {
   try {
     // Set loading: true on the cmsStore
-    cmsStore.update((store) => ({ ...store, loading: true }));
+    cmsStore.update(store => ({ ...store, loading: true }));
 
     const fs = getStore(filesystemStore);
 
@@ -267,7 +265,7 @@ export const getImagesFromWNFS: () => Promise<void> = async () => {
     let images = await Promise.all(
       Object.entries(links).map(async ([name]) => {
         const file = await fs.get(
-          wn.path.file(...GALLERY_DIRS[AREAS.PUBLIC], `${name}`),
+          wn.path.file(...GALLERY_DIRS[AREAS.PUBLIC], `${name}`)
         );
 
         if (!isFile(file)) return null;
@@ -288,29 +286,29 @@ export const getImagesFromWNFS: () => Promise<void> = async () => {
           name,
           private: false,
           size: (links[name] as Link).size,
-          src,
+          src
         };
-      }),
+      })
     );
 
     // Sort images by ctime(created at date)
     // NOTE: this will eventually be controlled via the UI
-    images = images.filter((a) => !!a);
+    images = images.filter(a => !!a);
     images.sort((a, b) => b.ctime - a.ctime);
 
     // Push images to the cmsStore
-    cmsStore.update((store) => ({
+    cmsStore.update(store => ({
       ...store,
-      ...({
-        publicDocuments: images,
-      }),
-      loading: false,
+      ...{
+        publicDocuments: images
+      },
+      loading: false
     }));
   } catch (error) {
     console.error(error);
-    cmsStore.update((store) => ({
+    cmsStore.update(store => ({
       ...store,
-      loading: false,
+      loading: false
     }));
   }
 };
@@ -322,30 +320,31 @@ export const getImagesFromWNFS: () => Promise<void> = async () => {
 export const uploadDocumentToWNFS: (
   doc: ContentDoc,
   publish: boolean,
-  overwrite: boolean,
+  overwrite: boolean
 ) => Promise<string> = async (doc, publish) => {
   try {
     //console.log(doc);
     const selectedArea = publish ? AREAS.PUBLIC : AREAS.PRIVATE; //we always upload to private
     const fs = getStore(filesystemStore);
     const content = new TextEncoder().encode(JSON.stringify(doc));
-    const filename = doc.CID ||
-      CID.create(1, json.code, await sha256.digest(json.encode(content)))
-        .toString();
+    const filename =
+      doc.CID ||
+      CID.create(
+        1,
+        json.code,
+        await sha256.digest(json.encode(content))
+      ).toString();
 
-    await fs.write(
-      wn.path.file(...DOCS_DIRS[selectedArea], filename),
-      content,
-    );
+    await fs.write(wn.path.file(...DOCS_DIRS[selectedArea], filename), content);
 
     // Announce the changes to the server
     await fs.publish();
 
-    addNotification(`${filename} image has been published`, "success");
+    addNotification(`${filename} image has been published`, 'success');
 
     return String(filename);
   } catch (error) {
-    addNotification(error.message, "error");
+    addNotification(error.message, 'error');
     console.error(error);
   }
 };
@@ -355,8 +354,8 @@ export const uploadDocumentToWNFS: (
  * @param image
  */
 export const uploadImageToWNFS: (
-  image: File,
-) => Promise<string> = async (image) => {
+  image: File
+) => Promise<string> = async image => {
   try {
     console.log(image);
     const selectedArea = AREAS.PUBLIC;
@@ -365,12 +364,12 @@ export const uploadImageToWNFS: (
     // Reject files over 20MB
     const imageSizeInMB = image.size / (1024 * 1024);
     if (imageSizeInMB > FILE_SIZE_LIMIT) {
-      throw new Error("Image can be no larger than 20MB");
+      throw new Error('Image can be no larger than 20MB');
     }
 
     // Reject the upload if the image already exists in the directory
     const imageExists = await fs.exists(
-      wn.path.file(...GALLERY_DIRS[selectedArea], image.name),
+      wn.path.file(...GALLERY_DIRS[selectedArea], image.name)
     );
     if (imageExists) {
       throw new Error(`${image.name} image already exists`);
@@ -379,17 +378,17 @@ export const uploadImageToWNFS: (
     // Create a sub directory and add some content
     await fs.write(
       wn.path.file(...GALLERY_DIRS[selectedArea], image.name),
-      await fileToUint8Array(image),
+      await fileToUint8Array(image)
     );
 
     // Announce the changes to the server
     await fs.publish();
 
-    addNotification(`${image.name} image has been published`, "success");
+    addNotification(`${image.name} image has been published`, 'success');
 
     return image.name;
   } catch (error) {
-    addNotification(error.message, "error");
+    addNotification(error.message, 'error');
     console.error(error);
   }
 };
@@ -399,14 +398,14 @@ export const uploadImageToWNFS: (
  * @param name
  */
 export const deleteImageFromWNFS: (
-  name: string,
-) => Promise<void> = async (name) => {
+  name: string
+) => Promise<void> = async name => {
   try {
     const { selectedArea } = getStore(cmsStore);
     const fs = getStore(filesystemStore);
 
     const imageExists = await fs.exists(
-      wn.path.file(...GALLERY_DIRS[selectedArea], name),
+      wn.path.file(...GALLERY_DIRS[selectedArea], name)
     );
 
     if (imageExists) {
@@ -416,7 +415,7 @@ export const deleteImageFromWNFS: (
       // Announce the changes to the server
       await fs.publish();
 
-      addNotification(`${name} image has been deleted`, "success");
+      addNotification(`${name} image has been deleted`, 'success');
 
       // Refetch images and update cmsStore
       await getImagesFromWNFS();
@@ -424,7 +423,7 @@ export const deleteImageFromWNFS: (
       throw new Error(`${name} image has already been deleted`);
     }
   } catch (error) {
-    addNotification(error.message, "error");
+    addNotification(error.message, 'error');
     console.error(error);
   }
 };
@@ -434,14 +433,14 @@ export const deleteImageFromWNFS: (
  * @param name
  */
 export const deleteDocFromWNFS: (
-  name: string,
-) => Promise<void> = async (name) => {
+  name: string
+) => Promise<void> = async name => {
   try {
     const { selectedArea } = getStore(cmsStore);
     const fs = getStore(filesystemStore);
 
     const imageExists = await fs.exists(
-      wn.path.file(...DOCS_DIRS[selectedArea], name),
+      wn.path.file(...DOCS_DIRS[selectedArea], name)
     );
 
     if (imageExists) {
@@ -451,7 +450,7 @@ export const deleteDocFromWNFS: (
       // Announce the changes to the server
       await fs.publish();
 
-      addNotification(`${name} image has been deleted`, "success");
+      addNotification(`${name} image has been deleted`, 'success');
 
       // Refetch images and update cmsStore
       await getImagesFromWNFS();
@@ -459,7 +458,7 @@ export const deleteDocFromWNFS: (
       throw new Error(`${name} image has already been deleted`);
     }
   } catch (error) {
-    addNotification(error.message, "error");
+    addNotification(error.message, 'error');
     console.error(error);
   }
 };
@@ -468,12 +467,12 @@ export const deleteDocFromWNFS: (
  * Handle uploads made by interacting with the file input directly
  */
 export const handleFileInput: (
-  files: FileList,
-) => Promise<void> = async (files) => {
+  files: FileList
+) => Promise<void> = async files => {
   await Promise.all(
-    Array.from(files).map(async (file) => {
+    Array.from(files).map(async file => {
       await uploadImageToWNFS(file);
-    }),
+    })
   );
 
   // Refetch images and update cmsStore

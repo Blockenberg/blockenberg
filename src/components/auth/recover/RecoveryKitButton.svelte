@@ -1,17 +1,17 @@
 <script lang="ts">
-  import { goto } from '$app/navigation'
+  import { goto } from '$app/navigation';
 
-  import { RECOVERY_STATES } from '$lib/auth/account'
-  import RightArrow from '$components/icons/RightArrow.svelte'
-  import Upload from '$components/icons/Upload.svelte'
+  import { RECOVERY_STATES } from '$lib/auth/account';
+  import RightArrow from '$components/icons/RightArrow.svelte';
+  import Upload from '$components/icons/Upload.svelte';
 
-  export let handleFileInput: (files: FileList) => Promise<void>
-  export let state: RECOVERY_STATES
+  export let handleFileInput: (files: FileList) => Promise<void>;
+  export let state: RECOVERY_STATES;
 
   // Handle files uploaded directly through the file input
-  let files: FileList
+  let files: FileList;
   $: if (files) {
-    handleFileInput(files)
+    handleFileInput(files);
   }
 
   $: buttonData = {
@@ -28,7 +28,7 @@
         $$on_click: () => goto('/')
       }
     }
-  }
+  };
 </script>
 
 {#if state === RECOVERY_STATES.Ready || state === RECOVERY_STATES.Error}
@@ -54,7 +54,7 @@
   >
     {#if state === RECOVERY_STATES.Processing}
       <span
-        class="animate-spin ease-linear rounded-full border-2 border-t-2 border-t-orange-500 border-neutral-900 w-[16px] h-[16px] text-sm"
+        class="h-[16px] w-[16px] animate-spin rounded-full border-2 border-t-2 border-neutral-900 border-t-orange-500 text-sm ease-linear"
       />
     {/if}
     {buttonData[state].text}
