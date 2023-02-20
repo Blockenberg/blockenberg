@@ -33,7 +33,7 @@
   {/if}
 {:else}
   <div
-    class="flex items-center justify-center bg-violet-600 text-gray-50 dark:text-gray-900 uppercase font-bold {sizeClasses}"
+    class="flex items-center justify-center bg-violet-600 text-gray-50 uppercase font-bold {sizeClasses}"
   >
     {$sessionStore.username.trimmed[0]}
   </div>

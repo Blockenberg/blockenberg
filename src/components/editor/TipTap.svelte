@@ -335,7 +335,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <article
 	bind:this={element}
-	class="mx-auto w-full overflow-x-hidden overflow-y-scroll bg-gray-50 {editorcontent
+	class="mx-auto w-full overflow-x-hidden overflow-y-scroll bg-gray-50 mt-1 {editorcontent
 		? 'lg:h-[42rem] md:h-96 opacity-100'
 		: 'lg:h-96'}"
 />

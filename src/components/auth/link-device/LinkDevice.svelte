@@ -25,7 +25,7 @@
 	>
 		<h1 class="text-4xl font-bold leading-none sm:text-5xl">
 			Connect to
-			<span class="dark:text-violet-400">{appName}</span> application
+			<span class="dark:text-violet-600">{appName}</span> application
 		</h1>
 
 		<p class="px-8 my-4 text-lg">Enter following code on the other device:</p>
@@ -40,7 +40,7 @@
 		<div class="flex flex-wrap justify-center mt-4">
 			<button
 				on:click={cancelConnection}
-				class="px-8 py-3 m-2 text-lg font-bold dark:bg-violet-400 dark:text-gray-900"
+				class="px-8 py-3 m-2 text-lg font-bold dark:bg-violet-600 dark:text-gray-900"
 				>Cancel request</button
 			>
 		</div>

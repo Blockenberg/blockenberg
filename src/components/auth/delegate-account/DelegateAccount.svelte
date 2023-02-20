@@ -29,7 +29,7 @@
 	>
 		<h1 class="text-4xl font-bold leading-none sm:text-5xl">
 			New device
-			<span class="dark:text-violet-400">connection</span> requested.
+			<span class="dark:text-violet-600">connection</span> requested.
 		</h1>
 
 		<input

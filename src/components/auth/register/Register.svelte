@@ -121,7 +121,7 @@
 								!usernameAvailable ||
 								checkingUsername}
 							type="submit"
-							class="w-full py-2 font-bold dark:bg-violet-400 dark:text-gray-900 bg-violet-600 hover:bg-violet-500 text-gray-50 disabled:opacity-10 transition-all delay-150 duration-1000"
+							class="w-full py-2 font-bold dark:bg-violet-600 dark:text-gray-900 bg-violet-600 hover:bg-violet-500 text-gray-50 disabled:opacity-10 transition-all delay-150 duration-1000"
 							>Register</button
 						>
 						<button

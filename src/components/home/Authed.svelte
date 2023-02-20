@@ -31,21 +31,21 @@
 	>
 		<h1 class="text-4xl font-bold leading-none sm:text-5xl">
 			Welcome
-			<span class="dark:text-violet-400">{$sessionStore.username.trimmed}</span
+			<span class="dark:text-violet-600">{$sessionStore.username.trimmed}</span
 			>!
 		</h1>
 	</div>
 </section>
-<section class="py-6 sm:py-4 min-h-[calc(100vh-300px)]">
-	<div class="container p-6 mx-auto space-y-8">
+<section class="min-h-[calc(100vh-300px)] py-6 sm:py-4">
+	<div class="container mx-auto space-y-8 p-6">
 		<div class="flex justify-center">
 			{#each Object.keys(AREAS) as area}
 				<button
 					on:click={() => handleChangeTab(AREAS[area])}
 					class="px-4 py-2 font-bold text-gray-900 ease-in {$cmsStore.selectedArea ===
 					AREAS[area]
-						? ' dark:bg-violet-400 text-violet-400 dark:text-gray-900 underline dark:no-underline'
-						: 'dark:text-gray-100'}"
+						? ' border-b-4 border-gray-100 px-4 py-2 text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 dark:border-gray-800 dark:bg-violet-600 dark:text-gray-50 hover:dark:border-gray-800 dark:hover:bg-violet-800 '
+						: 'border-b-4 border-gray-100 transition-all delay-150 duration-1000 hover:border-violet-600 dark:border-gray-800 dark:text-gray-50 hover:dark:border-gray-800 dark:hover:bg-gray-900'}"
 				>
 					{AREAS[area]}
 				</button>

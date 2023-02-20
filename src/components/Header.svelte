@@ -3,10 +3,9 @@
 	import Avatar from "$components/settings/Avatar.svelte";
 	import BrandLogo from "$components/icons/BrandLogo.svelte";
 	let open;
-
 </script>
 
-<header class="container mx-auto flex h-16 items-center justify-between">
+<header class="container mx-auto flex h-16 items-center justify-between font-bold">
 	<a
 		rel="noopener noreferrer"
 		href="/"
@@ -27,7 +26,7 @@
 		{#if !$sessionStore.session}
 			<a
 				href="/register"
-				class="bg-gray-50 px-4 py-2 dark:bg-violet-600 dark:text-gray-900 "
+				class=" border-b-4 border-gray-100 px-4 py-2 text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 dark:border-gray-800 dark:bg-violet-600 dark:text-gray-50 hover:dark:border-gray-800 dark:hover:bg-violet-800 "
 				>Register</a
 			>
 		{/if}
@@ -36,7 +35,7 @@
 		{#if !$sessionStore.loading && $sessionStore.backupCreated === false}
 			<a
 				href="/delegate-account"
-				class="bg-gray-50 px-4 py-2 dark:bg-violet-600 dark:text-gray-900"
+				class=" border-b-4 border-gray-100 px-4 py-2 text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 dark:border-gray-800 dark:bg-violet-600 dark:text-gray-50 hover:dark:border-gray-800 dark:hover:bg-violet-800"
 				>Backup</a
 			>
 		{/if}

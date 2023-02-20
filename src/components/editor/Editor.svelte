@@ -77,11 +77,21 @@
 		<div
 			in:fade
 			out:fly={{ y: -200, duration: 500 }}
-			class="container flex h-60 flex-col items-end justify-end py-4"
-			style="background: no-repeat center/cover url('{preview ||
-				imageContent?.src ||
-				'../placeholder.svg'}')"
+			class="container flex flex-col items-end justify-end py-4"
 		>
+			{#if preview || imageContent.src}
+				<img
+					alt="header"
+					class="mb-1 h-60 w-full object-cover"
+					src={preview || imageContent?.src}
+				/>
+			{:else}
+				<img
+					alt="header"
+					class="object-fit mb-1 h-60 w-full opacity-10"
+					src="../placeholder.svg"
+				/>
+			{/if}
 			<div class="flex space-x-2">
 				{#if galleryModal}
 					<label
@@ -89,7 +99,7 @@
 						class="flex cursor-pointer flex-col items-center justify-center object-cover"
 					>
 						<span
-							class="flex bg-gray-50 px-4 py-2 dark:bg-violet-400 dark:text-gray-900"
+							class="flex bg-gray-50 px-4 py-2 dark:bg-violet-600 dark:text-gray-900"
 							><svg
 								xmlns="http://www.w3.org/2000/svg"
 								viewBox="0 0 20 20"
@@ -117,7 +127,7 @@
 					/>
 				{/if}
 				<button
-					class="bg-gray-50 px-4 py-2 dark:bg-violet-400 dark:text-gray-900"
+					class="bg-gray-50 px-4 py-2 transition-all delay-150 duration-1000 hover:-hue-rotate-15 dark:bg-violet-600 dark:text-gray-50"
 					on:click={() =>
 						galleryModal ? (galleryModal = false) : (galleryModal = true)}
 				>
@@ -155,7 +165,7 @@
 				{#if tags.length > 0}
 					{#each tags as tag}
 						<div
-							class="self-start px-3 py-1 text-sm dark:bg-violet-400 dark:text-gray-900"
+							class="self-start px-3 py-1 text-sm dark:bg-violet-600 dark:text-gray-900"
 						>
 							{tag}
 						</div>
@@ -200,18 +210,18 @@
 	<div class="w-full transition-all delay-150 duration-1000">
 		<TipTap bind:editorcontent={contentText} />
 	</div>
-	<div class="container flex justify-between">
+	<div class="container flex justify-between font-bold">
 		<div>
 			<button
 				on:click={() => uploadDoc(false)}
 				disabled={!contentHeader || !contentText}
-				class="bg-gray-50 px-4 py-2 transition-all delay-150 duration-1000 disabled:opacity-10 dark:bg-violet-400 dark:text-gray-900"
+				class=" border-b-4 border-gray-100 px-4 py-2 text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 dark:border-gray-800 dark:bg-violet-600 dark:text-gray-50 hover:dark:border-gray-800 dark:hover:bg-violet-800"
 				>Save</button
 			>
 			<button
 				on:click={() => uploadDoc(true)}
 				disabled={!contentHeader || !contentText}
-				class="bg-gray-50 px-4 py-2 transition-all  delay-150 duration-1000 disabled:opacity-10 dark:text-gray-900"
+				class="border-b-4 border-gray-100 px-4 py-2 transition-all delay-150 duration-1000 hover:border-violet-600 disabled:opacity-10  dark:border-gray-800 dark:bg-gray-300 dark:text-gray-900 dark:hover:border-gray-800 dark:hover:bg-gray-50 dark:hover:text-violet-600"
 				>Publish</button
 			>
 		</div>
@@ -221,7 +231,7 @@
 				goto("/");
 			}}
 			disabled={!contentHeader || !contentText}
-			class="bg-gray-50 px-4 py-2 transition-all  delay-150 duration-1000 disabled:opacity-10 dark:text-gray-900"
+			class="border-b-4 border-gray-100 px-4 py-2 transition-all delay-150 duration-1000 hover:border-violet-600 disabled:opacity-10  dark:border-gray-800 dark:bg-gray-300 dark:text-gray-900 dark:hover:border-gray-800 dark:hover:bg-gray-50 dark:hover:text-violet-600"
 			>Delete</button
 		>
 	</div>

@@ -33,7 +33,7 @@
 					<div class="flex">
 						<div class="flex-shrink-0">
 							<div
-								class="flex h-12 w-12 items-center justify-center  dark:bg-violet-400 dark:text-gray-900"
+								class="flex h-12 w-12 items-center justify-center  dark:bg-violet-600 dark:text-gray-900"
 							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -63,7 +63,7 @@
 					<div class="flex">
 						<div class="flex-shrink-0">
 							<div
-								class="flex h-12 w-12 items-center justify-center  dark:bg-violet-400 dark:text-gray-900"
+								class="flex h-12 w-12 items-center justify-center  dark:bg-violet-600 dark:text-gray-900"
 							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -94,7 +94,7 @@
 					<div class="flex">
 						<div class="flex-shrink-0">
 							<div
-								class="flex h-12 w-12 items-center justify-center  dark:bg-violet-400 dark:text-gray-900"
+								class="flex h-12 w-12 items-center justify-center  dark:bg-violet-600 dark:text-gray-900"
 							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -151,7 +151,7 @@
 						<div class="flex">
 							<div class="flex-shrink-0">
 								<div
-									class="flex h-12 w-12 items-center justify-center  dark:bg-violet-400 dark:text-gray-900"
+									class="flex h-12 w-12 items-center justify-center  dark:bg-violet-600 dark:text-gray-900"
 								>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -182,7 +182,7 @@
 						<div class="flex">
 							<div class="flex-shrink-0">
 								<div
-									class="flex h-12 w-12 items-center justify-center  dark:bg-violet-400 dark:text-gray-900"
+									class="flex h-12 w-12 items-center justify-center  dark:bg-violet-600 dark:text-gray-900"
 								>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -217,7 +217,7 @@
 						<div class="flex">
 							<div class="flex-shrink-0">
 								<div
-									class="flex h-12 w-12 items-center justify-center  dark:bg-violet-400 dark:text-gray-900"
+									class="flex h-12 w-12 items-center justify-center  dark:bg-violet-600 dark:text-gray-900"
 								>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -272,7 +272,7 @@
 					<div class="flex">
 						<div class="flex-shrink-0">
 							<div
-								class="flex h-12 w-12 items-center justify-center  dark:bg-violet-400 dark:text-gray-900"
+								class="flex h-12 w-12 items-center justify-center  dark:bg-violet-600 dark:text-gray-900"
 							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -303,7 +303,7 @@
 					<div class="flex">
 						<div class="flex-shrink-0">
 							<div
-								class="flex h-12 w-12 items-center justify-center  dark:bg-violet-400 dark:text-gray-900"
+								class="flex h-12 w-12 items-center justify-center  dark:bg-violet-600 dark:text-gray-900"
 							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -334,7 +334,7 @@
 					<div class="flex">
 						<div class="flex-shrink-0">
 							<div
-								class="flex h-12 w-12 items-center justify-center  dark:bg-violet-400 dark:text-gray-900"
+								class="flex h-12 w-12 items-center justify-center  dark:bg-violet-600 dark:text-gray-900"
 							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
