@@ -45,7 +45,7 @@ module.exports = {
     '@typescript-eslint/semi': ['error', 'always'],
     '@typescript-eslint/quotes': [
       'error',
-      'double',
+      'single',
       {
         allowTemplateLiterals: true
       }

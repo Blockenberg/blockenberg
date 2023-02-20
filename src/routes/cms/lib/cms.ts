@@ -355,9 +355,14 @@ export const uploadDocumentToWNFS: (
  */
 export const uploadImageToWNFS: (
   image: File
-) => Promise<string> = async image => {
+) => Promise<{
+  cid: string;
+  name: string;
+  size: number;
+  src: string;
+}> = async image => {
   try {
-    console.log(image);
+    //console.log(image);
     const selectedArea = AREAS.PUBLIC;
     const fs = getStore(filesystemStore);
 
@@ -384,9 +389,15 @@ export const uploadImageToWNFS: (
     // Announce the changes to the server
     await fs.publish();
 
+    const newfile = await fs.get(
+      wn.path.file(...GALLERY_DIRS[selectedArea], image.name)
+    );
+
+    const cid = (newfile as PublicFile).cid.toString();
+
     addNotification(`${image.name} image has been published`, 'success');
 
-    return image.name;
+    return { cid, name: image.name, size: image.size, src: '' };
   } catch (error) {
     addNotification(error.message, 'error');
     console.error(error);

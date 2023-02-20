@@ -17,7 +17,7 @@
   let preview;
   export let currenttags;
   $: tags = currenttags || [];
-  export let imageContent = { name: '', src: null };
+  export let imageContent = { name: '', cid: '', src: '' };
   export let contentHeader: string, contentText: string, CID: string;
   $: showheader = !contentHeader || !contentText;
   //console.log(contentText);
@@ -29,7 +29,8 @@
 
   async function uploadImg(file: File) {
     const uploadres = await uploadImageToWNFS(file);
-    imageContent.name = uploadres;
+    //console.log(file);
+    imageContent = uploadres;
     galleryModal = false;
   }
 
@@ -99,7 +100,7 @@
             class="flex cursor-pointer flex-col items-center justify-center object-cover"
           >
             <span
-              class="flex bg-gray-50 px-4 py-2 dark:bg-violet-600 dark:text-gray-900"
+              class="font-bold text-sm flex bg-gray-50 px-4 py-3 transition-all delay-150 duration-1000 hover:-hue-rotate-15 dark:bg-violet-600 dark:text-gray-50"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -185,7 +186,7 @@
                 clip-rule="evenodd"
               />
             </svg>
-             Using default tag "blog".
+            Using default tag "blog".
           </a>
         {/if}
       </div>
