@@ -11,6 +11,7 @@
   import TipTap from './TipTap.svelte';
   import { tick } from 'svelte';
   import { fade, fly } from 'svelte/transition';
+  import sanitizeHtml from 'sanitize-html';
 
   // Handle files uploaded directly through the file input
   let files: FileList;
@@ -41,7 +42,7 @@
       CID: CID,
       header: contentHeader,
       tags,
-      content: contentText,
+      content: sanitizeHtml(contentText),
       private: !publish,
       updated: Date.now(),
       author: $sessionStore.username.trimmed[0]

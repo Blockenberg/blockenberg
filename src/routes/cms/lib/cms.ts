@@ -4,7 +4,11 @@ import type PublicFile from 'webnative/fs/v1/PublicFile';
 import type PrivateFile from 'webnative/fs/v1/PrivateFile';
 import { isFile } from 'webnative/fs/types/check';
 
-import { filesystemStore } from '$src/stores';
+import {
+  filesystemStore,
+  accountSettingsStore,
+  sessionStore
+} from '$src/stores';
 import { AREAS, cmsStore } from '$routes/cms/stores';
 import { addNotification } from '$lib/notifications';
 import { fileToUint8Array } from '$lib/utils';
@@ -53,6 +57,9 @@ export const DOCS_DIRS = {
   [AREAS.PRIVATE]: ['private', 'documents']
 };
 const FILE_SIZE_LIMIT = 20;
+
+const userSettings = getStore(accountSettingsStore);
+const sessionSettings = getStore(sessionStore);
 
 /**
  * Get docs from the user's WNFS
@@ -224,7 +231,7 @@ export const getDocFromWNFS: (
       }
       const content = decodeURI(String(decDoc.content));
       const header = decodeURI(String(decDoc.header));
-      console.log(cid, name);
+      //console.log(cid, name);
       const ctime = isPrivate
         ? (file as PrivateFile).header.metadata.unixMeta.ctime
         : (file as PublicFile).header.metadata.unixMeta.ctime;
@@ -324,7 +331,7 @@ export const uploadDocumentToWNFS: (
 ) => Promise<string> = async (doc, publish) => {
   try {
     //console.log(doc);
-    const selectedArea = publish ? AREAS.PUBLIC : AREAS.PRIVATE; //we always upload to private
+    const selectedArea = publish ? AREAS.PUBLIC : AREAS.PRIVATE;
     const fs = getStore(filesystemStore);
     const content = new TextEncoder().encode(JSON.stringify(doc));
     const filename =
@@ -340,6 +347,21 @@ export const uploadDocumentToWNFS: (
     // Announce the changes to the server
     await fs.publish();
 
+    //call hook if any
+    console.log(userSettings.hook);
+    const hookUrl = userSettings.hook;
+    if (hookUrl && publish) {
+      const newfile = await fs.get(
+        wn.path.file(...DOCS_DIRS[selectedArea], filename)
+      );
+
+      const cid = publish
+        ? (newfile as PublicFile).cid.toString()
+        : (newfile as PrivateFile).header.content.toString();
+
+      const hookResult = await callHook(hookUrl, cid);
+    }
+
     addNotification(`${filename} file has been published`, 'success');
 
     return String(filename);
@@ -350,7 +372,7 @@ export const uploadDocumentToWNFS: (
 };
 
 /**
- * Upload an image to the user's private  WNFS
+ * Upload an image to the user's public WNFS
  * @param image
  */
 export const uploadImageToWNFS: (
@@ -429,7 +451,7 @@ export const deleteImageFromWNFS: (
       addNotification(`${name} image has been deleted`, 'success');
 
       // Refetch images and update cmsStore
-      await getDocsFromWNFS();
+      await getImagesFromWNFS();
     } else {
       throw new Error(`${name} image has already been deleted`);
     }
@@ -440,7 +462,7 @@ export const deleteImageFromWNFS: (
 };
 
 /**
- * Delete an image from the user's private or public WNFS
+ * Delete a doc from the user's private or public WNFS
  * @param name
  */
 export const deleteDocFromWNFS: (
@@ -464,7 +486,7 @@ export const deleteDocFromWNFS: (
       addNotification(`${name} document has been deleted`, 'success');
 
       // Refetch images and update cmsStore
-      await getImagesFromWNFS();
+      await getDocsFromWNFS();
     } else {
       throw new Error(`${name} document has already been deleted`);
     }
@@ -489,3 +511,19 @@ export const handleFileInput: (
   // Refetch images and update cmsStore
   await getImagesFromWNFS();
 };
+async function callHook(hookurl: string, cid: string) {
+  console.log(cid);
+  try {
+    const response = await fetch(hookurl, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json;charset=UTF-8',
+        'x-blocken-signature': sessionSettings.username.hashed
+      },
+      body: JSON.stringify({ article: cid })
+    });
+    return await response.ok;
+  } catch (e) {
+    console.log(e);
+  }
+}

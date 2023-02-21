@@ -94,6 +94,7 @@ export const getFlagsFromWNFS = async (): Promise<void> => {
         ...store,
         loading: false
       }));
+      console.info('settings dir not found');
       return;
     }
 
@@ -121,7 +122,7 @@ export const getFlagsFromWNFS = async (): Promise<void> => {
  * Upload flags to the user's private WNFS
  * @param flags
  */
-export const setHookInWNFS = async (hook: string): Promise<void> => {
+export const setHookInWNFS = async (hook: string): Promise<boolean> => {
   try {
     // Set loading: true on the accountSettingsStore
     accountSettingsStore.update(store => ({ ...store, loading: true }));
@@ -142,6 +143,7 @@ export const setHookInWNFS = async (hook: string): Promise<void> => {
       ...store,
       loading: false
     }));
+    return true;
   } catch (error) {
     addNotification(error.message, 'error');
     console.error(error);
@@ -149,6 +151,7 @@ export const setHookInWNFS = async (hook: string): Promise<void> => {
       ...store,
       loading: false
     }));
+    return false;
   }
 };
 

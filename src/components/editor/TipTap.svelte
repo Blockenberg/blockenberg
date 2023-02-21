@@ -3,6 +3,7 @@
   import { Editor } from '@tiptap/core';
   import StarterKit from '@tiptap/starter-kit';
   import Image from '@tiptap/extension-image';
+  import Link from '@tiptap/extension-link';
   let dialog;
   let imgurl;
   let element;
@@ -20,7 +21,7 @@
   onMount(() => {
     editor = new Editor({
       element: element,
-      extensions: [StarterKit, Image],
+      extensions: [StarterKit, Image, Link],
       editorProps: {
         attributes: {
           class: 'prose xl:prose-lg m-5 focus:outline-none max-w-none'
