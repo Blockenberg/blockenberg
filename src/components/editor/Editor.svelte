@@ -100,7 +100,7 @@
             class="flex cursor-pointer flex-col items-center justify-center object-cover"
           >
             <span
-              class="font-bold text-sm flex bg-gray-50 px-4 py-3 transition-all delay-150 duration-1000 hover:-hue-rotate-15 dark:bg-violet-600 dark:text-gray-50"
+              class="flex bg-gray-50 px-4 py-3 text-sm font-bold transition-all delay-150 duration-1000 hover:-hue-rotate-15 dark:bg-violet-600 dark:text-gray-50"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -165,12 +165,15 @@
       />
       <div class="flex space-x-2">
         {#if tags.length > 0}
-          {#each tags as tag}
-            <div
-              class="self-start px-3 py-1 text-sm dark:bg-violet-600 dark:text-gray-900"
+          {#each tags as tag, i}
+            <button
+              on:click={() => {
+                tags = [];
+              }}
+              class="self-start px-3 py-1 text-sm dark:bg-violet-600 dark:text-gray-50"
             >
               {tag}
-            </div>
+            </button>
           {/each}
         {:else}
           <a href="/about#tags" class="flex self-start px-3 py-1 text-sm">
@@ -218,7 +221,7 @@
       <button
         on:click={() => uploadDoc(false)}
         disabled={!contentHeader || !contentText}
-        class=" border-b-4 border-gray-100 px-4 py-2 text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 dark:border-gray-800 dark:bg-violet-600 dark:text-gray-50 hover:dark:border-gray-800 dark:hover:bg-violet-800"
+        class=" border-b-4 border-gray-100 px-4 py-2 text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 disabled:opacity-10 dark:border-gray-800 dark:bg-violet-600 dark:text-gray-50 hover:dark:border-gray-800 dark:hover:bg-violet-800"
       >
         Save
       </button>

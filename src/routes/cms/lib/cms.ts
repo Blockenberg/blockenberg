@@ -340,7 +340,7 @@ export const uploadDocumentToWNFS: (
     // Announce the changes to the server
     await fs.publish();
 
-    addNotification(`${filename} image has been published`, 'success');
+    addNotification(`${filename} file has been published`, 'success');
 
     return String(filename);
   } catch (error) {
@@ -429,7 +429,7 @@ export const deleteImageFromWNFS: (
       addNotification(`${name} image has been deleted`, 'success');
 
       // Refetch images and update cmsStore
-      await getImagesFromWNFS();
+      await getDocsFromWNFS();
     } else {
       throw new Error(`${name} image has already been deleted`);
     }
@@ -461,12 +461,12 @@ export const deleteDocFromWNFS: (
       // Announce the changes to the server
       await fs.publish();
 
-      addNotification(`${name} image has been deleted`, 'success');
+      addNotification(`${name} document has been deleted`, 'success');
 
       // Refetch images and update cmsStore
       await getImagesFromWNFS();
     } else {
-      throw new Error(`${name} image has already been deleted`);
+      throw new Error(`${name} document has already been deleted`);
     }
   } catch (error) {
     addNotification(error.message, 'error');
