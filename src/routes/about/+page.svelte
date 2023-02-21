@@ -211,7 +211,7 @@
                   >
                     sample client
                   </a>
-                   that is capable of getting data directly from your computer without
+                  that is capable of getting data directly from your computer without
                   relying on any server infrastructure.
                 </p>
               </div>
@@ -446,7 +446,7 @@
             >
               Developer DAO website
             </a>
-             is a great example of how Blockenberg can be used to create a custom
+            is a great example of how Blockenberg can be used to create a custom
             website with editable content. On the main page, you'll find a "call
             to action" block, values and mission blocks, and an alert bar with sliding
             text. The website also includes a blog that's written in a different
@@ -511,6 +511,25 @@
           your developers understand how to render the content in the
           appropriate part of your website or application. If you're not sure
           how to use tags, it's okay to leave them empty for now.
+        </p>
+      </div>
+      <div class="space-y-2 py-6 md:grid md:grid-cols-12 md:gap-8 md:space-y-0">
+        <h3 class="font-semibold md:col-span-5">Publishing Webhooks</h3>
+        <p class="md:col-span-7 md:pl-0" id="hooks">
+          When you publish content in Blockenberg, a webhook is triggered and
+          sent to your website, notifying it that the content has changed. This
+          webhook can then be used to rebuild your website, or call a backend
+          service to invalidate the cache, depending on how your website is set
+          up to consume the content. For example, if you're using a Next.js
+          client with Blockenberg, there is an incremental build mechanism
+          available that you can use as a reference. Essentially, when the
+          webhook is triggered, it can be set up to rebuild only the necessary
+          parts of your website that have changed, instead of rebuilding the
+          entire site from scratch. This can help to save time and resources,
+          while still ensuring that your website stays up-to-date with the
+          latest content from Blockenberg. Overall, webhooks are a powerful tool
+          for keeping your website in sync with your content in Blockenberg, and
+          can help to streamline your content publishing process.
         </p>
       </div>
     </div>
