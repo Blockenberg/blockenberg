@@ -19,7 +19,7 @@
             <span class="font-medium dark:text-gray-50">
               Headless and decentralized.
             </span>
-            The ultimate CMS for censorship resistant, decentralized world.
+            The unstoppable CMS for censorship resistant, decentralized world.
           </p>
           <form
             class="ng-untouched ng-pristine ng-valid space-y-3 self-stretch"
@@ -36,16 +36,16 @@
                 </p>
               </div>
             {:else}
-              <div class="flex flex-wrap justify-center">
+              <div class="flex flex-wrap justify-center font-bold">
                 <a
                   href="/register"
-                  class="m-2 bg-violet-600 px-8 py-3  text-lg text-gray-50 hover:bg-violet-500"
+                  class="m-2 border-b-4 border-gray-50 px-8 py-3 text-lg text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 dark:border-gray-900 dark:bg-violet-600 dark:text-gray-50 hover:dark:border-gray-900 dark:hover:bg-violet-800 "
                 >
                   Register
                 </a>
                 <a
                   href="/recover"
-                  class="m-2 border border-gray-300 px-8 py-3  text-lg text-gray-900 hover:bg-violet-100 dark:text-gray-50"
+                  class="m-2 border-b-4 border-gray-50 px-8 py-3 text-lg text-gray-800 transition-all delay-150 duration-1000 hover:border-violet-600 dark:border-gray-900 dark:text-gray-50 hover:dark:border-gray-900 dark:hover:bg-violet-800 "
                 >
                   Recover
                 </a>
@@ -100,8 +100,8 @@
             </div>
             <p class="text-2xl ">
               <b>Deploy anywhere.</b>
-              Build your app, use your favorite framework, deploy on your
-              favorite service.
+              Build your app, use your favorite framework, deploy on your favorite
+              service.
             </p>
           </div>
         </div>
@@ -116,16 +116,18 @@
           class="flex w-full flex-col items-center space-y-8 p-6 dark:bg-gray-900 lg:h-full lg:p-8 "
         >
           <img
-            src="https://upload.wikimedia.org/wikipedia/en/7/72/Mark_Wing-Davey_as_Zaphod_Beeblebrox.jpg"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Remise_du_Prix_Sakharov_%C3%A0_Aung_San_Suu_Kyi_Strasbourg_22_octobre_2013-18.jpg/320px-Remise_du_Prix_Sakharov_%C3%A0_Aung_San_Suu_Kyi_Strasbourg_22_octobre_2013-18.jpg"
             alt=""
             class="h-20 w-20 bg-violet-600 object-cover text-gray-100 dark:bg-gray-500"
           />
           <blockquote class="max-w-lg text-center text-lg font-medium italic">
-            "Future of CMS!"
+            “To view the opposition as dangerous is to misunderstand the basic
+            concepts of democracy. To oppress the opposition is to assault the
+            very foundation of democracy.”
           </blockquote>
           <div class="text-center dark:text-gray-400">
-            <p>Zaphod Beeblebrox</p>
-            <p>President</p>
+            <p>Aung San Suu Kyi</p>
+            <p>Burmese Disident</p>
           </div>
         </div>
         <div class="space-y-8 p-8 dark:bg-gray-900 lg:col-span-full lg:py-12">
@@ -147,6 +149,8 @@
             (and Lincoln) belive that those who deny freedom to others deserve
             it not for themselves.
           </p>
+          <br />
+          <a class="hover:underline" href="/about">Read more &gt;</a>
         </div>
       </section>
       <section>
@@ -161,15 +165,20 @@
               class="space-y-6 bg-gray-50 p-6 dark:bg-gray-900 md:flex md:flex-col lg:p-8"
             >
               <span
-                class="self-start bg-violet-600 px-3 py-1 text-sm text-gray-100 dark:bg-violet-600 dark:text-gray-900"
+                class="self-start bg-violet-600 px-3 py-1 text-sm text-gray-100 dark:bg-violet-600 dark:text-gray-50"
               >
                 Technology
               </span>
-              <h2 class="text-3xl font-bold md:flex-1">
-                Creating a censorship resistant website.
+              <h2 class="text-5xl font-bold md:flex-1">
+                <a
+                  class="hover:underline"
+                  href="https://cms-blockenberg.vercel.app/"
+                >
+                  Next.js ISR sample blog template is live!
+                </a>
               </h2>
               <div>
-                <p class="dark:text-gray-400">January 22, 2023</p>
+                <p class="dark:text-gray-400">Feb 22, 2023</p>
                 <p class="dark:text-gray-400">By Adam Sobotka</p>
               </div>
             </div>
@@ -204,13 +213,21 @@
         </div>
       </section>
       <section>
-        <div class="container mx-auto p-6 py-20 dark:bg-gray-900 lg:px-8">
-          <h2 class="text-center text-5xl font-bold">
-            Our team is here to help you.
-          </h2>
+        <div
+          class="container mx-auto p-6 py-20 text-center dark:bg-gray-900 lg:px-8"
+        >
+          <h2 class=" text-5xl font-bold">Our team is here to help you.</h2>
+          <p class="mt-6">
+            Looking to build a website but not sure where to start? Look no
+            further. With Blockenberg, we're here to help. Our Content
+            Management System (CMS) is a powerful text editor that allows you to
+            create and customize your website to your exact specifications.
+            Whether you're looking to build a sleek portfolio, an online store,
+            or a video tutorial site, Blockenberg has got you covered.
+          </p>
           <div class="flex justify-center p-4">
-            <a rel="noopener noreferrer" href="mailto:adamsobotka@duck.com">
-              Meet our crew &gt;
+            <a rel="noopener noreferrer " href="mailto:adamsobotka@duck.com">
+              Get in touch with Adam &gt;
             </a>
           </div>
           <img
