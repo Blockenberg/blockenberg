@@ -1,25 +1,6 @@
-<svg
-  xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 700 700"
-  class="h-6 w-6  text-violet-600 dark:text-gray-50"
->
-  <path
-    fill="none"
-    stroke="currentColor"
-    stroke-miterlimit="10"
-    d="m272 528-140 50 50-140 318-318 90 90-318 318Z"
-    style="stroke-width:20px"
-  />
-  <path
-    fill="none"
-    stroke="currentColor"
-    stroke-miterlimit="10"
-    d="m590 210-90-90a64 64 0 1 1 90 90ZM182 438l90 90M227 393l90 90M272 348l90 90M317 303l90 90M362 258l90 90M407 213l90 90M452 168l90 90M500 120l-45-45-138 138"
-    style="stroke-width:20px"
-  />
-  <path
-    fill="currentColor"
-    d="m97 370 26 67H70l27-67Z"
-    transform="rotate(-136 159 462)"
-  />
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"   class="h-6 w-6  text-violet-600 dark:text-gray-50">
+
+  <path fill="currentColor" d="m122 119 25-92 111 30-21 79v113l34-74 105 49 20 93-18 67-58 33-62 36-130-60 14-30V124l-20-5Zm61 236-5-2-5 12 98 45 12-7-87-41V95l19 5 3-12-52-14-3 12 20 5v264Zm143-90 23 100 10-6-22-103-58-27-5 12 52 24Zm-89 73 74 34-18-81-56-27v74Z" style="line-height:210.588px;white-space:pre"/>
 </svg>
