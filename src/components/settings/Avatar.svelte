@@ -26,7 +26,7 @@
     </div>
   {:else}
     <img
-      class="border-base-content border-2 object-cover {sizeClasses}"
+      class="object-cover bg-violet-600 {sizeClasses}"
       src={$accountSettingsStore.avatar.src}
       alt="User Avatar"
     />

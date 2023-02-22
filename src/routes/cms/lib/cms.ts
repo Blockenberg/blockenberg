@@ -80,6 +80,8 @@ export const getDocsFromWNFS: () => Promise<void> = async () => {
     // Get list of links for files in the gallery dir
     const links = await fs.ls(path);
 
+    //console.log(links);
+
     let docs = await Promise.all(
       Object.entries(links).map(async ([name]) => {
         const file = await fs.get(
@@ -100,7 +102,6 @@ export const getDocsFromWNFS: () => Promise<void> = async () => {
         const decDoc = JSON.parse(new TextDecoder().decode(file.content));
         let src;
         const imageFragment = decDoc.image;
-        //console.log(imageFragment);
         try {
           const image = JSON.parse(decodeURI(imageFragment));
           src = await getImageFromWNFS(image.name);
@@ -345,7 +346,8 @@ export const uploadDocumentToWNFS: (
     await fs.write(wn.path.file(...DOCS_DIRS[selectedArea], filename), content);
 
     // Announce the changes to the server
-    await fs.publish();
+    //await fs.publish();
+    await updateDataRoot(fs);
 
     //call hook if any
     console.log(userSettings.hook);
@@ -359,7 +361,7 @@ export const uploadDocumentToWNFS: (
         ? (newfile as PublicFile).cid.toString()
         : (newfile as PrivateFile).header.content.toString();
 
-      const hookResult = await callHook(hookUrl, cid);
+      await callHook(hookUrl, cid);
     }
 
     addNotification(`${filename} file has been published`, 'success');
@@ -526,4 +528,15 @@ async function callHook(hookurl: string, cid: string) {
   } catch (e) {
     console.log(e);
   }
+}
+
+async function updateDataRoot(
+  fs: wn.FileSystem
+): Promise<{ success: boolean }> {
+  const { program } = await getStore(sessionStore);
+  const { reference } = await program.components;
+
+  const fsUcan = await reference.repositories.ucans.lookupFilesystemUcan('*');
+  if (!fsUcan) throw new Error('Couldn\'t find an appropriate UCAN');
+  return reference.dataRoot.update(await fs.root.put(), fsUcan);
 }

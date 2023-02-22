@@ -27,7 +27,6 @@
       getDocsFromWNFS();
     }
   });
-
   onDestroy(() => {
     unsubscribecmsStore();
     unsubscribeSessionStore();

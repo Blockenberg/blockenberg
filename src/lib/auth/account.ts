@@ -11,7 +11,7 @@ import { filesystemStore, sessionStore } from '../../stores';
 import { getBackupStatus } from '$lib/auth/backup';
 import { ACCOUNT_SETTINGS_DIR } from '$lib/account-settings';
 import { AREAS } from '$routes/cms/stores';
-import { GALLERY_DIRS } from '$routes/cms/lib/cms';
+import { GALLERY_DIRS, DOCS_DIRS } from '$routes/cms/lib/cms';
 
 export const USERNAME_STORAGE_KEY = 'fullUsername';
 
@@ -99,6 +99,8 @@ export const register = async (hashedUsername: string): Promise<boolean> => {
 const initializeFilesystem = async (fs: FileSystem): Promise<void> => {
   await fs.mkdir(webnative.path.directory(...GALLERY_DIRS[AREAS.PUBLIC]));
   await fs.mkdir(webnative.path.directory(...GALLERY_DIRS[AREAS.PRIVATE]));
+  await fs.mkdir(webnative.path.directory(...DOCS_DIRS[AREAS.PUBLIC]));
+  await fs.mkdir(webnative.path.directory(...DOCS_DIRS[AREAS.PRIVATE]));
   await fs.mkdir(webnative.path.directory(...ACCOUNT_SETTINGS_DIR));
 };
 

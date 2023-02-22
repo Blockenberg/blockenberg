@@ -44,8 +44,8 @@
           on:click={() => handleChangeTab(AREAS[area])}
           class="px-4 py-2 font-bold text-gray-900 ease-in {$cmsStore.selectedArea ===
           AREAS[area]
-            ? ' border-b-4 border-gray-100 px-4 py-2 text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 dark:border-gray-800 dark:bg-violet-600 dark:text-gray-50 hover:dark:border-gray-800 dark:hover:bg-violet-800 '
-            : 'border-b-4 border-gray-100 transition-all delay-150 duration-1000 hover:border-violet-600 dark:border-gray-800 dark:text-gray-50 hover:dark:border-gray-800 dark:hover:bg-gray-900'}"
+            ? ' border-b-4 border-gray-100 px-4 py-2 text-violet-600 transition-all delay-150 duration-300 hover:border-violet-600 dark:border-gray-800 dark:bg-violet-600 dark:text-gray-50 hover:dark:border-gray-800 dark:hover:bg-violet-800 '
+            : 'border-b-4 border-gray-100 transition-all delay-150 duration-300 hover:border-violet-600 dark:border-gray-800 dark:text-gray-50 hover:dark:border-gray-800 dark:hover:bg-gray-900'}"
         >
           {AREAS[area]}
         </button>
