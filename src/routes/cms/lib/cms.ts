@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/quotes */
 import { get as getStore } from 'svelte/store';
 import * as wn from 'webnative';
 import type PublicFile from 'webnative/fs/v1/PublicFile';
@@ -64,13 +65,12 @@ const sessionSettings = getStore(sessionStore);
 /**
  * Get docs from the user's WNFS
  */
-export const getDocsFromWNFS: () => Promise<void> = async () => {
+export const getDocsFromWNFS: () => Promise<boolean> = async () => {
   try {
     // Set loading: true on the cmsStore
     cmsStore.update(store => ({ ...store, loading: true }));
 
     const { selectedArea } = getStore(cmsStore);
-    //console.log(selectedArea);
     const isPrivate = selectedArea === AREAS.PRIVATE;
     const fs = getStore(filesystemStore);
 
@@ -145,12 +145,14 @@ export const getDocsFromWNFS: () => Promise<void> = async () => {
           }),
       loading: false
     }));
+    return docs.length > 0;
   } catch (error) {
     console.error(error);
     cmsStore.update(store => ({
       ...store,
       loading: false
     }));
+    return false;
   }
 };
 
@@ -537,6 +539,6 @@ async function updateDataRoot(
   const { reference } = await program.components;
 
   const fsUcan = await reference.repositories.ucans.lookupFilesystemUcan('*');
-  if (!fsUcan) throw new Error('Couldn\'t find an appropriate UCAN');
+  if (!fsUcan) throw new Error("Couldn't find an appropriate UCAN");
   return reference.dataRoot.update(await fs.root.put(), fsUcan);
 }

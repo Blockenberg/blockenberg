@@ -50,7 +50,7 @@
   {#if $sessionStore.loading}
     <FullScreenLoadingSpinner />
   {:else}
-    <div class="flex min-h-screen flex-col justify-between">
+    <div class="flex min-h-screen flex-col justify-between p-2">
       <Header />
       <slot />
       <Footer />
