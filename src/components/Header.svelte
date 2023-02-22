@@ -2,6 +2,7 @@
   import { sessionStore } from '../stores';
   import Avatar from '$components/settings/Avatar.svelte';
   import BrandLogo from '$components/icons/BrandLogo.svelte';
+  import Toggle from '$components/settings/DarkToggle.svelte';
   let open;
 </script>
 
@@ -25,6 +26,7 @@
         <a rel="noopener noreferrer" href="/about">About</a>
       </div>
     {/if}
+    <Toggle />
     {#if !$sessionStore.session}
       <a
         href="/register"

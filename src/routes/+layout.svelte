@@ -8,6 +8,15 @@
   import FullScreenLoadingSpinner from '$components/common/FullScreenLoadingSpinner.svelte';
   import Header from '$components/Header.svelte';
   import Footer from '$components/Footer.svelte';
+  import { browser } from '$app/environment';
+
+  if (browser) {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }
 
   sessionStore.subscribe(session => {
     if (session.error) {
