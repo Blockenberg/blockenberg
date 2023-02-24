@@ -38,7 +38,7 @@
   async function uploadDoc(publish: boolean) {
     //console.log(imageContent);
     const doc: ContentDoc = {
-      image: JSON.stringify(imageContent),
+      image: JSON.stringify({ name: imageContent.name, cid: imageContent.cid }),
       CID: CID,
       header: contentHeader,
       tags,
@@ -49,7 +49,7 @@
     };
     //console.log(doc);
 
-    uploadDocumentToWNFS(doc, publish, true).then(() => goto('/'));
+    uploadDocumentToWNFS(doc, publish).then(() => goto('/'));
   }
 
   function getBase64(image: Blob) {

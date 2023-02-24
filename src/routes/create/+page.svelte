@@ -6,7 +6,7 @@
 
 {#if $sessionStore?.session}
   <Create
-    imageContent={{ name: '', src: null }}
+    imageContent={{ name: '', src: null, cid: null }}
     contentHeader=""
     contentText=""
     CID={null}

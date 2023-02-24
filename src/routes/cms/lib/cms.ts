@@ -14,16 +14,10 @@ import { AREAS, cmsStore } from '$routes/cms/stores';
 import { addNotification } from '$lib/notifications';
 import { fileToUint8Array } from '$lib/utils';
 
-import { CID } from 'multiformats/cid';
-import * as json from 'multiformats/codecs/json';
-import { sha256 } from 'multiformats/hashes/sha2';
-
 export type Image = {
   cid: string;
   ctime: number;
   name: string;
-  private: boolean;
-  size: number;
   src: string;
 };
 
@@ -100,11 +94,11 @@ export const getDocsFromWNFS: () => Promise<boolean> = async () => {
 
         // Create a blob to use as the image `src`
         const decDoc = JSON.parse(new TextDecoder().decode(file.content));
-        let src;
+        let img: Image;
         const imageFragment = decDoc.image;
         try {
           const image = JSON.parse(decodeURI(imageFragment));
-          src = await getImageFromWNFS(image.name);
+          img = await getImageFromWNFS(image.name);
           //console.log(image);
         } catch {
           console.info('image not found');
@@ -122,7 +116,7 @@ export const getDocsFromWNFS: () => Promise<boolean> = async () => {
           header,
           private: isPrivate,
           size: (links[name] as Link).size,
-          src,
+          src: img.src,
           content
         };
       })
@@ -162,7 +156,7 @@ export const getDocsFromWNFS: () => Promise<boolean> = async () => {
  */
 export const getImageFromWNFS: (
   name: string
-) => Promise<string> = async name => {
+) => Promise<Image> = async name => {
   try {
     const fs = getStore(filesystemStore);
     //console.info(fs);
@@ -175,9 +169,16 @@ export const getImageFromWNFS: (
         wn.path.file(...GALLERY_DIRS[AREAS.PUBLIC], name)
       );
       if (!isFile(file)) return null;
-      //console.log(file);
-      const blob = new Blob([file.content]);
-      return URL.createObjectURL(blob);
+      const wnimage = file as PublicFile;
+      const blob = new Blob([wnimage.content]);
+      const img: Image = {
+        cid: wnimage.cid.toString(),
+        ctime: wnimage.header.metadata.unixMeta.mtime,
+        name: name,
+        src: URL.createObjectURL(blob)
+      };
+      //console.log(img);
+      return img;
     } else {
       throw new Error(`${name} doesn't exist`);
     }
@@ -200,8 +201,7 @@ export const getDocFromWNFS: (
   header: string;
   tags: string[];
   private: boolean;
-  imgsrc: string;
-  imgname: string;
+  img: Image;
   content: string;
 }> = async name => {
   try {
@@ -221,13 +221,12 @@ export const getDocFromWNFS: (
 
       // Create a blob to use as the image `src`
       const decDoc = JSON.parse(new TextDecoder().decode(file.content));
-      let imgsrc, imgname: string;
+      let img: Image;
       const imageFragment = decDoc.image;
       //console.log(decDoc);
       try {
         const image = JSON.parse(decodeURI(imageFragment));
-        imgname = image.name;
-        imgsrc = await getImageFromWNFS(imgname);
+        img = await getImageFromWNFS(image.name);
         //console.log(imagesrc);
       } catch {
         console.info('image not found');
@@ -246,8 +245,7 @@ export const getDocFromWNFS: (
         header,
         tags: decDoc.tags,
         private: isPrivate,
-        imgsrc,
-        imgname,
+        img,
         content
       };
     }
@@ -329,21 +327,14 @@ export const getImagesFromWNFS: () => Promise<void> = async () => {
  */
 export const uploadDocumentToWNFS: (
   doc: ContentDoc,
-  publish: boolean,
-  overwrite: boolean
+  publish: boolean
 ) => Promise<string> = async (doc, publish) => {
   try {
-    //console.log(doc);
+    console.log(doc);
     const selectedArea = publish ? AREAS.PUBLIC : AREAS.PRIVATE;
     const fs = getStore(filesystemStore);
     const content = new TextEncoder().encode(JSON.stringify(doc));
-    const filename =
-      doc.CID ||
-      CID.create(
-        1,
-        json.code,
-        await sha256.digest(json.encode(content))
-      ).toString();
+    const filename = doc.CID || crypto.randomUUID();
 
     await fs.write(wn.path.file(...DOCS_DIRS[selectedArea], filename), content);
 
@@ -391,6 +382,7 @@ export const uploadImageToWNFS: (
     //console.log(image);
     const selectedArea = AREAS.PUBLIC;
     const fs = getStore(filesystemStore);
+    const saneName = image.name.replace(/\W/g, '');
 
     // Reject files over 20MB
     const imageSizeInMB = image.size / (1024 * 1024);
@@ -400,15 +392,15 @@ export const uploadImageToWNFS: (
 
     // Reject the upload if the image already exists in the directory
     const imageExists = await fs.exists(
-      wn.path.file(...GALLERY_DIRS[selectedArea], image.name)
+      wn.path.file(...GALLERY_DIRS[selectedArea], saneName)
     );
     if (imageExists) {
-      throw new Error(`${image.name} image already exists`);
+      throw new Error(`${saneName} image already exists`);
     }
 
     // Create a sub directory and add some content
     await fs.write(
-      wn.path.file(...GALLERY_DIRS[selectedArea], image.name),
+      wn.path.file(...GALLERY_DIRS[selectedArea], saneName),
       await fileToUint8Array(image)
     );
 
@@ -416,14 +408,14 @@ export const uploadImageToWNFS: (
     await fs.publish();
 
     const newfile = await fs.get(
-      wn.path.file(...GALLERY_DIRS[selectedArea], image.name)
+      wn.path.file(...GALLERY_DIRS[selectedArea], saneName)
     );
 
     const cid = (newfile as PublicFile).cid.toString();
 
-    addNotification(`${image.name} image has been published`, 'success');
+    addNotification(`${saneName} image has been published`, 'success');
 
-    return { cid, name: image.name, size: image.size, src: '' };
+    return { cid, name: saneName, size: image.size, src: '' };
   } catch (error) {
     addNotification(error.message, 'error');
     console.error(error);

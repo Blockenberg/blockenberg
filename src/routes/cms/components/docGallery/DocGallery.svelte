@@ -15,7 +15,7 @@
 
     if (selectedArea !== updatedStore.selectedArea) {
       selectedArea = updatedStore.selectedArea;
-      docsInArea = await getDocsFromWNFS();
+      await getDocsFromWNFS();
     }
   });
 
@@ -33,7 +33,6 @@
   });
 </script>
 
-{#if docsInArea}
   <div
     class="container mx-auto grid grid-cols-1 justify-center gap-6 p-6 py-20 text-center dark:bg-gray-800 sm:grid-cols-2 lg:grid-cols-4 lg:px-8"
   >
@@ -71,10 +70,9 @@
       </a>
     {/each}
   </div>
-{:else}
   <section>
     <div
-      class="container mx-auto p-6 py-20 text-center dark:bg-gray-900 lg:px-8"
+      class="container mx-auto p-6 py-20 text-center dark:bg-gray-900 lg:px-8 hidden"
     >
       <div>
         <a
@@ -97,4 +95,3 @@
       />
     </div>
   </section>
-{/if}
