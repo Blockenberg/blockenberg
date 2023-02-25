@@ -340,12 +340,12 @@ export const uploadDocumentToWNFS: (
 
     // Announce the changes to the server
     //await fs.publish();
-    await updateDataRoot(fs);
 
     //call hook if any
-    console.log(userSettings.hook);
+    //console.log(userSettings.hook);
     const hookUrl = userSettings.hook;
     if (hookUrl && publish) {
+      await updateDataRoot(fs);
       const newfile = await fs.get(
         wn.path.file(...DOCS_DIRS[selectedArea], filename)
       );
@@ -355,6 +355,8 @@ export const uploadDocumentToWNFS: (
         : (newfile as PrivateFile).header.content.toString();
 
       await callHook(hookUrl, cid);
+    } else {
+      await fs.publish();
     }
 
     addNotification(`${filename} file has been published`, 'success');
