@@ -32,7 +32,6 @@
     <h1 class="text-4xl font-bold leading-none sm:text-5xl">
       Welcome
       <span class="dark:text-violet-600">{$sessionStore.username.trimmed}</span>
-      !
     </h1>
   </div>
 </section>

@@ -9,6 +9,7 @@
   import Header from '$components/Header.svelte';
   import Footer from '$components/Footer.svelte';
   import { browser } from '$app/environment';
+  import Analytics from '$components/common/Analytics.svelte';
 
   if (browser) {
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -50,6 +51,7 @@
   {#if $sessionStore.loading}
     <FullScreenLoadingSpinner />
   {:else}
+    <Analytics />
     <div class="flex min-h-screen flex-col justify-between p-2">
       <Header />
       <slot />
