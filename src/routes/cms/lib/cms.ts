@@ -180,7 +180,14 @@ export const getImageFromWNFS: (
       //console.log(img);
       return img;
     } else {
-      throw new Error(`${name} doesn't exist`);
+      //console.info('returning placeholder');
+      const img: Image = {
+        cid: 'noimage',
+        ctime: null,
+        name: name,
+        src: 'https://source.unsplash.com/random/600x350/?abstract'
+      };
+      return img;
     }
   } catch (error) {
     //info - the picture does not have to exist
