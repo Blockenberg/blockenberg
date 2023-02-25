@@ -94,6 +94,7 @@ export const getDocsFromWNFS: () => Promise<boolean> = async () => {
 
         // Create a blob to use as the image `src`
         const decDoc = JSON.parse(new TextDecoder().decode(file.content));
+        //console.log(decDoc);
         let img: Image;
         const imageFragment = decDoc.image;
         try {
@@ -517,7 +518,7 @@ export const handleFileInput: (
   await getImagesFromWNFS();
 };
 async function callHook(hookurl: string, cid: string) {
-  console.log(cid);
+  //console.log(cid);
   try {
     const response = await fetch(hookurl, {
       method: 'POST',

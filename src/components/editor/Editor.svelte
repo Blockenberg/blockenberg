@@ -12,6 +12,7 @@
   import { tick } from 'svelte';
   import { fade, fly } from 'svelte/transition';
   import sanitizeHtml from 'sanitize-html';
+  import placeholder from '$lib/assets/placeholder.svg';
 
   // Handle files uploaded directly through the file input
   let files: FileList;
@@ -91,7 +92,7 @@
         <img
           alt="header"
           class="object-fit mb-1 h-60 w-full opacity-10"
-          src="../placeholder.svg"
+          src={placeholder}
         />
       {/if}
       <div class="flex space-x-2">
