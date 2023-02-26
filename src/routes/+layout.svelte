@@ -47,7 +47,7 @@
   <meta name="twitter:image:alt" content={appName} />
 </svelte:head>
 
-<div class="bg-gray-100 dark:bg-gray-800 dark:text-gray-100">
+<div class="bg-stone-100 dark:bg-stone-800 dark:text-stone-100">
   {#if $sessionStore.loading}
     <FullScreenLoadingSpinner />
   {:else}

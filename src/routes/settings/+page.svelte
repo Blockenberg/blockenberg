@@ -15,14 +15,14 @@
         <div class="mt-10 flex flex-col sm:flex-row">
           <div class="text-center sm:w-1/3 sm:py-8 sm:pr-8">
             <div
-              class="inline-flex h-20 w-20 items-center justify-center rounded-full bg-gray-800 text-gray-600"
+              class="inline-flex h-20 w-20 items-center justify-center rounded-full bg-stone-800 text-stone-600"
             >
               <AvatarUpload />
             </div>
             <Username />
           </div>
           <div
-            class="mt-4 border-t border-gray-800 pt-4 text-center sm:mt-0 sm:w-2/3 sm:border-l sm:border-t-0 sm:py-8 sm:pl-8 sm:text-left"
+            class="mt-4 border-t border-stone-800 pt-4 text-center sm:mt-0 sm:w-2/3 sm:border-l sm:border-t-0 sm:py-8 sm:pl-8 sm:text-left"
           >
             <div class="flex flex-col space-y-8">
               <ConnectedDevices />

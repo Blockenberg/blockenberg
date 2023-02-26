@@ -41,7 +41,7 @@
     <div class="mt-4 flex flex-wrap justify-center">
       <button
         on:click={cancelConnection}
-        class="m-2 px-8 py-3 text-lg font-bold dark:bg-violet-600 dark:text-gray-900"
+        class="m-2 px-8 py-3 text-lg font-bold dark:bg-violet-600 dark:text-stone-900"
       >
         Cancel request
       </button>

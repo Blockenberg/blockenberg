@@ -3423,7 +3423,7 @@ body[dir='rtl'] .checkbox[checked='true'] {
   color: hsl(var(--p) / var(--tw-text-opacity));
 }
 
-.text-gray-700 {
+.text-stone-700 {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity));
 }

@@ -186,7 +186,7 @@ export const getImageFromWNFS: (
         cid: 'noimage',
         ctime: null,
         name: name,
-        src: 'https://source.unsplash.com/random/600x350/?abstract'
+        src: 'emptypic.svg'
       };
       return img;
     }

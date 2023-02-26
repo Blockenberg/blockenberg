@@ -7,16 +7,16 @@
     <div class="container mx-auto space-y-16">
       <section class="grid gap-6 text-center lg:grid-cols-2 xl:grid-cols-5">
         <div
-          class="w-full bg-gray-50 p-6 dark:bg-gray-900 sm:p-16 xl:col-span-2"
+          class="w-full bg-stone-50 p-6 dark:bg-stone-900 sm:p-16 xl:col-span-2"
         >
           <span class="mb-2 block dark:text-violet-600">
             Blockenberg content management system
           </span>
-          <h1 class="text-5xl font-bold dark:text-gray-50">
+          <h1 class="text-5xl font-bold dark:text-stone-50">
             Publish with Blockenberg
           </h1>
           <p class="my-8">
-            <span class="font-medium dark:text-gray-50">
+            <span class="font-medium dark:text-stone-50">
               Headless and decentralized.
             </span>
             The unstoppable CMS for censorship resistant, decentralized world.
@@ -25,7 +25,7 @@
             class="ng-untouched ng-pristine ng-valid space-y-3 self-stretch"
           >
             {#if $sessionStore.error === 'Unsupported Browser'}
-              <div class="bg-base-content p-4 text-gray-50">
+              <div class="bg-base-content p-4 text-stone-50">
                 <p class="flex items-center gap-2 text-base">
                   Unsupported device
                 </p>
@@ -39,13 +39,13 @@
               <div class="flex flex-wrap justify-center font-bold">
                 <a
                   href="/register"
-                  class="m-2 border-b-4 border-gray-50 px-8 py-3 text-lg text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 dark:border-gray-900 dark:bg-violet-600 dark:text-gray-50 hover:dark:border-gray-900 dark:hover:bg-violet-800 "
+                  class="m-2 border-b-4 border-stone-50 px-8 py-3 text-lg text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 dark:border-stone-900 dark:bg-violet-600 dark:text-stone-50 hover:dark:border-stone-900 dark:hover:bg-violet-800 "
                 >
                   Register
                 </a>
                 <a
                   href="/recover"
-                  class="m-2 border-b-4 border-gray-50 px-8 py-3 text-lg text-gray-800 transition-all delay-150 duration-1000 hover:border-violet-600 dark:border-gray-900 dark:text-gray-50 hover:dark:border-gray-900 dark:hover:bg-violet-800 "
+                  class="m-2 border-b-4 border-stone-50 px-8 py-3 text-lg text-stone-800 transition-all delay-150 duration-1000 hover:border-violet-600 dark:border-stone-900 dark:text-stone-50 hover:dark:border-stone-900 dark:hover:bg-violet-800 "
                 >
                   Recover
                 </a>
@@ -56,7 +56,7 @@
         <img
           src="https://images.unsplash.com/photo-1523115191856-c203e76215a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=480&q=80"
           alt="freedom"
-          class="h-40 w-full bg-gray-50 object-cover dark:bg-gray-500 md:h-[500px] xl:col-span-3"
+          class="h-40 w-full bg-stone-50 object-cover dark:bg-stone-500 md:h-[500px] xl:col-span-3"
         />
       </section>
       <section>
@@ -65,13 +65,13 @@
         >
           How it works
         </span>
-        <h2 class="text-5xl font-bold dark:text-gray-50 lg:text-center">
+        <h2 class="text-5xl font-bold dark:text-stone-50 lg:text-center">
           Building with Blockenberg is simple
         </h2>
         <div class="my-16 grid gap-6 lg:grid-cols-3">
-          <div class="flex flex-col space-y-4 bg-gray-50 p-8 dark:bg-gray-900">
+          <div class="flex flex-col space-y-4 bg-stone-50 p-8 dark:bg-stone-900">
             <div
-              class="flex h-12 w-12 flex-shrink-0 items-center justify-center bg-violet-600 text-xl font-bold text-gray-100 dark:bg-violet-600 dark:text-gray-900"
+              class="flex h-12 w-12 flex-shrink-0 items-center justify-center bg-violet-600 text-xl font-bold text-stone-100 dark:bg-violet-600 dark:text-stone-900"
             >
               1
             </div>
@@ -80,9 +80,9 @@
               Blockenberg publish your data to your decentralized account.
             </p>
           </div>
-          <div class="flex flex-col space-y-4 bg-gray-50 p-8 dark:bg-gray-900">
+          <div class="flex flex-col space-y-4 bg-stone-50 p-8 dark:bg-stone-900">
             <div
-              class="flex h-12 w-12 flex-shrink-0 items-center justify-center bg-violet-600 text-xl font-bold text-gray-100 dark:bg-violet-600 dark:text-gray-900"
+              class="flex h-12 w-12 flex-shrink-0 items-center justify-center bg-violet-600 text-xl font-bold text-stone-100 dark:bg-violet-600 dark:text-stone-900"
             >
               2
             </div>
@@ -92,9 +92,9 @@
               world of development.
             </p>
           </div>
-          <div class="flex flex-col space-y-4 bg-gray-50 p-8 dark:bg-gray-900">
+          <div class="flex flex-col space-y-4 bg-stone-50 p-8 dark:bg-stone-900">
             <div
-              class="flex h-12 w-12 flex-shrink-0 items-center justify-center bg-violet-600 text-xl font-bold text-gray-100 dark:bg-violet-600 dark:text-gray-900"
+              class="flex h-12 w-12 flex-shrink-0 items-center justify-center bg-violet-600 text-xl font-bold text-stone-100 dark:bg-violet-600 dark:text-stone-900"
             >
               3
             </div>
@@ -110,29 +110,29 @@
         <img
           src="https://images.unsplash.com/reserve/rV1ymXsoQRCKUBVL2fGK_forsplash.jpg?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80"
           alt=""
-          class="max-h-96 w-full bg-gray-50 object-cover dark:bg-gray-500"
+          class="max-h-96 w-full bg-stone-50 object-cover dark:bg-stone-500"
         />
         <div
-          class="flex w-full flex-col items-center space-y-8 p-6 dark:bg-gray-900 lg:h-full lg:p-8 "
+          class="flex w-full flex-col items-center space-y-8 p-6 dark:bg-stone-900 lg:h-full lg:p-8 "
         >
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Remise_du_Prix_Sakharov_%C3%A0_Aung_San_Suu_Kyi_Strasbourg_22_octobre_2013-18.jpg/320px-Remise_du_Prix_Sakharov_%C3%A0_Aung_San_Suu_Kyi_Strasbourg_22_octobre_2013-18.jpg"
             alt=""
-            class="h-20 w-20 bg-violet-600 object-cover text-gray-100 dark:bg-gray-500"
+            class="h-20 w-20 bg-violet-600 object-cover text-stone-100 dark:bg-stone-500"
           />
           <blockquote class="max-w-lg text-center text-lg font-medium italic">
             “To view the opposition as dangerous is to misunderstand the basic
             concepts of democracy. To oppress the opposition is to assault the
             very foundation of democracy.”
           </blockquote>
-          <div class="text-center dark:text-gray-400">
+          <div class="text-center dark:text-stone-400">
             <p>Aung San Suu Kyi</p>
             <p>Burmese Disident</p>
           </div>
         </div>
-        <div class="space-y-8 p-8 dark:bg-gray-900 lg:col-span-full lg:py-12">
-          <h2 class="text-5xl font-bold dark:text-gray-50">Create with us</h2>
-          <p class="dark:text-gray-400">
+        <div class="space-y-8 p-8 dark:bg-stone-900 lg:col-span-full lg:py-12">
+          <h2 class="text-5xl font-bold dark:text-stone-50">Create with us</h2>
+          <p class="dark:text-stone-400">
             We provide the content creation interface. If you are familiar with
             WordPress, we are the "admin". In order to display your page, you
             need an application - this is the "headless" principle. You can
@@ -159,13 +159,13 @@
             <img
               src="https://images.unsplash.com/photo-1517061391662-b09454c10462?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2133&q=80"
               alt=""
-              class="h-auto max-h-96 w-full bg-gray-50 object-cover dark:bg-gray-500"
+              class="h-auto max-h-96 w-full bg-stone-50 object-cover dark:bg-stone-500"
             />
             <div
-              class="space-y-6 bg-gray-50 p-6 dark:bg-gray-900 md:flex md:flex-col lg:p-8"
+              class="space-y-6 bg-stone-50 p-6 dark:bg-stone-900 md:flex md:flex-col lg:p-8"
             >
               <span
-                class="self-start bg-violet-600 px-3 py-1 text-sm text-gray-100 dark:bg-violet-600 dark:text-gray-50"
+                class="self-start bg-violet-600 px-3 py-1 text-sm text-stone-100 dark:bg-violet-600 dark:text-stone-50"
               >
                 Technology
               </span>
@@ -178,17 +178,17 @@
                 </a>
               </h2>
               <div>
-                <p class="dark:text-gray-400">Feb 22, 2023</p>
-                <p class="dark:text-gray-400">By Adam Sobotka</p>
+                <p class="dark:text-stone-400">Feb 22, 2023</p>
+                <p class="dark:text-stone-400">By Adam Sobotka</p>
               </div>
             </div>
           </div>
           <div
-            class="flex justify-center bg-gray-50 p-6 dark:bg-gray-900 lg:p-8 lg:py-12 "
+            class="flex justify-center bg-stone-50 p-6 dark:bg-stone-900 lg:p-8 lg:py-12 "
           >
             <a
               href="https://cms-blockenberg.vercel.app/"
-              class="flex font-medium text-violet-600 dark:text-gray-50 hover:underline"
+              class="flex font-medium text-violet-600 dark:text-stone-50 hover:underline"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -222,11 +222,11 @@
             </a>
           </div>
           <div
-            class="flex justify-center bg-gray-50 p-6 dark:bg-gray-900 lg:p-8 lg:py-12"
+            class="flex justify-center bg-stone-50 p-6 dark:bg-stone-900 lg:p-8 lg:py-12"
           >
             <a
               href="https://blockenblog.netlify.app/"
-              class=" flex font-medium text-violet-600 dark:text-gray-50 hover:underline"
+              class=" flex font-medium text-violet-600 dark:text-stone-50 hover:underline"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -251,11 +251,11 @@
             </a>
           </div>
           <div
-            class="flex justify-center bg-gray-50 p-6 dark:bg-gray-900 lg:p-8 lg:py-12"
+            class="flex justify-center bg-stone-50 p-6 dark:bg-stone-900 lg:p-8 lg:py-12"
           >
             <a
               href="https://blockenblog.surge.sh/"
-              class="flex font-medium text-violet-600 dark:text-gray-50 hover:underline"
+              class="flex font-medium text-violet-600 dark:text-stone-50 hover:underline"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -283,7 +283,7 @@
       </section>
       <section>
         <div
-          class="container mx-auto p-6 py-20 text-center dark:bg-gray-900 lg:px-8"
+          class="container mx-auto p-6 py-20 text-center dark:bg-stone-900 lg:px-8"
         >
           <h2 class=" text-5xl font-bold">Our team is here to help you.</h2>
           <p class="mt-6">
@@ -302,7 +302,7 @@
           <img
             src="https://images.unsplash.com/photo-1500405079076-d1d5a841e112?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2196&q=80"
             alt=""
-            class="mt-8 h-auto max-h-96 w-full rounded object-cover dark:bg-gray-500"
+            class="mt-8 h-auto max-h-96 w-full rounded object-cover dark:bg-stone-500"
           />
         </div>
       </section>

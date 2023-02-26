@@ -6,7 +6,7 @@
         aria-label="Email"
         rel="noopener noreferrer"
         href="mailto:adamsobotka@duck.com"
-        class="flex items-center justify-center dark:text-gray-400"
+        class="flex items-center justify-center dark:text-stone-400"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +24,7 @@
         aria-label="Twitter"
         rel="noopener noreferrer"
         href="https://twitter.com/vorcigernix"
-        class="flex items-center justify-center dark:text-gray-400"
+        class="flex items-center justify-center dark:text-stone-400"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +41,7 @@
         aria-label="Github"
         rel="noopener noreferrer"
         href="https://github.com/vorcigernix"
-        class="flex items-center justify-center dark:text-gray-400"
+        class="flex items-center justify-center dark:text-stone-400"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

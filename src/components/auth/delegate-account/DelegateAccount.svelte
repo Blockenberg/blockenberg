@@ -36,7 +36,7 @@
     <input
       id="pin"
       type="text"
-      class=" my-8 w-2/3 text-center text-3xl text-gray-900 focus:ring focus:ring-violet-600 {pinError
+      class=" my-8 w-2/3 text-center text-3xl text-stone-900 focus:ring focus:ring-violet-600 {pinError
         ? '!text-red-500 ring-red-500'
         : ''}"
       maxlength="6"

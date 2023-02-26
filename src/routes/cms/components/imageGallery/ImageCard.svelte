@@ -9,11 +9,11 @@
 
 <button
   on:click={handleOpenModal}
-  class="group mx-auto max-w-sm bg-gray-50 hover:no-underline focus:no-underline dark:bg-gray-900"
+  class="group mx-auto max-w-sm bg-stone-50 hover:no-underline focus:no-underline dark:bg-stone-900"
 >
   <img
     role="presentation"
-    class="h-44 w-full object-cover dark:bg-gray-500"
+    class="h-44 w-full object-cover dark:bg-stone-500"
     alt={`Gallery Image: ${image.name}`}
     src={image.src}
   />

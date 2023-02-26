@@ -60,7 +60,7 @@
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          class="h-5 w-5 text-gray-900 dark:text-gray-50"
+          class="h-5 w-5 text-stone-900 dark:text-stone-50"
         >
           <path fill="none" d="M0 0h24v24H0z" />
           <path
@@ -79,7 +79,7 @@
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          class="h-5 w-5 text-gray-900 dark:text-gray-50"
+          class="h-5 w-5 text-stone-900 dark:text-stone-50"
         >
           <path fill="none" d="M0 0h24v24H0z" />
           <path
@@ -98,7 +98,7 @@
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          class="h-5 w-5 text-gray-900 dark:text-gray-50"
+          class="h-5 w-5 text-stone-900 dark:text-stone-50"
         >
           <path fill="none" d="M0 0h24v24H0z" />
           <path
@@ -117,7 +117,7 @@
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          class="h-5 w-5 text-gray-900 dark:text-gray-50"
+          class="h-5 w-5 text-stone-900 dark:text-stone-50"
         >
           <path fill="none" d="M0 0h24v24H0z" />
           <path
@@ -130,7 +130,7 @@
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          class="h-5 w-5 text-gray-900 dark:text-gray-50"
+          class="h-5 w-5 text-stone-900 dark:text-stone-50"
         >
           <path fill="none" d="M0 0h24v24H0z" />
           <path
@@ -148,7 +148,7 @@
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          class="h-5 w-5 text-gray-900 dark:text-gray-50"
+          class="h-5 w-5 text-stone-900 dark:text-stone-50"
         >
           <path fill="none" d="M0 0h24v24H0z" />
           <path
@@ -167,7 +167,7 @@
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          class="h-5 w-5 text-gray-900 dark:text-gray-50"
+          class="h-5 w-5 text-stone-900 dark:text-stone-50"
         >
           <path fill="none" d="M0 0H24V24H0z" />
           <path
@@ -186,7 +186,7 @@
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          class="h-5 w-5 text-gray-900 dark:text-gray-50"
+          class="h-5 w-5 text-stone-900 dark:text-stone-50"
         >
           <path fill="none" d="M0 0H24V24H0z" />
           <path
@@ -205,7 +205,7 @@
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          class="h-5 w-5 text-gray-900 dark:text-gray-50"
+          class="h-5 w-5 text-stone-900 dark:text-stone-50"
         >
           <path fill="none" d="M0 0H24V24H0z" />
           <path
@@ -224,7 +224,7 @@
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          class="h-5 w-5 text-gray-900 dark:text-gray-50"
+          class="h-5 w-5 text-stone-900 dark:text-stone-50"
         >
           <path fill="none" d="M0 0H24V24H0z" />
           <path
@@ -242,7 +242,7 @@
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          class="h-5 w-5 text-gray-900 dark:text-gray-50"
+          class="h-5 w-5 text-stone-900 dark:text-stone-50"
         >
           <path fill="none" d="M0 0h24v24H0z" />
           <path
@@ -260,7 +260,7 @@
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          class="h-5 w-5 text-gray-900 dark:text-gray-50"
+          class="h-5 w-5 text-stone-900 dark:text-stone-50"
         >
           <path fill="none" d="M0 0h24v24H0z" />
           <path
@@ -273,7 +273,7 @@
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          class="h-5 w-5 text-gray-900 dark:text-gray-50"
+          class="h-5 w-5 text-stone-900 dark:text-stone-50"
         >
           <path fill="none" d="M0 0h24v24H0z" />
           <path
@@ -291,7 +291,7 @@
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          class="h-5 w-5 text-gray-900 dark:text-gray-50"
+          class="h-5 w-5 text-stone-900 dark:text-stone-50"
         >
           <path fill="none" d="M0 0h24v24H0z" />
           <path
@@ -307,7 +307,7 @@
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          class="h-5 w-5 text-gray-900 dark:text-gray-50"
+          class="h-5 w-5 text-stone-900 dark:text-stone-50"
         >
           <path fill="none" d="M0 0h24v24H0z" />
           <path
@@ -323,7 +323,7 @@
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          class="h-5 w-5 text-gray-900 dark:text-gray-50"
+          class="h-5 w-5 text-stone-900 dark:text-stone-50"
         >
           <path fill="none" d="M0 0h24v24H0z" />
           <path
@@ -337,14 +337,14 @@
 {/if}
 <dialog
   id="urlDialog"
-  class="h-screen w-full bg-gray-50 backdrop:bg-gray-50 dark:bg-gray-900 dark:backdrop:bg-gray-900 "
+  class="h-screen w-full bg-stone-50 backdrop:bg-stone-50 dark:bg-stone-900 dark:backdrop:bg-stone-900 "
   bind:this={dialog}
   on:close={() => loadImage()}
 >
   <form method="dialog">
     <p>
       <input
-        class="container mx-auto border-none bg-gray-50 p-4 text-gray-900 focus:ring-gray-900 dark:bg-gray-700/50 dark:text-gray-50 focus:dark:bg-gray-700"
+        class="container mx-auto border-none bg-stone-50 p-4 text-stone-900 focus:ring-stone-900 dark:bg-stone-700/50 dark:text-stone-50 focus:dark:bg-stone-700"
         type="url"
         placeholder="image url..."
         bind:value={imgurl}
@@ -352,7 +352,7 @@
     </p>
     <div class="container mt-2 flex justify-end space-x-2">
       <button
-        class="bg-gray-50 px-4 py-2 transition-all delay-150 duration-1000 disabled:opacity-10 dark:bg-violet-600 dark:text-gray-900"
+        class="bg-stone-50 px-4 py-2 transition-all delay-150 duration-1000 disabled:opacity-10 dark:bg-violet-600 dark:text-stone-900"
         value="cancel"
         on:click={() => (imgurl = null)}
       >
@@ -360,7 +360,7 @@
       </button>
       <button
         disabled={!imgurl}
-        class="bg-gray-50 px-4 py-2 transition-all  delay-150 duration-1000 disabled:opacity-10 dark:text-gray-900"
+        class="bg-stone-50 px-4 py-2 transition-all  delay-150 duration-1000 disabled:opacity-10 dark:text-stone-900"
         id="confirmBtn"
         value="default"
       >
@@ -372,7 +372,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <article
   bind:this={element}
-  class="mx-auto mt-1 w-full overflow-x-hidden overflow-y-scroll bg-gray-50 {editorcontent
+  class="mx-auto mt-1 w-full overflow-x-hidden overflow-y-scroll bg-stone-50 {editorcontent
     ? 'opacity-100 md:h-96 lg:h-[42rem]'
     : 'lg:h-96'}"
 />

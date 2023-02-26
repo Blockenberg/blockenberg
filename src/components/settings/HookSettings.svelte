@@ -39,10 +39,10 @@
   }
 </script>
 
-<h2 class="mt-4 text-3xl font-bold text-gray-50">Publishing Webhook</h2>
+<h2 class="mt-4 text-3xl font-bold text-stone-50">Publishing Webhook</h2>
 {#if $accountSettingsStore.loading}
   <div
-    class="container mx-auto border-none bg-gray-50 p-2 text-gray-900 focus:ring-gray-900 dark:bg-gray-700/50 dark:text-gray-50 focus:dark:bg-gray-900"
+    class="container mx-auto border-none bg-stone-50 p-2 text-stone-900 focus:ring-stone-900 dark:bg-stone-700/50 dark:text-stone-50 focus:dark:bg-stone-900"
   >
     loading
   </div>
@@ -50,7 +50,7 @@
   <input
     type="text"
     bind:value={$accountSettingsStore.hook}
-    class="container mx-auto border-none bg-gray-50 p-2 text-gray-900 focus:ring-gray-900 dark:bg-gray-700/50 dark:text-gray-50 focus:dark:bg-gray-900"
+    class="container mx-auto border-none bg-stone-50 p-2 text-stone-900 focus:ring-stone-900 dark:bg-stone-700/50 dark:text-stone-50 focus:dark:bg-stone-900"
     placeholder="Webhook URL"
   />
 {/if}
@@ -58,7 +58,7 @@
   <button
     on:click={() => validateHook($accountSettingsStore.hook)}
     disabled={hookstatus}
-    class="border-b-4 border-gray-100 px-4 py-2 font-bold text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 disabled:opacity-10 dark:border-gray-800 dark:bg-violet-600 dark:text-gray-50 hover:dark:border-gray-800 dark:hover:bg-violet-800"
+    class="border-b-4 border-stone-100 px-4 py-2 font-bold text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 disabled:opacity-10 dark:border-stone-800 dark:bg-violet-600 dark:text-stone-50 hover:dark:border-stone-800 dark:hover:bg-violet-800"
   >
     Validate
   </button>
@@ -67,7 +67,7 @@
       setHookUrl($accountSettingsStore.hook);
     }}
     disabled={!hookstatus}
-    class="border-b-4 border-gray-100 px-4 py-2 font-bold text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 disabled:opacity-10 dark:border-gray-800 dark:bg-violet-600 dark:text-gray-50 hover:dark:border-gray-800 dark:hover:bg-violet-800"
+    class="border-b-4 border-stone-100 px-4 py-2 font-bold text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 disabled:opacity-10 dark:border-stone-800 dark:bg-violet-600 dark:text-stone-50 hover:dark:border-stone-800 dark:hover:bg-violet-800"
   >
     Set
   </button>

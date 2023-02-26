@@ -79,12 +79,12 @@
       class="container mx-auto grid gap-6 text-center lg:grid-cols-2 xl:grid-cols-5"
     >
       <div
-        class="w-full bg-gray-50 px-6 py-16 dark:bg-gray-900 sm:px-12 md:px-16 xl:col-span-2"
+        class="w-full bg-stone-50 px-6 py-16 dark:bg-stone-900 sm:px-12 md:px-16 xl:col-span-2"
       >
         <span class="mb-2 block text-violet-600">
           Blockenberg content management system
         </span>
-        <h1 class="text-5xl font-bold text-gray-900 dark:text-gray-50">
+        <h1 class="text-5xl font-bold text-stone-900 dark:text-stone-50">
           Register with Blockenberg
         </h1>
         {#if !registrationSuccess}
@@ -94,7 +94,7 @@
           </p>
         {:else}
           <p class="my-8">
-            <span class="font-bold text-gray-900 dark:text-gray-50">
+            <span class="font-bold text-stone-900 dark:text-stone-50">
               Easy and secure.
             </span>
              Your account is stored on this device and later you will be able to
@@ -112,7 +112,7 @@
               id="registration"
               type="text"
               placeholder="Your name"
-              class="w-full text-gray-900 focus:ring focus:ring-violet-600 {usernameApproved &&
+              class="w-full text-stone-900 focus:ring focus:ring-violet-600 {usernameApproved &&
                 'ring-green-400'} {usernameError && 'ring-red-400'}"
               class:input-error={username.length !== 0 &&
                 (!usernameValid || !usernameAvailable)}
@@ -126,14 +126,14 @@
                 !usernameAvailable ||
                 checkingUsername}
               type="submit"
-              class="w-full bg-violet-600 py-2 font-bold text-gray-50 transition-all delay-150 duration-1000 hover:bg-violet-500 disabled:opacity-10 dark:bg-violet-600 dark:text-gray-900"
+              class="w-full bg-violet-600 py-2 font-bold text-stone-50 transition-all delay-150 duration-1000 hover:bg-violet-500 disabled:opacity-10 dark:bg-violet-600 dark:text-stone-900"
             >
               Register
             </button>
             <button
               type="button"
               on:click={toggleExistingAccount}
-              class="w-full bg-gray-50 py-2 font-bold text-gray-800 hover:bg-violet-100 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
+              class="w-full bg-stone-50 py-2 font-bold text-stone-800 hover:bg-violet-100 dark:bg-stone-900 dark:text-stone-200 dark:hover:bg-stone-800"
             >
               I have an account
             </button>
@@ -161,7 +161,7 @@
       <img
         src="https://images.unsplash.com/photo-1514412076816-d228b5c0973c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
         alt=""
-        class="w-full bg-gray-500 object-cover xl:col-span-3"
+        class="w-full bg-stone-500 object-cover xl:col-span-3"
       />
     </div>
   </section>

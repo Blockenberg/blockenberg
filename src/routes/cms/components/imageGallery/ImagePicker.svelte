@@ -43,7 +43,7 @@
   {#each $cmsStore.selectedArea === AREAS.PRIVATE ? $cmsStore.privateDocuments : $cmsStore.publicDocuments as image}
     <img
       role="presentation"
-      class="h-44 w-full cursor-pointer object-cover p-2 hover:bg-gray-200 dark:bg-gray-500"
+      class="h-44 w-full cursor-pointer object-cover p-2 hover:bg-stone-200 dark:bg-stone-500"
       alt={`Gallery Image: ${image.name}`}
       src={image.src}
       on:click={() => (imageContent = image)}

@@ -34,17 +34,17 @@
 </script>
 
   <div
-    class="container mx-auto grid grid-cols-1 justify-center gap-6 p-6 py-20 text-center dark:bg-gray-800 sm:grid-cols-2 lg:grid-cols-4 lg:px-8"
+    class="container mx-auto grid grid-cols-1 justify-center gap-6 p-6 py-20 text-center dark:bg-stone-800 sm:grid-cols-2 lg:grid-cols-4 lg:px-8"
   >
     {#each $cmsStore.selectedArea === AREAS.PRIVATE ? $cmsStore.privateDocuments : $cmsStore.publicDocuments as doc}
       <a
         href="/edit/{encodeURI(doc.name)}"
-        class="group mx-auto w-full bg-gray-50 hover:no-underline focus:no-underline dark:bg-gray-900"
+        class="group mx-auto w-full bg-stone-50 hover:no-underline focus:no-underline dark:bg-stone-900"
       >
         {#if doc.src}
           <img
             role="presentation"
-            class="h-44 w-full object-cover dark:bg-gray-500"
+            class="h-44 w-full object-cover dark:bg-stone-500"
             alt="Cover image for {decodeURI(doc.header)}"
             src={doc.src}
           />
@@ -55,7 +55,7 @@
           >
             {decodeURI(doc.header)}
           </h3>
-          <span class="text-xs dark:text-gray-400">
+          <span class="text-xs dark:text-stone-400">
             {new Date(doc.ctime).toLocaleDateString('en-GB', {
               weekday: 'long',
               year: 'numeric',
@@ -72,7 +72,7 @@
   </div>
   <section>
     <div
-      class="container mx-auto p-6 py-20 text-center dark:bg-gray-900 lg:px-8 hidden"
+      class="container mx-auto p-6 py-20 text-center dark:bg-stone-900 lg:px-8 hidden"
     >
       <div>
         <a
@@ -91,7 +91,7 @@
       <img
         src="https://images.unsplash.com/photo-1580011737349-fb60e771d7dc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
         alt=""
-        class="mt-8 h-auto max-h-96 w-full object-[center_30%] object-cover dark:bg-gray-500"
+        class="mt-8 h-auto max-h-96 w-full object-[center_30%] object-cover dark:bg-stone-500"
       />
     </div>
   </section>

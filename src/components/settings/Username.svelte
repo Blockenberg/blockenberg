@@ -19,7 +19,7 @@
 </script>
 
 <div class="flex flex-col items-center justify-center text-center">
-  <h2 class="mt-4 text-3xl font-bold text-gray-50">
+  <h2 class="mt-4 text-3xl font-bold text-stone-50">
     <TruncatedUsername />
   </h2>
   <div class="mt-2 mb-4 h-1 w-12 bg-indigo-500" />
@@ -31,7 +31,7 @@
     >
       <ClipboardIcon />&nbsp;Token
     </button>
-    <span class=" w-32 break-all text-gray-400">
+    <span class=" w-32 break-all text-stone-400">
       {$sessionStore.username.hashed}
     </span>
   </div>

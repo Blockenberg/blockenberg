@@ -18,7 +18,7 @@
 
 <label
   for="Toggle4"
-  class="inline-flex cursor-pointer items-center justify-center  border-b-4 border-transparent text-violet-600 dark:text-gray-50"
+  class="inline-flex cursor-pointer items-center justify-center  border-b-4 border-transparent text-violet-600 dark:text-stone-50"
 >
   <input
     id="Toggle4"

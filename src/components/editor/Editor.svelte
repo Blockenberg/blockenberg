@@ -102,7 +102,7 @@
             class="flex cursor-pointer flex-col items-center justify-center object-cover"
           >
             <span
-              class="flex bg-gray-50 px-4 py-3 text-sm font-bold transition-all delay-150 duration-1000 hover:-hue-rotate-15 dark:bg-violet-600 dark:text-gray-50"
+              class="flex bg-stone-50 px-4 py-3 text-sm font-bold transition-all delay-150 duration-1000 hover:-hue-rotate-15 dark:bg-violet-600 dark:text-stone-50"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -131,7 +131,7 @@
           />
         {/if}
         <button
-          class="bg-gray-50 px-4 py-2 transition-all delay-150 duration-1000 hover:-hue-rotate-15 dark:bg-violet-600 dark:text-gray-50"
+          class="bg-stone-50 px-4 py-2 transition-all delay-150 duration-1000 hover:-hue-rotate-15 dark:bg-violet-600 dark:text-stone-50"
           on:click={() =>
             galleryModal ? (galleryModal = false) : (galleryModal = true)}
         >
@@ -153,7 +153,7 @@
       out:fly={{ y: -200, duration: 500 }}
       type="text"
       bind:value={contentHeader}
-      class="container mx-auto border-none bg-gray-50 p-4 text-3xl text-gray-900 focus:ring-gray-900 dark:bg-gray-700/50 dark:text-gray-50 focus:dark:bg-gray-900"
+      class="container mx-auto border-none bg-stone-50 p-4 text-3xl text-stone-900 focus:ring-stone-900 dark:bg-stone-700/50 dark:text-stone-50 focus:dark:bg-stone-900"
       placeholder="Header"
       tabindex={0}
     />
@@ -161,7 +161,7 @@
       <input
         type="text"
         on:keydown={handleKeydown}
-        class="container mx-auto border-none bg-gray-50 p-4 text-gray-900 focus:ring-gray-900 dark:bg-gray-700/50 dark:text-gray-50 focus:dark:bg-gray-900"
+        class="container mx-auto border-none bg-stone-50 p-4 text-stone-900 focus:ring-stone-900 dark:bg-stone-700/50 dark:text-stone-50 focus:dark:bg-stone-900"
         placeholder="tags - use Tab to add"
         tabindex={1}
       />
@@ -172,7 +172,7 @@
               on:click={() => {
                 tags = [];
               }}
-              class="self-start px-3 py-1 text-sm dark:bg-violet-600 dark:text-gray-50"
+              class="self-start px-3 py-1 text-sm dark:bg-violet-600 dark:text-stone-50"
             >
               {tag}
             </button>
@@ -223,14 +223,14 @@
       <button
         on:click={() => uploadDoc(false)}
         disabled={!contentHeader || !contentText}
-        class=" border-b-4 border-gray-100 px-4 py-2 text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 disabled:opacity-10 dark:border-gray-800 dark:bg-violet-600 dark:text-gray-50 hover:dark:border-gray-800 dark:hover:bg-violet-800"
+        class=" border-b-4 border-stone-100 px-4 py-2 text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 disabled:opacity-10 dark:border-stone-800 dark:bg-violet-600 dark:text-stone-50 hover:dark:border-stone-800 dark:hover:bg-violet-800"
       >
         Save
       </button>
       <button
         on:click={() => uploadDoc(true)}
         disabled={!contentHeader || !contentText}
-        class="border-b-4 border-gray-100 px-4 py-2 transition-all delay-150 duration-1000 hover:border-violet-600 disabled:opacity-10  dark:border-gray-800 dark:bg-gray-300 dark:text-gray-900 dark:hover:border-gray-800 dark:hover:bg-gray-50 dark:hover:text-violet-600"
+        class="border-b-4 border-stone-100 px-4 py-2 transition-all delay-150 duration-1000 hover:border-violet-600 disabled:opacity-10  dark:border-stone-800 dark:bg-stone-300 dark:text-stone-900 dark:hover:border-stone-800 dark:hover:bg-stone-50 dark:hover:text-violet-600"
       >
         Publish
       </button>
@@ -241,7 +241,7 @@
         goto('/');
       }}
       disabled={!contentHeader || !contentText}
-      class="border-b-4 border-gray-100 px-4 py-2 transition-all delay-150 duration-1000 hover:border-violet-600 disabled:opacity-10  dark:border-gray-800 dark:bg-gray-300 dark:text-gray-900 dark:hover:border-gray-800 dark:hover:bg-gray-50 dark:hover:text-violet-600"
+      class="border-b-4 border-stone-100 px-4 py-2 transition-all delay-150 duration-1000 hover:border-violet-600 disabled:opacity-10  dark:border-stone-800 dark:bg-stone-300 dark:text-stone-900 dark:hover:border-stone-800 dark:hover:bg-stone-50 dark:hover:text-violet-600"
     >
       Delete
     </button>
