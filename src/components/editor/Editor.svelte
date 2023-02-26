@@ -37,7 +37,7 @@
   }
 
   async function uploadDoc(publish: boolean) {
-    //console.log(imageContent);
+    $sessionStore.loading = true;
     const doc: ContentDoc = {
       image: JSON.stringify({ name: imageContent.name, cid: imageContent.cid }),
       CID: CID,
@@ -48,9 +48,9 @@
       updated: Date.now(),
       author: $sessionStore.username.trimmed[0]
     };
-    //console.log(doc);
-
-    uploadDocumentToWNFS(doc, publish).then(() => goto('/'));
+    await uploadDocumentToWNFS(doc, publish);
+    $sessionStore.loading = false;
+    goto('/');
   }
 
   function getBase64(image: Blob) {
