@@ -338,7 +338,7 @@ export const uploadDocumentToWNFS: (
   publish: boolean
 ) => Promise<string> = async (doc, publish) => {
   try {
-    console.log(doc);
+    //console.log(doc);
     const selectedArea = publish ? AREAS.PUBLIC : AREAS.PRIVATE;
     const fs = getStore(filesystemStore);
     const content = new TextEncoder().encode(JSON.stringify(doc));
