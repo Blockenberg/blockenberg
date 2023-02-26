@@ -5,7 +5,7 @@
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "vite build && fission-cli-ubuntu-20.04-x86_64 app publish",
+    "deploy": "vite build && fission-cli-ubuntu-20.04-x86_64 app publish && surge build --domain blockenberg.surge.sh",
     "test": "ava src/**/*.test.ts",
     "test:e2e": "playwright test",
     "report:e2e": "playwright show-report",
