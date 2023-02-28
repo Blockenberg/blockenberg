@@ -9,6 +9,7 @@ type Username = {
 };
 
 export type Session = {
+  organization: boolean;
   username: Username;
   session: webnative.Session | null;
   authStrategy: webnative.AuthenticationStrategy | null;

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { accountSettingsStore, sessionStore } from '$src/stores';
-  import { getFlagsFromWNFS, setHookInWNFS } from '$lib/account-settings';
+  import { getFlagsFromWNFS, setFlagsInWNFS } from '$lib/account-settings';
   getFlagsFromWNFS();
   let hookstatus;
   let hookmessage = '';
@@ -28,7 +28,7 @@
   }
 
   function setHookUrl(hookurl) {
-    const setres = setHookInWNFS(hookurl);
+    const setres = setFlagsInWNFS(hookurl);
     if (setres) {
       hookmessage = 'url set successfully';
     } else {

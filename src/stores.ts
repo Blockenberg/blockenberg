@@ -8,6 +8,7 @@ import type { Session } from '$lib/session';
 
 export const sessionStore: Writable<Session> = writable({
   username: null,
+  organization: false,
   session: null,
   authStrategy: null,
   program: null,

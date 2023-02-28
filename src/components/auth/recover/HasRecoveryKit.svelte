@@ -113,40 +113,34 @@
   };
 </script>
 
-<div
-  class="m-auto flex min-h-[calc(100vh-96px)] max-w-[590px] flex-col items-start justify-center gap-6 pb-5 text-sm"
->
-  <h1 class="text-xl">Recover your account</h1>
-
-  {#if state === RECOVERY_STATES.Done}
-    <h3 class="flex items-center gap-2 text-base font-normal text-green-600">
-      <Check /> Account recovered!
-    </h3>
-    <p>
-      Welcome back <strong>{$sessionStore.username.trimmed}.</strong>
-      We were able to successfully recover all of your private data.
-    </p>
-  {:else}
-    <p>
-      If you’ve lost access to all of your connected devices, you can use your
-      recovery kit to restore access to your private data.
-    </p>
-  {/if}
-
-  {#if state === RECOVERY_STATES.Error}
-    <p class="text-red-600">
-      We were unable to recover your account. Please double check that you
-      uploaded the correct file.
-    </p>
-  {/if}
-
-  <div class="flex flex-col gap-2">
-    <RecoveryKitButton {handleFileInput} {state} />
-
-    {#if state !== RECOVERY_STATES.Done}
-      <p class="text-xxs">
-        {`It should be a file named Webnative-RecoveryKit-{yourUsername}.txt`}
+<section class="py-6 dark:bg-violet-400 dark:text-gray-900">
+  <div
+    class="container mx-auto flex flex-col items-center justify-center space-y-8 p-4 md:p-10 md:px-24 xl:px-48"
+  >
+    {#if state === RECOVERY_STATES.Done}
+      <h1 class="text-center text-5xl font-bold leading-none">Welcome back!</h1>
+      <p class="pt-2 pb-8 text-center text-xl font-medium">
+        It is a pleasure to have you back {$sessionStore.username.trimmed}.
+        Enjoy Blockenberg, the only unstoppable CMS.
+      </p>
+    {:else}
+      <h1 class="text-center text-5xl font-bold leading-none">
+        Restore account
+      </h1>
+      <p class="pt-2 pb-8 text-center text-xl font-medium">
+        If you’ve lost access to all of your connected devices, you can use your
+        recovery kit to restore access to your private data. The file you are
+        looking for is named Webnative-RecoveryKit-yourUsername.txt.
+      </p>
+      <RecoveryKitButton {handleFileInput} {state} />
+    {/if}
+    {#if state === RECOVERY_STATES.Error}
+      <p class="text-red-600">
+        Please double check that you uploaded the correct file. The legacy of
+        your account will live forever on the IPFS, but we can't help you to
+        recover your account with this file. If you are out of options, consider
+        copying the content from your client somewhere else and start anew.
       </p>
     {/if}
   </div>
-</div>
+</section>

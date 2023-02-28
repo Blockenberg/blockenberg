@@ -115,7 +115,7 @@
 </script>
 
 {#if view === 'connect-backup-device'}
-  <ConnectBackupDevice {qrcode} {connectionLink} {backupCreated} />
+  <ConnectBackupDevice {qrcode} {connectionLink} />
 {:else if view === 'delegate-account'}
   <DelegateAccount
     bind:pinInput

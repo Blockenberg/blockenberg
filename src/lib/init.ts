@@ -3,12 +3,14 @@ import * as webnative from 'webnative';
 import { dev } from '$app/environment';
 import { filesystemStore, sessionStore } from '../stores';
 import { type BackupStatus, getBackupStatus } from '$lib/auth/backup';
-import { createDID, USERNAME_STORAGE_KEY } from '$lib/auth/account';
+import { USERNAME_STORAGE_KEY } from '$lib/auth/account';
 import { webnativeNamespace } from '$lib/app-info';
+import { getOrgStatus } from './auth/organization';
 
 export const initialize = async (): Promise<void> => {
   try {
     let backupStatus: BackupStatus = null;
+    let isOrg=false;
 
     const program: webnative.Program = await webnative.program({
       namespace: webnativeNamespace,
@@ -18,6 +20,8 @@ export const initialize = async (): Promise<void> => {
     if (program.session) {
       // Authed
       backupStatus = await getBackupStatus(program.session.fs);
+      isOrg = await getOrgStatus(program.session.fs);
+      
 
       const fullUsername = await program.components.storage.getItem(
         USERNAME_STORAGE_KEY,
@@ -29,6 +33,7 @@ export const initialize = async (): Promise<void> => {
           hashed: program.session.username,
           trimmed: fullUsername.split('#')[0],
         },
+        organization:isOrg,
         session: program.session,
         authStrategy: program.auth,
         program,

@@ -34,9 +34,9 @@
 {#if state === RECOVERY_STATES.Ready || state === RECOVERY_STATES.Error}
   <label
     for="upload-recovery-kit"
-    class="btn btn-primary !btn-lg !h-[56px] !min-h-0 w-fit gap-2"
+    class="flex cursor-pointer items-center justify-center rounded px-8 py-3 text-lg font-semibold dark:bg-gray-800 dark:text-gray-50"
   >
-    <Upload /> Upload your recovery kit
+    Upload your recovery kit
   </label>
   <input
     bind:files
@@ -48,7 +48,7 @@
 {:else}
   {@const { $$on_click, ...props } = buttonData[state].props}
   <button
-    class="btn btn-primary !btn-lg !h-[56px] !min-h-0 w-fit gap-2"
+    class="rounded px-8 py-3 text-lg font-semibold dark:bg-gray-800 dark:text-gray-50"
     {...props}
     on:click={$$on_click}
   >

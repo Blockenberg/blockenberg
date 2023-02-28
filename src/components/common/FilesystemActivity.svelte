@@ -2,7 +2,7 @@
   export let activity: 'Initializing' | 'Loading';
 </script>
 
-<div privateDocuments>
+<div>
   <div class="flex items-center justify-center space-x-2">
     <div class="h-4 w-4 animate-pulse rounded-full dark:bg-violet-600" />
     <div class="h-4 w-4 animate-pulse rounded-full dark:bg-violet-600" />

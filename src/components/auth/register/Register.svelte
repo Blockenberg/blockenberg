@@ -16,6 +16,7 @@
   let usernameAvailable = true;
   let registrationSuccess = true;
   let checkingUsername = false;
+  let organization = false;
 
   let initializingFilesystem = false;
 
@@ -52,7 +53,7 @@
 
     initializingFilesystem = true;
 
-    registrationSuccess = await register(encodedUsername);
+    registrationSuccess = await register(encodedUsername, organization);
 
     if (!registrationSuccess) initializingFilesystem = false;
   };
@@ -90,29 +91,47 @@
         {#if !registrationSuccess}
           <p class="my-8">
             <span class="font-bold text-red-900">Failed.</span>
-             There was an issue registering your account. Please try again.
+            There was an issue registering your account. Please try again.
           </p>
         {:else}
           <p class="my-8">
             <span class="font-bold text-stone-900 dark:text-stone-50">
               Easy and secure.
             </span>
-             Your account is stored on this device and later you will be able to
-            create a backup device like mobile phone. Please do not use public or
-            shared computer.
+            Your account is stored on this device and later you will be able to create
+            a backup device like mobile phone. Please do not use public or shared
+            computer.
           </p>
         {/if}
+        <div class="flex justify-start">
+          <button
+            on:click={() => (organization = !organization)}
+            class="w-36 px-4 py-2 font-bold text-stone-900 ease-in {!organization
+              ? ' bg-stone-50 px-4 py-2 text-violet-600 transition-all delay-150 duration-300 '
+              : 'text-stone-900 transition-all delay-150 duration-300 dark:text-stone-50'}"
+          >
+            Personal
+          </button>
+          <button
+            on:click={() => (organization = !organization)}
+            class=" w-36 px-4 py-2 font-bold text-stone-900 ease-in {organization
+              ? ' bg-stone-50 px-4 py-2 text-violet-600 transition-all delay-150 duration-300 '
+              : 'text-stone-900 transition-all delay-150 duration-300 dark:text-stone-50'}"
+          >
+            Organization
+          </button>
+        </div>
         <form
           on:submit={registerUser}
-          class="ng-untouched ng-pristine ng-valid space-y-3 self-stretch"
+          class="flex flex-col space-y-3 self-stretch lg:space-y-6"
         >
           <div>
             <label for="name" class="sr-only text-sm">Your name</label>
             <input
               id="registration"
               type="text"
-              placeholder="Your name"
-              class="w-full text-stone-900 focus:ring focus:ring-violet-600 {usernameApproved &&
+              placeholder={organization ? 'Organization name' : 'Your name'}
+              class="w-full border-2 border-stone-50 bg-stone-50 text-stone-900 focus:ring focus:ring-violet-600 {usernameApproved &&
                 'ring-green-400'} {usernameError && 'ring-red-400'}"
               class:input-error={username.length !== 0 &&
                 (!usernameValid || !usernameAvailable)}

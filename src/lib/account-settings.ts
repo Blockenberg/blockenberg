@@ -98,10 +98,14 @@ export const getFlagsFromWNFS = async (): Promise<void> => {
       return;
     }
 
+    let hook;
+
     const hookfile = await fs.get(wn.path.file(...FLAGS_DIR, `hookflag`));
 
-    const hookcontent = (hookfile as WNFile).content;
-    const hook = new TextDecoder().decode(hookcontent);
+    if (hookfile) {
+      const hookcontent = (hookfile as WNFile).content;
+      hook = new TextDecoder().decode(hookcontent);
+    }
 
     //Push url to the accountSettingsStore
     accountSettingsStore.update(store => ({
@@ -120,27 +124,33 @@ export const getFlagsFromWNFS = async (): Promise<void> => {
 
 /**
  * Upload flags to the user's private WNFS
- * @param flags
+ * @param hook
+ * @param organization
  */
-export const setHookInWNFS = async (hook: string): Promise<boolean> => {
+export const setFlagsInWNFS = async (
+  hook: string
+): Promise<boolean> => {
+  console.info('setting flags', hook);
   try {
     // Set loading: true on the accountSettingsStore
     accountSettingsStore.update(store => ({ ...store, loading: true }));
 
     const fs = getStore(filesystemStore);
-
-    // Create a sub directory and add the avatar
-    await fs.write(
-      wn.path.file(...FLAGS_DIR, `hookflag`),
-      new TextEncoder().encode(hook)
-    );
+    if (hook) {
+      // Create a sub directory and set the hook url
+      await fs.write(
+        wn.path.file(...FLAGS_DIR, `hookflag`),
+        new TextEncoder().encode(hook)
+      );
+    }
 
     // Announce the changes to the server
     await fs.publish();
 
-    addNotification(`Your hook URL has been updated!`, 'success');
+    addNotification(`Your settings has been updated!`, 'success');
     accountSettingsStore.update(store => ({
       ...store,
+      hook: hook || store.hook,
       loading: false
     }));
     return true;

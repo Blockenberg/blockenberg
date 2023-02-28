@@ -9,9 +9,10 @@ import { get as getStore } from 'svelte/store';
 import { asyncDebounce } from '$lib/utils';
 import { filesystemStore, sessionStore } from '../../stores';
 import { getBackupStatus } from '$lib/auth/backup';
-import { ACCOUNT_SETTINGS_DIR } from '$lib/account-settings';
+import { ACCOUNT_SETTINGS_DIR, setFlagsInWNFS } from '$lib/account-settings';
 import { AREAS } from '$routes/cms/stores';
 import { GALLERY_DIRS, DOCS_DIRS } from '$routes/cms/lib/cms';
+import { setOrgStatus } from './organization';
 
 export const USERNAME_STORAGE_KEY = 'fullUsername';
 
@@ -58,7 +59,10 @@ export const prepareUsername = async (username: string): Promise<string> => {
   return uint8arrays.toString(hashedUsername, 'base32').slice(0, 32);
 };
 
-export const register = async (hashedUsername: string): Promise<boolean> => {
+export const register = async (
+  hashedUsername: string,
+  organization: boolean
+): Promise<boolean> => {
   const {
     authStrategy,
     program: {
@@ -75,6 +79,12 @@ export const register = async (hashedUsername: string): Promise<boolean> => {
 
   // TODO Remove if only public and private directories are needed
   await initializeFilesystem(session.fs);
+  await setOrgStatus(session.fs, organization);
+
+  sessionStore.update(session => ({
+    ...session,
+    organization: organization
+  }));
 
   const fullUsername = (await storage.getItem(USERNAME_STORAGE_KEY)) as string;
 
@@ -85,6 +95,7 @@ export const register = async (hashedUsername: string): Promise<boolean> => {
       hashed: hashedUsername,
       trimmed: fullUsername.split('#')[0]
     },
+    organization: organization,
     session
   }));
 
