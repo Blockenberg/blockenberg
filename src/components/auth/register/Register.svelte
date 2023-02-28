@@ -145,7 +145,7 @@
                 !usernameAvailable ||
                 checkingUsername}
               type="submit"
-              class="w-full bg-violet-600 py-2 font-bold text-stone-50 transition-all delay-150 duration-1000 hover:bg-violet-500 disabled:opacity-10 dark:bg-violet-600 dark:text-stone-900"
+              class="w-full bg-violet-600 py-2 font-bold text-stone-50 transition-all delay-150 duration-1000 hover:bg-violet-500 disabled:opacity-10 dark:bg-violet-600"
             >
               Register
             </button>

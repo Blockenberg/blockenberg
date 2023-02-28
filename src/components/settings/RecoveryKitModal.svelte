@@ -10,7 +10,7 @@
   const prepareRecoveryKitDownload = async () => {
     recoveryKit = await generateRecoveryKit();
 
-    const data = new Blob([recoveryKit], { type: 'text/plain' });
+    const data = new Blob([recoveryKit], { type: 'application/json' });
 
     // If we are replacing a previously generated file we need to
     // manually revoke the object URL to avoid memory leaks.
@@ -25,7 +25,7 @@
   $: if (downloadLinkRef && fileURL) {
     downloadLinkRef.setAttribute(
       'download',
-      `Webnative-RecoveryKit-${$sessionStore.username.trimmed}.txt`
+      `Blockenberg-${$sessionStore.username.trimmed}.recovery`
     );
 
     downloadLinkRef.href = fileURL;

@@ -127,9 +127,7 @@ export const getFlagsFromWNFS = async (): Promise<void> => {
  * @param hook
  * @param organization
  */
-export const setFlagsInWNFS = async (
-  hook: string
-): Promise<boolean> => {
+export const setFlagsInWNFS = async (hook: string): Promise<boolean> => {
   console.info('setting flags', hook);
   try {
     // Set loading: true on the accountSettingsStore
@@ -285,13 +283,15 @@ export const generateRecoveryKit = async (): Promise<string> => {
     program: {
       components: { crypto, reference }
     },
-    username: { full, hashed, trimmed }
+    username: { full, hashed, trimmed },
+    organization
   } = getStore(sessionStore);
 
   // Get the user's read-key and base64 encode it
   const accountDID = await reference.didRoot.lookup(hashed);
   const readKey = await retrieve({ crypto, accountDID });
   const encodedReadKey = uint8arrays.toString(readKey, 'base64pad');
+  const org = organization ? (organization as boolean) : false;
 
   // Get today's date to display in the kit
   const options: Intl.DateTimeFormatOptions = {
@@ -301,45 +301,15 @@ export const generateRecoveryKit = async (): Promise<string> => {
     day: 'numeric'
   };
   const date = new Date();
+  const recovery = {
+    info: `Created for ${trimmed} on ${date.toLocaleDateString(
+      'en-US',
+      options
+    )}`,
+    username: full,
+    key: encodedReadKey,
+    organization: org
+  };
 
-  const content = `#     %@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%
-#   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-# %@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%
-# @@@@@%     %@@@@@@%         %@@@@@@@%     %@@@@@
-# @@@@@       @@@@@%            @@@@@@       @@@@@
-# @@@@@%      @@@@@             %@@@@@      %@@@@@
-# @@@@@@%     @@@@@     %@@%     @@@@@     %@@@@@@
-# @@@@@@@     @@@@@    %@@@@%    @@@@@     @@@@@@@
-# @@@@@@@     @@@@%    @@@@@@    @@@@@     @@@@@@@
-# @@@@@@@    %@@@@     @@@@@@    @@@@@%    @@@@@@@
-# @@@@@@@    @@@@@     @@@@@@    %@@@@@    @@@@@@@
-# @@@@@@@    @@@@@@@@@@@@@@@@     @@@@@    @@@@@@@
-# @@@@@@@    %@@@@@@@@@@@@@@@     @@@@%    @@@@@@@
-# @@@@@@@     %@@%     @@@@@@     %@@%     @@@@@@@
-# @@@@@@@              @@@@@@              @@@@@@@
-# @@@@@@@%            %@@@@@@%            %@@@@@@@
-# @@@@@@@@@%        %@@@@@@@@@@%        %@@@@@@@@@
-# %@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%
-#   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-#     %@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%
-#
-# This is your recovery kit. (It’s a yaml text file)
-#
-# Created for ${trimmed} on ${date.toLocaleDateString('en-US', options)}
-#
-# Store this somewhere safe.
-#
-# Anyone with this file will have read access to your private files.
-# Losing it means you won’t be able to recover your account
-# in case you lose access to all your linked devices.
-#
-# Our team will never ask you to share this file.
-#
-# To use this file, go to ${window.location.origin}/recover/
-# Learn how to customize this kit for your users: https://guide.fission.codes/
-
-username: ${full}
-key: ${encodedReadKey}`;
-
-  return content;
+  return JSON.stringify(recovery);
 };

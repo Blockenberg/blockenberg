@@ -532,6 +532,14 @@
           can help to streamline your content publishing process.
         </p>
       </div>
+      <div class="space-y-2 py-6 md:grid md:grid-cols-12 md:gap-8 md:space-y-0">
+        <h3 class="font-semibold md:col-span-5">Recovering account</h3>
+        <p class="md:col-span-7 md:pl-0" id="recovery">
+          When you recover your account, we need to generate your local
+          credentials anew. Make sure that the token is the same and if not,
+          please replace it in your client application.
+        </p>
+      </div>
     </div>
   </div>
 </section>

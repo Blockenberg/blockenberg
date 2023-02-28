@@ -9,7 +9,7 @@ import { get as getStore } from 'svelte/store';
 import { asyncDebounce } from '$lib/utils';
 import { filesystemStore, sessionStore } from '../../stores';
 import { getBackupStatus } from '$lib/auth/backup';
-import { ACCOUNT_SETTINGS_DIR, setFlagsInWNFS } from '$lib/account-settings';
+import { ACCOUNT_SETTINGS_DIR } from '$lib/account-settings';
 import { AREAS } from '$routes/cms/stores';
 import { GALLERY_DIRS, DOCS_DIRS } from '$routes/cms/lib/cms';
 import { setOrgStatus } from './organization';

@@ -4,7 +4,7 @@
   import * as DID from 'webnative/did/index';
   import * as uint8arrays from 'uint8arrays';
 
-  import { sessionStore } from '$src/stores';
+  import { sessionStore, filesystemStore } from '$src/stores';
   import {
     RECOVERY_STATES,
     USERNAME_STORAGE_KEY,
@@ -13,6 +13,7 @@
   } from '$lib/auth/account';
   import Check from '$components/icons/CheckIcon.svelte';
   import RecoveryKitButton from './RecoveryKitButton.svelte';
+  import { setOrgStatus } from '$lib/auth/organization';
 
   let state = $sessionStore.session
     ? RECOVERY_STATES.Done
@@ -39,18 +40,25 @@
           }
         } = $sessionStore;
 
-        const parts = (event.target.result as string)
-          .split('username: ')[1]
-          .split('key: ');
+        const recovery = JSON.parse(event.target.result as string);
+
+        // const parts = (event.target.result as string)
+        //   .split('username: ')[1]
+        //   .split('key: ');
 
         const readKey = uint8arrays.fromString(
           // Trim any whitespace from the parsed readKey
-          parts[1].replace(/(\r\n|\n|\r)/gm, ''),
+          // parts[1].replace(/(\r\n|\n|\r)/gm, ''),
+          // 'base64pad'
+          String(recovery.key).replace(/(\r\n|\n|\r)/gm, ''),
           'base64pad'
         );
 
         // Trim any whitespace from the parsed username
-        const oldUsername = parts[0].replace(/(\r\n|\n|\r)/gm, '');
+        const oldUsername = String(recovery.username).replace(
+          /(\r\n|\n|\r)/gm,
+          ''
+        ); //parts[0].replace(/(\r\n|\n|\r)/gm, '');
         const hashedOldUsername = await prepareUsername(oldUsername);
         const newRootDID = await $sessionStore.program.agentDID();
 
@@ -67,6 +75,13 @@
         if (!success) {
           throw new Error('Failed to register new user');
         }
+
+        setOrgStatus($filesystemStore, recovery.organization);
+
+        sessionStore.update(session => ({
+          ...session,
+          organization: recovery.organization
+        }));
 
         // Build an ephemeral UCAN to authorize the dataRoot.update call
         const proof: string | null = await storage.getItem(
@@ -130,7 +145,7 @@
       <p class="pt-2 pb-8 text-center text-xl font-medium">
         If you’ve lost access to all of your connected devices, you can use your
         recovery kit to restore access to your private data. The file you are
-        looking for is named Webnative-RecoveryKit-yourUsername.txt.
+        looking for is named Blockenberg-yourUsername.recovery.
       </p>
       <RecoveryKitButton {handleFileInput} {state} />
     {/if}

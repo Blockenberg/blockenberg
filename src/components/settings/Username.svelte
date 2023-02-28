@@ -15,7 +15,7 @@
   // const userHash = async (): Promise<string> => {
   // 	return await prepareUsername($sessionStore.username.full);
   // };
-  console.log($sessionStore);
+  // console.log($sessionStore);
 </script>
 
 <div class="flex flex-col items-center justify-center text-center">
