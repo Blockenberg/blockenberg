@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - master
 jobs:
   publish_job:
     name: '🚀 Publish'
