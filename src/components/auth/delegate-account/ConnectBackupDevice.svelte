@@ -60,7 +60,7 @@
       </p>
       <div class="flex justify-center space-x-2">
         <button
-          class="mt-12 bg-violet-600 px-8  py-3 text-stone-50 hover:bg-violet-500"
+          class="mt-12 bg-violet-600 px-8  py-3 text-stone-50 hover:bg-violet-500 focus:bg-green-600"
           on:click={copyLink}
         >
           Share link

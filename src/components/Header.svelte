@@ -3,6 +3,7 @@
   import Avatar from '$components/settings/Avatar.svelte';
   import BrandLogo from '$components/icons/BrandLogo.svelte';
   import Toggle from '$components/settings/DarkToggle.svelte';
+  import Alert from './common/Alert.svelte';
   let open;
 </script>
 
@@ -20,6 +21,7 @@
   </a>
   <div class="hidden flex-grow items-center justify-end space-x-8 lg:flex">
     {#if $sessionStore.session}
+      <Alert />
       <div class="space-x-4">
         <a rel="noopener noreferrer" href="/">Manage</a>
         <a rel="noopener noreferrer" href="/create">Create</a>
@@ -72,7 +74,7 @@
   </div>
 </header>
 
-<div class="w-full flex-col space-y-4 p-4 md:hidden {open ? 'flex' : 'hidden'}">
+<div class="w-full flex-col space-y-4 p-4 lg:hidden {open ? 'flex' : 'hidden'}">
   <a rel="noopener noreferrer" href="/create">Create</a>
   <a rel="noopener noreferrer" href="/manage">Manage</a>
   <a rel="noopener noreferrer" href="/publish">Publish</a>

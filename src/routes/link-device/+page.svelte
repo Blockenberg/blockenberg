@@ -54,8 +54,6 @@
   initAccountLinkingConsumer();
 </script>
 
-<input type="checkbox" id="my-modal-5" checked class="modal-toggle" />
-
 {#if view === 'link-device'}
   <LinkDevice pin={displayPin} on:cancel={cancelConnection} />
 {:else if view === 'load-filesystem'}
