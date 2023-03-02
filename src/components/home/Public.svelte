@@ -27,17 +27,17 @@
               resistant, decentralized world.
             </p>
             <div
-              class="flex flex-col justify-center items-center space-y-4 md:space-x-4 md:flex-row md:space-y-0"
+              class="flex flex-col items-center justify-center space-y-4 md:flex-row md:space-x-4 md:space-y-0"
             >
               <a
                 href="/register"
-                class="w-full md:w-40 justify-center rounded border-2  border-violet-600 bg-violet-600 px-4 py-2 text-xl font-semibold text-white transition-all delay-150 duration-1000 hover:bg-violet-700 focus:outline-none  dark:bg-violet-600 dark:text-violet-50  dark:hover:bg-violet-800"
+                class="w-full justify-center rounded border-2 border-violet-600  bg-violet-600 px-4 py-2 text-xl font-semibold text-white transition-all delay-150 duration-1000 hover:bg-violet-700 focus:outline-none dark:bg-violet-600  dark:text-violet-50 dark:hover:bg-violet-800  md:w-40"
               >
                 Register
               </a>
               <a
                 href="/recover"
-                class="w-full md:w-40 justify-center rounded border-2 border-violet-600 px-4 py-2 text-xl font-semibold text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 hover:bg-violet-100  focus:outline-none  dark:bg-stone-900 dark:text-violet-50  dark:hover:bg-violet-900"
+                class="w-full justify-center rounded border-2 border-violet-600 px-4 py-2 text-xl font-semibold text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 hover:bg-violet-100 focus:outline-none  dark:bg-stone-900  dark:text-violet-50 dark:hover:bg-violet-900  md:w-40"
               >
                 Recover
               </a>
@@ -93,7 +93,7 @@
             class="aspect-video object-cover dark:bg-stone-500 lg:aspect-auto lg:h-72"
           />
           <div
-            class="flex flex-1 flex-col justify-center p-6 dark:bg-stone-900"
+            class="flex flex-1 flex-col justify-center bg-stone-50 p-6 dark:bg-stone-900"
           >
             <p class="text-xl font-semibold">
               To view the opposition as dangerous is to misunderstand the basic
@@ -109,7 +109,7 @@
         </div>
       </section>
       <section>
-        <div class=" sm:p-8 sm:dark:bg-stone-900">
+        <div class=" bg-stone-50 sm:p-8 sm:dark:bg-stone-900">
           <div class="flex flex-col p-8 sm:flex-row sm:space-x-8 ">
             <div class="sm:w-1/2 lg:px-4">
               <h2
