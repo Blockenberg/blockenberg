@@ -10,8 +10,8 @@
           class="container mx-auto flex max-w-7xl flex-col items-center justify-center md:px-5 "
         >
           <div
-            class="h-80 w-full bg-stone-50 bg-cover bg-fixed dark:bg-stone-500 md:h-[500px]"
-            style="background-image: url(https://images.unsplash.com/photo-1523115191856-c203e76215a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1680&q=80)"
+            class="h-80 w-full bg-stone-50 bg-fixed dark:bg-stone-500 md:h-[500px]"
+            style="background-image: url(https://images.unsplash.com/photo-1569263975210-c4290a88eab0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80);background-size: cover"
           />
           <div
             class="relative w-full rounded bg-stone-50 px-1 py-12 text-center text-stone-900 dark:bg-stone-900 dark:text-stone-50 md:-top-24 md:px-8 lg:w-2/3"
