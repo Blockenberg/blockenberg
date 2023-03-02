@@ -2,159 +2,160 @@
   import { sessionStore } from '$src/stores';
 </script>
 
-<div class="space-y-8 p-6">
+<div class="md:p-6">
   <main>
-    <div class="container mx-auto space-y-16">
-      <section class="grid gap-6 text-center lg:grid-cols-2 xl:grid-cols-5">
+    <div class="container mx-auto flex flex-col space-y-20 lg:space-y-32 ">
+      <section class="text-stone-100 ">
         <div
-          class="w-full bg-stone-50 p-6 dark:bg-stone-900 sm:p-16 xl:col-span-2"
+          class="container mx-auto flex max-w-7xl flex-col items-center justify-center md:px-5 "
         >
-          <span class="mb-2 block dark:text-violet-600">
-            Blockenberg content management system
-          </span>
-          <h1 class="text-5xl font-bold dark:text-stone-50">
-            Publish with Blockenberg
-          </h1>
-          <p class="my-8">
-            <span class="font-medium dark:text-stone-50">
-              Headless and decentralized.
-            </span>
-            The unstoppable CMS for censorship resistant, decentralized world.
-          </p>
-          <form
-            class="ng-untouched ng-pristine ng-valid space-y-3 self-stretch"
+          <img
+            class="h-80 w-full bg-stone-50 object-cover object-center dark:bg-stone-500 md:h-[500px]"
+            alt="hero"
+            src="https://images.unsplash.com/photo-1523115191856-c203e76215a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1680&q=80"
+          />
+          <div
+            class="relative w-full rounded bg-stone-50 px-1 py-12 text-center text-stone-900 dark:bg-stone-900 dark:text-stone-50 md:-top-24 md:px-8 lg:w-2/3"
           >
-            {#if $sessionStore.error === 'Unsupported Browser'}
-              <div class="bg-base-content p-4 text-stone-50">
-                <p class="flex items-center gap-2 text-base">
-                  Unsupported device
-                </p>
-                <p>
-                  It appears this device isn’t supported. Webnative requires
-                  IndexedDB in order to function. This browser doesn’t appear to
-                  implement this API. Are you in a Firefox private window?
-                </p>
-              </div>
-            {:else}
-              <div class="flex flex-wrap justify-center font-bold">
-                <a
-                  href="/register"
-                  class="m-2 border-b-4 border-stone-50 px-8 py-3 text-lg text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 dark:border-stone-900 dark:bg-violet-600 dark:text-stone-50 hover:dark:border-stone-900 dark:hover:bg-violet-800 "
-                >
-                  Register
-                </a>
-                <a
-                  href="/recover"
-                  class="m-2 border-b-4 border-stone-50 px-8 py-3 text-lg text-stone-800 transition-all delay-150 duration-1000 hover:border-violet-600 dark:border-stone-900 dark:text-stone-50 hover:dark:border-stone-900 dark:hover:bg-violet-800 "
-                >
-                  Recover
-                </a>
-              </div>
-            {/if}
-          </form>
+            <div class="my-6 text-xs font-bold uppercase">
+              Blockenberg Content Management System
+            </div>
+            <h1 class="mb-4 text-4xl font-bold md:text-6xl">
+              Publish with Blockenberg
+            </h1>
+            <p class="mb-8 text-lg leading-relaxed">
+              Headless and decentralized. The unstoppable CMS for censorship
+              resistant, decentralized world.
+            </p>
+            <div
+              class="flex flex-col justify-center space-y-4 space-x-4 md:flex-row md:space-y-0"
+            >
+              <a
+                href="/register"
+                class="w-40 justify-center rounded border-2  border-violet-600 bg-violet-600 px-4 py-2 text-xl font-semibold text-white transition-all delay-150 duration-1000 hover:bg-violet-700 focus:outline-none  dark:bg-violet-600 dark:text-violet-50  dark:hover:bg-violet-800"
+              >
+                Register
+              </a>
+              <a
+                href="/recover"
+                class="w-40 justify-center rounded border-2 border-violet-600 px-4 py-2 text-xl font-semibold text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 hover:bg-violet-100  focus:outline-none  dark:bg-stone-900 dark:text-violet-50  dark:hover:bg-violet-900"
+              >
+                Recover
+              </a>
+            </div>
+          </div>
         </div>
-        <img
-          src="https://images.unsplash.com/photo-1523115191856-c203e76215a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=480&q=80"
-          alt="freedom"
-          class="h-40 w-full bg-stone-50 object-cover dark:bg-stone-500 md:h-[500px] xl:col-span-3"
-        />
       </section>
       <section>
-        <span
-          class="mb-2 block text-xs font-medium uppercase tracking-widest dark:text-violet-600 lg:text-center"
-        >
-          How it works
-        </span>
-        <h2 class="text-5xl font-bold dark:text-stone-50 lg:text-center">
-          Building with Blockenberg is simple
+        <h2 class="text-center text-5xl font-bold dark:text-stone-50">
+          Own everything you create.
         </h2>
-        <div class="my-16 grid gap-6 lg:grid-cols-3">
-          <div class="flex flex-col space-y-4 bg-stone-50 p-8 dark:bg-stone-900">
+        <div class="my-16 grid gap-6 lg:mx-24 lg:grid-cols-3 lg:gap-12">
+          <div class="flex flex-col items-center p-8 md:space-y-4 ">
             <div
-              class="flex h-12 w-12 flex-shrink-0 items-center justify-center bg-violet-600 text-xl font-bold text-stone-100 dark:bg-violet-600 dark:text-stone-900"
+              class="mb-2 flex h-12 w-12 flex-shrink-0 items-center justify-center bg-violet-600 text-xl font-bold text-stone-100 dark:bg-violet-600"
             >
               1
             </div>
-            <p class="text-2xl ">
-              <b>Your data.</b>
-              Blockenberg publish your data to your decentralized account.
+            <p class="text-center text-xl ">
+              <b>Own your data.</b>
+              Blockenberg publishes on your decentralized account
             </p>
           </div>
-          <div class="flex flex-col space-y-4 bg-stone-50 p-8 dark:bg-stone-900">
+          <div class="flex flex-col items-center p-8 md:space-y-4 ">
             <div
-              class="flex h-12 w-12 flex-shrink-0 items-center justify-center bg-violet-600 text-xl font-bold text-stone-100 dark:bg-violet-600 dark:text-stone-900"
+              class="mb-2 flex h-12 w-12 flex-shrink-0 items-center justify-center bg-violet-600 text-xl font-bold text-stone-100 dark:bg-violet-600"
             >
               2
             </div>
-            <p class="text-2xl ">
+            <p class="text-center text-xl ">
               <b>Easy to use.</b>
-              Your content creators don't need to understand blockchain, nor the
-              world of development.
+              No blockchain or development knowledge required
             </p>
           </div>
-          <div class="flex flex-col space-y-4 bg-stone-50 p-8 dark:bg-stone-900">
+          <div class="flex flex-col items-center p-8 md:space-y-4 ">
             <div
-              class="flex h-12 w-12 flex-shrink-0 items-center justify-center bg-violet-600 text-xl font-bold text-stone-100 dark:bg-violet-600 dark:text-stone-900"
+              class="mb-2 flex h-12 w-12 flex-shrink-0 items-center justify-center bg-violet-600 text-xl font-bold text-stone-100 dark:bg-violet-600"
             >
               3
             </div>
-            <p class="text-2xl ">
-              <b>Deploy anywhere.</b>
-              Build your app, use your favorite framework, deploy on your favorite
-              service.
+            <p class="text-center text-xl ">
+              <b>Use it anywhere.</b>
+              Build your app using your favourite tools, and deploy!
             </p>
           </div>
         </div>
       </section>
-      <section class="grid gap-6 lg:grid-cols-2">
-        <img
-          src="https://images.unsplash.com/reserve/rV1ymXsoQRCKUBVL2fGK_forsplash.jpg?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80"
-          alt=""
-          class="max-h-96 w-full bg-stone-50 object-cover dark:bg-stone-500"
-        />
-        <div
-          class="flex w-full flex-col items-center space-y-8 p-6 dark:bg-stone-900 lg:h-full lg:p-8 "
-        >
+      <section>
+        <div class="flex flex-col overflow-hidden lg:mx-40 lg:flex-row">
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Remise_du_Prix_Sakharov_%C3%A0_Aung_San_Suu_Kyi_Strasbourg_22_octobre_2013-18.jpg/320px-Remise_du_Prix_Sakharov_%C3%A0_Aung_San_Suu_Kyi_Strasbourg_22_octobre_2013-18.jpg"
             alt=""
-            class="h-20 w-20 bg-violet-600 object-cover text-stone-100 dark:bg-stone-500"
+            class="aspect-video object-cover dark:bg-stone-500 lg:aspect-auto lg:h-72"
           />
-          <blockquote class="max-w-lg text-center text-lg font-medium italic">
-            “To view the opposition as dangerous is to misunderstand the basic
-            concepts of democracy. To oppress the opposition is to assault the
-            very foundation of democracy.”
-          </blockquote>
-          <div class="text-center dark:text-stone-400">
-            <p>Aung San Suu Kyi</p>
-            <p>Burmese Disident</p>
+          <div
+            class="flex flex-1 flex-col justify-center p-6 dark:bg-stone-900"
+          >
+            <p class="text-xl font-semibold">
+              To view the opposition as dangerous is to misunderstand the basic
+              concepts of democracy. To oppress the opposition is to assault the
+              very foundation of democracy.
+            </p>
+            <p class="my-6 dark:text-stone-200">
+              Aung San Suu Kyi
+              <br />
+              Burmese Disident
+            </p>
           </div>
-        </div>
-        <div class="space-y-8 p-8 dark:bg-stone-900 lg:col-span-full lg:py-12">
-          <h2 class="text-5xl font-bold dark:text-stone-50">Create with us</h2>
-          <p class="dark:text-stone-400">
-            We provide the content creation interface. If you are familiar with
-            WordPress, we are the "admin". In order to display your page, you
-            need an application - this is the "headless" principle. You can
-            bootstrap the development with sample application (coming soon) or
-            build your own. In this approach, we are similar to Contently or
-            Hygraph.
-          </p>
-          <p>
-            Another difference between Blockenberg and WordPress is that instead
-            of the database we use the blockchain technology. All your data are
-            bound to the account you created and published on the distributed
-            network. We don't control and can't influence what you are
-            publishing in any means. Birds around are symbol of freedom - we
-            (and Lincoln) belive that those who deny freedom to others deserve
-            it not for themselves.
-          </p>
-          <br />
-          <a class="hover:underline" href="/about">Read more &gt;</a>
         </div>
       </section>
       <section>
-        <div class="grid gap-6 lg:grid-cols-3">
+        <div class=" sm:p-8 sm:dark:bg-stone-900">
+          <div class="flex flex-col p-8 sm:flex-row sm:space-x-8 ">
+            <div class="sm:w-1/2 sm:px-4">
+              <h2
+                class="mb-4 mt-6 text-3xl font-bold dark:text-stone-50 sm:mt-0"
+              >
+                Create with us
+              </h2>
+              <p class="dark:text-stone-200">
+                We provide the content creation interface. If you are familiar
+                with WordPress, we are the "admin". In order to display your
+                page, you need an application - this is the "headless"
+                principle. You can bootstrap the development with sample
+                application (coming soon) or build your own. In this approach,
+                we are similar to Contently or Hygraph.
+              </p>
+            </div>
+            <div class="sm:w-1/2 sm:px-4">
+              <h2
+                class="mb-4 mt-6 text-3xl font-bold dark:text-stone-50 sm:mt-0"
+              >
+                It’s all yours
+              </h2>
+              <p class="dark:text-stone-200">
+                Another difference between Blockenberg and WordPress is that
+                instead of the database we use the blockchain technology. All
+                your data are bound to the account you created and published on
+                the distributed network. We don't control and can't influence
+                what you are publishing in any means. Birds around are symbol of
+                freedom - we (and Lincoln) belive that those who deny freedom to
+                others deserve it not for themselves.
+              </p>
+            </div>
+          </div>
+          <div class="mt-4 mb-12 flex justify-center">
+            <a
+              href="/register"
+              class="w-40 text-center justify-center rounded border-2  border-violet-600 bg-violet-600 px-4 py-2 text-xl font-semibold text-white transition-all delay-150 duration-1000 hover:bg-violet-700 focus:outline-none  dark:bg-violet-600 dark:text-violet-50  dark:hover:bg-violet-800"
+            >
+              Register
+            </a>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="grid gap-6 lg:mx-40 lg:grid-cols-3">
           <div class="overflow-hidden lg:col-span-3 lg:flex">
             <img
               src="https://images.unsplash.com/photo-1517061391662-b09454c10462?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2133&q=80"
@@ -167,19 +168,19 @@
               <span
                 class="self-start bg-violet-600 px-3 py-1 text-sm text-stone-100 dark:bg-violet-600 dark:text-stone-50"
               >
-                Technology
+                How to
               </span>
               <h2 class="text-5xl font-bold md:flex-1">
                 <a
                   class="hover:underline"
-                  href="https://cms-blockenberg.vercel.app/"
+                  href="https://cms-blockenberg.vercel.app/posts/bafybeifmugtbgxhtnhzdtf63fh2fm5oplsf7fssvfpxdoe24s2jsrqsghu"
                 >
-                  Next.js ISR sample blog template is live!
+                  How to start with Blockenberg
                 </a>
               </h2>
               <div>
-                <p class="dark:text-stone-400">Feb 22, 2023</p>
-                <p class="dark:text-stone-400">By Adam Sobotka</p>
+                <p class="dark:text-stone-200">Mar 2, 2023</p>
+                <p class="dark:text-stone-200">By Adam Sobotka</p>
               </div>
             </div>
           </div>
@@ -188,7 +189,7 @@
           >
             <a
               href="https://cms-blockenberg.vercel.app/"
-              class="flex font-medium text-violet-600 dark:text-stone-50 hover:underline"
+              class="flex font-medium text-violet-600 hover:underline dark:text-stone-50"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -226,7 +227,7 @@
           >
             <a
               href="https://blockenblog.netlify.app/"
-              class=" flex font-medium text-violet-600 dark:text-stone-50 hover:underline"
+              class=" flex font-medium text-violet-600 hover:underline dark:text-stone-50"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -255,7 +256,7 @@
           >
             <a
               href="https://blockenblog.surge.sh/"
-              class="flex font-medium text-violet-600 dark:text-stone-50 hover:underline"
+              class="flex font-medium text-violet-600 hover:underline dark:text-stone-50"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -294,9 +295,13 @@
             Whether you're looking to build a sleek portfolio, an online store,
             or a video tutorial site, Blockenberg has got you covered.
           </p>
-          <div class="flex justify-center p-4">
-            <a rel="noopener noreferrer " href="mailto:adamsobotka@duck.com">
-              Get in touch with Adam &gt;
+          <div class="flex justify-center p-4 sm:p-8">
+            <a
+              rel="noopener noreferrer "
+              href="mailto:adamsobotka@duck.com"
+              class="rounded border-2 border-violet-600 px-4 py-2 text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 hover:bg-violet-600 hover:text-stone-50  dark:bg-violet-600 dark:text-violet-50  dark:hover:bg-violet-800"
+            >
+              Get in touch with Adam
             </a>
           </div>
           <img

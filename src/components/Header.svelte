@@ -32,7 +32,7 @@
     {#if !$sessionStore.session}
       <a
         href="/register"
-        class=" border-b-4 border-stone-100 px-4 py-2 text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 dark:border-stone-800 dark:bg-violet-600 dark:text-stone-50 hover:dark:border-stone-800 dark:hover:bg-violet-800 "
+        class="rounded px-4 py-2 text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 hover:text-stone-900  dark:bg-violet-600 dark:text-stone-50  dark:hover:bg-violet-800 "
       >
         Register
       </a>
@@ -42,7 +42,7 @@
     {#if !$sessionStore.loading && $sessionStore.backupCreated === false}
       <a
         href="/delegate-account"
-        class=" border-b-4 border-stone-100 px-4 py-2 text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 dark:border-stone-800 dark:bg-violet-600 dark:text-stone-50 hover:dark:border-stone-800 dark:hover:bg-violet-800"
+        class="rounded px-4 py-2 text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 hover:text-stone-900  dark:bg-violet-600 dark:text-stone-50 dark:hover:bg-violet-800"
       >
         Backup
       </a>

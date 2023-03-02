@@ -52,7 +52,7 @@
     <FullScreenLoadingSpinner />
   {:else}
     <Analytics />
-    <div class="flex min-h-screen flex-col justify-between p-2">
+    <div class="flex min-h-screen flex-col justify-between md:p-2">
       <Header />
       <slot />
       <Footer />
