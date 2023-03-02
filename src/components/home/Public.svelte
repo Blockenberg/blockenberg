@@ -9,10 +9,9 @@
         <div
           class="container mx-auto flex max-w-7xl flex-col items-center justify-center md:px-5 "
         >
-          <img
-            class="h-80 w-full bg-stone-50 object-cover object-center dark:bg-stone-500 md:h-[500px]"
-            alt="hero"
-            src="https://images.unsplash.com/photo-1523115191856-c203e76215a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1680&q=80"
+          <div
+            class="h-80 w-full bg-stone-50 bg-cover bg-fixed dark:bg-stone-500 md:h-[500px]"
+            style="background-image: url(https://images.unsplash.com/photo-1523115191856-c203e76215a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1680&q=80)"
           />
           <div
             class="relative w-full rounded bg-stone-50 px-1 py-12 text-center text-stone-900 dark:bg-stone-900 dark:text-stone-50 md:-top-24 md:px-8 lg:w-2/3"
@@ -28,17 +27,17 @@
               resistant, decentralized world.
             </p>
             <div
-              class="flex flex-col justify-center space-y-4 space-x-4 md:flex-row md:space-y-0"
+              class="flex flex-col justify-center items-center space-y-4 md:space-x-4 md:flex-row md:space-y-0"
             >
               <a
                 href="/register"
-                class="w-40 justify-center rounded border-2  border-violet-600 bg-violet-600 px-4 py-2 text-xl font-semibold text-white transition-all delay-150 duration-1000 hover:bg-violet-700 focus:outline-none  dark:bg-violet-600 dark:text-violet-50  dark:hover:bg-violet-800"
+                class="w-full md:w-40 justify-center rounded border-2  border-violet-600 bg-violet-600 px-4 py-2 text-xl font-semibold text-white transition-all delay-150 duration-1000 hover:bg-violet-700 focus:outline-none  dark:bg-violet-600 dark:text-violet-50  dark:hover:bg-violet-800"
               >
                 Register
               </a>
               <a
                 href="/recover"
-                class="w-40 justify-center rounded border-2 border-violet-600 px-4 py-2 text-xl font-semibold text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 hover:bg-violet-100  focus:outline-none  dark:bg-stone-900 dark:text-violet-50  dark:hover:bg-violet-900"
+                class="w-full md:w-40 justify-center rounded border-2 border-violet-600 px-4 py-2 text-xl font-semibold text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 hover:bg-violet-100  focus:outline-none  dark:bg-stone-900 dark:text-violet-50  dark:hover:bg-violet-900"
               >
                 Recover
               </a>
@@ -112,7 +111,7 @@
       <section>
         <div class=" sm:p-8 sm:dark:bg-stone-900">
           <div class="flex flex-col p-8 sm:flex-row sm:space-x-8 ">
-            <div class="sm:w-1/2 sm:px-4">
+            <div class="sm:w-1/2 lg:px-4">
               <h2
                 class="mb-4 mt-6 text-3xl font-bold dark:text-stone-50 sm:mt-0"
               >
@@ -127,7 +126,7 @@
                 we are similar to Contently or Hygraph.
               </p>
             </div>
-            <div class="sm:w-1/2 sm:px-4">
+            <div class="sm:w-1/2 lg:px-4">
               <h2
                 class="mb-4 mt-6 text-3xl font-bold dark:text-stone-50 sm:mt-0"
               >
@@ -147,7 +146,7 @@
           <div class="mt-4 mb-12 flex justify-center">
             <a
               href="/register"
-              class="w-40 text-center justify-center rounded border-2  border-violet-600 bg-violet-600 px-4 py-2 text-xl font-semibold text-white transition-all delay-150 duration-1000 hover:bg-violet-700 focus:outline-none  dark:bg-violet-600 dark:text-violet-50  dark:hover:bg-violet-800"
+              class="w-40 justify-center rounded border-2 border-violet-600  bg-violet-600 px-4 py-2 text-center text-xl font-semibold text-white transition-all delay-150 duration-1000 hover:bg-violet-700 focus:outline-none  dark:bg-violet-600 dark:text-violet-50  dark:hover:bg-violet-800"
             >
               Register
             </a>
