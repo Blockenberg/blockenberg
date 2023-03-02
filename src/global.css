@@ -25,6 +25,6 @@
   }
 
   .editor-btn-selected {
-    @apply m-1 bg-violet-500 p-2 outline-none ring ring-violet-300 hover:bg-violet-600;
+    @apply m-1 bg-violet-600 p-2 outline-none  hover:bg-violet-500  rounded;
   }
 }

@@ -47,31 +47,34 @@
     loading
   </div>
 {:else}
-  <input
-    type="text"
-    bind:value={$accountSettingsStore.hook}
-    class="container mx-auto border-none bg-stone-50 p-2 text-stone-900 focus:ring-stone-900 dark:bg-stone-700/50 dark:text-stone-50 focus:dark:bg-stone-900"
-    placeholder="Webhook URL"
-  />
+  <div>
+    <input
+      type="text"
+      bind:value={$accountSettingsStore.hook}
+      class="container mx-auto rounded border-none bg-stone-50 p-2 text-stone-900 focus:ring-stone-900 dark:bg-stone-700/50 dark:text-stone-50 focus:dark:bg-stone-900"
+      placeholder="Webhook URL"
+    />
+
+    <div class="flex space-x-2 mt-3">
+      <button
+        on:click={() => validateHook($accountSettingsStore.hook)}
+        disabled={hookstatus}
+        class="w-full justify-center rounded border-2 border-violet-600  bg-violet-600 px-4 py-2 text-xl font-semibold text-white transition-all delay-150 duration-1000 hover:bg-violet-700 focus:outline-none dark:bg-violet-600  dark:text-violet-50 dark:hover:bg-violet-800  md:w-40"
+      >
+        Validate
+      </button>
+      <button
+        on:click={() => {
+          setHookUrl($accountSettingsStore.hook);
+        }}
+        disabled={!hookstatus}
+        class="w-full cursor-pointer justify-center rounded border-2 border-violet-600 px-4 py-2 text-xl font-semibold text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 hover:bg-violet-100  focus:outline-none dark:bg-stone-800  dark:text-violet-50 dark:hover:bg-violet-900  md:w-40"
+      >
+        Set
+      </button>
+    </div>
+  </div>
 {/if}
-<div class="flex space-x-2">
-  <button
-    on:click={() => validateHook($accountSettingsStore.hook)}
-    disabled={hookstatus}
-    class="border-b-4 border-stone-100 px-4 py-2 font-bold text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 disabled:opacity-10 dark:border-stone-800 dark:bg-violet-600 dark:text-stone-50 hover:dark:border-stone-800 dark:hover:bg-violet-800"
-  >
-    Validate
-  </button>
-  <button
-    on:click={() => {
-      setHookUrl($accountSettingsStore.hook);
-    }}
-    disabled={!hookstatus}
-    class="border-b-4 border-stone-100 px-4 py-2 font-bold text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 disabled:opacity-10 dark:border-stone-800 dark:bg-violet-600 dark:text-stone-50 hover:dark:border-stone-800 dark:hover:bg-violet-800"
-  >
-    Set
-  </button>
-</div>
 <div class="text-sm">
   {hookmessage}
 </div>

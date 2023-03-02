@@ -335,44 +335,11 @@
     </div>
   </div>
 {/if}
-<dialog
-  id="urlDialog"
-  class="h-screen w-full bg-stone-50 backdrop:bg-stone-50 dark:bg-stone-900 dark:backdrop:bg-stone-900 "
-  bind:this={dialog}
-  on:close={() => loadImage()}
->
-  <form method="dialog">
-    <p>
-      <input
-        class="container mx-auto border-none bg-stone-50 p-4 text-stone-900 focus:ring-stone-900 dark:bg-stone-700/50 dark:text-stone-50 focus:dark:bg-stone-700"
-        type="url"
-        placeholder="image url..."
-        bind:value={imgurl}
-      />
-    </p>
-    <div class="container mt-2 flex justify-end space-x-2">
-      <button
-        class="bg-stone-50 px-4 py-2 transition-all delay-150 duration-1000 disabled:opacity-10 dark:bg-violet-600 dark:text-stone-900"
-        value="cancel"
-        on:click={() => (imgurl = null)}
-      >
-        Cancel
-      </button>
-      <button
-        disabled={!imgurl}
-        class="bg-stone-50 px-4 py-2 transition-all  delay-150 duration-1000 disabled:opacity-10 dark:text-stone-900"
-        id="confirmBtn"
-        value="default"
-      >
-        Insert
-      </button>
-    </div>
-  </form>
-</dialog>
+
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <article
   bind:this={element}
-  class="mx-auto mt-1 w-full overflow-x-hidden overflow-y-scroll bg-stone-50 {editorcontent
+  class="mx-auto rounded-md mt-1 w-full overflow-x-hidden overflow-y-scroll bg-stone-50 {editorcontent
     ? 'opacity-100 md:h-96 lg:h-[42rem]'
     : 'lg:h-96'}"
 />

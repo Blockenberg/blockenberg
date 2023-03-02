@@ -85,13 +85,13 @@
       {#if preview || imageContent.src}
         <img
           alt="header"
-          class="mb-1 h-60 w-full object-cover"
+          class=" mb-2 h-60 w-full rounded object-cover object-top"
           src={preview || imageContent?.src}
         />
       {:else}
         <img
           alt="header"
-          class="object-fit mb-1 h-60 w-full opacity-10"
+          class="object-fit mb-2 h-60 w-full opacity-10"
           src={placeholder}
         />
       {/if}
@@ -102,7 +102,7 @@
             class="flex cursor-pointer flex-col items-center justify-center object-cover"
           >
             <span
-              class="flex bg-stone-50 px-4 py-3 text-sm font-bold transition-all delay-150 duration-1000 hover:-hue-rotate-15 dark:bg-violet-600 dark:text-stone-50"
+              class="flex w-full items-center justify-center rounded border-2 border-violet-600 px-4 py-2 text-xl font-semibold text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 hover:bg-violet-100 focus:outline-none  dark:bg-stone-800  dark:text-violet-50 dark:hover:bg-violet-900  md:w-40"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -130,12 +130,13 @@
             on:change={() => getBase64(files[0])}
           />
         {/if}
+
         <button
-          class="bg-stone-50 px-4 py-2 transition-all delay-150 duration-1000 hover:-hue-rotate-15 dark:bg-violet-600 dark:text-stone-50"
+          class="w-full justify-center rounded border-2 border-violet-600  bg-violet-600 px-4 py-2 text-xl font-semibold text-white transition-all delay-150 duration-1000 hover:bg-violet-700 focus:outline-none dark:bg-violet-600  dark:text-violet-50 dark:hover:bg-violet-800  md:w-40"
           on:click={() =>
             galleryModal ? (galleryModal = false) : (galleryModal = true)}
         >
-          <span class="text-sm font-bold">Cover Photo</span>
+          <span>Cover Photo</span>
         </button>
       </div>
     </div>
@@ -153,7 +154,7 @@
       out:fly={{ y: -200, duration: 500 }}
       type="text"
       bind:value={contentHeader}
-      class="container mx-auto border-none bg-stone-50 p-4 text-3xl text-stone-900 focus:ring-stone-900 dark:bg-stone-700/50 dark:text-stone-50 focus:dark:bg-stone-900"
+      class="container mx-auto rounded border-none bg-stone-50 p-4 text-3xl text-stone-900 focus:ring-stone-900 dark:bg-stone-700/50 dark:text-stone-50 focus:dark:bg-stone-900"
       placeholder="Header"
       tabindex={0}
     />
@@ -161,7 +162,7 @@
       <input
         type="text"
         on:keydown={handleKeydown}
-        class="container mx-auto border-none bg-stone-50 p-4 text-stone-900 focus:ring-stone-900 dark:bg-stone-700/50 dark:text-stone-50 focus:dark:bg-stone-900"
+        class="container mx-auto rounded border-none bg-stone-50 p-4 text-stone-900 focus:ring-stone-900 dark:bg-stone-700/50 dark:text-stone-50 focus:dark:bg-stone-900"
         placeholder="tags - use Tab to add"
         tabindex={1}
       />
@@ -172,7 +173,7 @@
               on:click={() => {
                 tags = [];
               }}
-              class="self-start px-3 py-1 text-sm dark:bg-violet-600 dark:text-stone-50"
+              class="self-start rounded px-3 py-1 text-sm dark:bg-violet-600 dark:text-stone-50"
             >
               {tag}
             </button>
@@ -223,14 +224,14 @@
       <button
         on:click={() => uploadDoc(false)}
         disabled={!contentHeader || !contentText}
-        class=" border-b-4 border-stone-100 px-4 py-2 text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 disabled:opacity-10 dark:border-stone-800 dark:bg-violet-600 dark:text-stone-50 hover:dark:border-stone-800 dark:hover:bg-violet-800"
+        class="w-full justify-center rounded border-2 border-violet-600 px-4 py-2 text-xl font-semibold text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 hover:bg-violet-100 focus:outline-none  dark:bg-stone-800  dark:text-violet-50 dark:hover:bg-violet-900  md:w-40"
       >
         Save
       </button>
       <button
         on:click={() => uploadDoc(true)}
         disabled={!contentHeader || !contentText}
-        class="border-b-4 border-stone-100 px-4 py-2 transition-all delay-150 duration-1000 hover:border-violet-600 disabled:opacity-10  dark:border-stone-800 dark:bg-stone-300 dark:text-stone-900 dark:hover:border-stone-800 dark:hover:bg-stone-50 dark:hover:text-violet-600"
+        class="w-full justify-center rounded border-2 border-violet-600  bg-violet-600 px-4 py-2 text-xl font-semibold text-white transition-all delay-150 duration-1000 hover:bg-violet-700 focus:outline-none dark:bg-violet-600  dark:text-violet-50 dark:hover:bg-violet-800  md:w-40"
       >
         Publish
       </button>
@@ -241,7 +242,7 @@
         goto('/');
       }}
       disabled={!contentHeader || !contentText}
-      class="border-b-4 border-stone-100 px-4 py-2 transition-all delay-150 duration-1000 hover:border-violet-600 disabled:opacity-10  dark:border-stone-800 dark:bg-stone-300 dark:text-stone-900 dark:hover:border-stone-800 dark:hover:bg-stone-50 dark:hover:text-violet-600"
+      class="w-full justify-center rounded border-2 border-violet-600 px-4 py-2 text-xl font-semibold text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 hover:bg-violet-100 focus:outline-none  dark:bg-stone-800  dark:text-violet-50 dark:hover:bg-violet-900  md:w-40"
     >
       Delete
     </button>

@@ -5,8 +5,9 @@
   import Create from '$components/editor/Editor.svelte';
   export let data: PageData;
   let doc;
-  const result = new Promise(async (resolve) => {
+  const result = new Promise(async resolve => {
     doc = await getDocFromWNFS(data.article.name);
+    console.log(doc);
     resolve(doc);
   });
 
@@ -15,7 +16,7 @@
 
 {#await result then}
   <Create
-    imageContent={{ name: doc.imgname, src: doc.imgsrc, cid:doc.imgcid }}
+    imageContent={{ name: doc.imgname, src: doc.imgsrc, cid: doc.imgcid }}
     contentHeader={doc.header}
     contentText={doc.content}
     currenttags={doc.tags}

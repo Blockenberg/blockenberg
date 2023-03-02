@@ -37,14 +37,14 @@
 </section>
 <section class="min-h-[calc(100vh-300px)] py-6 sm:py-4">
   <div class="container mx-auto space-y-8 p-6">
-    <div class="flex justify-center">
+    <div class="flex space-x-4 lg:space-x-8 justify-center">
       {#each Object.keys(AREAS) as area}
         <button
           on:click={() => handleChangeTab(AREAS[area])}
-          class="px-4 py-2 w-28 font-bold text-stone-900 ease-in {$cmsStore.selectedArea ===
+          class="ease-in {$cmsStore.selectedArea ===
           AREAS[area]
-            ? ' border-b-4 border-violet-600 px-4 py-2 text-violet-600 transition-all delay-150 duration-300 hover:border-violet-600 dark:border-stone-800 dark:bg-violet-600 dark:text-stone-50 hover:dark:border-stone-800 dark:hover:bg-violet-800 '
-            : 'border-b-4 border-stone-100 transition-all delay-150 duration-300 hover:border-violet-600 dark:border-stone-800 dark:text-stone-50 hover:dark:border-stone-800 dark:hover:bg-stone-900'}"
+            ? 'w-full justify-center rounded border-2 border-violet-600  bg-violet-600 px-4 py-2 text-xl font-semibold text-white transition-all delay-150 duration-1000 hover:bg-violet-700 focus:outline-none dark:bg-violet-600  dark:text-violet-50 dark:hover:bg-violet-800  md:w-40'
+            : 'w-full justify-center rounded border-2 border-violet-600 px-4 py-2 text-xl font-semibold text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 hover:bg-violet-100 focus:outline-none  dark:bg-stone-800  dark:text-violet-50 dark:hover:bg-violet-900  md:w-40'}"
         >
           {AREAS[area] === AREAS.PRIVATE ? 'Saved' : 'Published'}
         </button>
