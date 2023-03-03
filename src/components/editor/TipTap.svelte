@@ -335,11 +335,45 @@
     </div>
   </div>
 {/if}
-
+<dialog
+  id="urlDialog"
+  class="w-2/3 flex-col rounded-lg bg-stone-50 backdrop:bg-stone-50 dark:bg-stone-900 dark:backdrop:bg-stone-900/50"
+  bind:this={dialog}
+  on:close={() => loadImage()}
+>
+  <form method="dialog">
+    <p>
+      <input
+        class=" container mx-auto rounded border-none bg-stone-50 p-4 text-stone-900 focus:ring-stone-900 dark:bg-stone-700/50 dark:text-stone-50 focus:dark:bg-stone-700"
+        type="url"
+        placeholder="image url..."
+        bind:value={imgurl}
+      />
+    </p>
+    <div class="container mt-2 flex justify-end space-x-2">
+      <button
+        class="flex w-full items-center justify-center rounded border-2 border-violet-600 px-4 py-2 text-lg font-semibold text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 hover:bg-violet-100 focus:outline-none  dark:bg-stone-900  dark:text-violet-50 dark:hover:bg-violet-900  md:w-40"
+        value="cancel"
+        on:click={() => (imgurl = null)}
+      >
+        Cancel
+      </button>
+      <button
+        on:click={() => loadImage()}
+        disabled={!imgurl}
+        class="w-full justify-center rounded border-2 border-violet-600 bg-violet-600  px-4 py-2 text-lg font-semibold text-white transition-all delay-150 duration-1000 hover:bg-violet-700 focus:outline-none disabled:opacity-5 dark:bg-violet-600  dark:text-violet-50 dark:hover:bg-violet-800  md:w-40"
+        id="confirmBtn"
+        value="default"
+      >
+        Insert
+      </button>
+    </div>
+  </form>
+</dialog>
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <article
   bind:this={element}
-  class="mx-auto rounded-md mt-1 w-full overflow-x-hidden overflow-y-scroll bg-stone-50 {editorcontent
+  class="mx-auto mt-1 w-full overflow-x-hidden overflow-y-scroll rounded-md bg-stone-50 {editorcontent
     ? 'opacity-100 md:h-96 lg:h-[42rem]'
     : 'lg:h-96'}"
 />
