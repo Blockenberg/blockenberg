@@ -18,7 +18,7 @@
 {#if $accountSettingsStore.avatar}
   {#if $accountSettingsStore.loading}
     <div
-      class="rounded-full border-base-content flex items-center justify-center border-2 object-cover {sizeClasses}"
+      class="border-base-content flex items-center justify-center rounded-full border-2 object-cover {sizeClasses}"
     >
       <span
         class="border-base-content animate-spin border-2 border-t-2 border-t-orange-500 ease-linear {loaderSizeClasses}"
@@ -26,14 +26,14 @@
     </div>
   {:else}
     <img
-      class="rounded-full hover:rounded-lg object-cover bg-violet-600 {sizeClasses}"
+      class="rounded-full bg-violet-600 object-cover hover:rounded-lg {sizeClasses}"
       src={$accountSettingsStore.avatar.src}
       alt="User Avatar"
     />
   {/if}
 {:else}
   <div
-    class="rounded-full hover:rounded-lg flex items-center justify-center bg-violet-600 font-bold uppercase text-stone-50 {sizeClasses}"
+    class="flex items-center  justify-center rounded-full bg-violet-600 font-bold uppercase text-stone-50 transition-all delay-150 duration-1000 hover:rounded-lg {sizeClasses}"
   >
     {$sessionStore.username.trimmed[0]}
   </div>

@@ -34,24 +34,24 @@
 </script>
 
   <div
-    class="container mx-auto grid grid-cols-1 justify-center gap-6 p-6 py-20 text-center dark:bg-stone-800 sm:grid-cols-2 lg:grid-cols-4 lg:px-8"
+    class="container mx-auto grid grid-cols-1 justify-center gap-6 md:p-6 md:py-20 text-center dark:bg-stone-800 sm:grid-cols-2 lg:grid-cols-4 lg:px-8"
   >
     {#each $cmsStore.selectedArea === AREAS.PRIVATE ? $cmsStore.privateDocuments : $cmsStore.publicDocuments as doc}
       <a
         href="/edit/{encodeURI(doc.name)}"
-        class="group mx-auto w-full bg-stone-50 hover:no-underline focus:no-underline dark:bg-stone-900"
+        class="group mx-auto w-full bg-stone-50 hover:bg-violet-50 dark:bg-stone-900 rounded-md border-2  border-stone-50/5 hover:border-violet-600/50 transition-all delay-150 duration-1000"
       >
         {#if doc.src}
           <img
             role="presentation"
-            class="h-44 w-full object-cover dark:bg-stone-500"
+            class="h-44 w-full object-cover dark:bg-stone-500 rounded-t-md"
             alt="Cover image for {decodeURI(doc.header)}"
             src={doc.src}
           />
         {/if}
         <div class="space-y-2 p-6">
           <h3
-            class="text-2xl font-semibold group-hover:underline group-focus:underline"
+            class="text-3xl font-semibold group-focus:underline"
           >
             {decodeURI(doc.header)}
           </h3>
@@ -63,7 +63,7 @@
               day: 'numeric'
             })}
           </span>
-          <p class="h-60 overflow-clip text-ellipsis">
+          <p class="h-60 overflow-clip text-ellipsis ">
             {@html doc.content}
           </p>
         </div>

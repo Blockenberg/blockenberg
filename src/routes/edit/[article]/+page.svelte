@@ -15,11 +15,13 @@
 </script>
 
 {#await result then}
-  <Create
-    imageContent={{ name: doc.imgname, src: doc.imgsrc, cid: doc.imgcid }}
-    contentHeader={doc.header}
-    contentText={doc.content}
-    currenttags={doc.tags}
-    CID={doc.name}
-  />
+  {#if doc}
+    <Create
+      imageContent={doc.img}
+      contentHeader={doc.header}
+      contentText={doc.content}
+      currenttags={doc.tags}
+      CID={doc.name}
+    />
+  {/if}
 {/await}
