@@ -39,7 +39,8 @@
   }
 </script>
 
-<h2 class="mt-4 text-3xl font-bold dark:text-stone-50 ">Publishing Webhook</h2>
+<section>
+<h2 class="mb-6 text-3xl font-bold dark:text-stone-50 ">Publishing Webhook</h2>
 {#if $accountSettingsStore.loading}
   <div
     class="container mx-auto border-none bg-stone-50 p-2 text-stone-900 focus:ring-stone-900 dark:bg-stone-700/50 dark:text-stone-50 focus:dark:bg-stone-900"
@@ -78,3 +79,4 @@
 <div class="text-sm">
   {hookmessage}
 </div>
+</section>

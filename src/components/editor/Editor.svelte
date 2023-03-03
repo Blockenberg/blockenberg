@@ -10,7 +10,6 @@
   import ImagePicker from '$routes/cms/components/imageGallery/ImagePicker.svelte';
   import TipTap from './TipTap.svelte';
   import { tick } from 'svelte';
-  import { fade, fly } from 'svelte/transition';
   import sanitizeHtml from 'sanitize-html';
   import placeholder from '$lib/assets/placeholder.svg';
 
@@ -78,8 +77,6 @@
 >
   {#if showheader}
     <div
-      in:fade
-      out:fly={{ y: -200, duration: 500 }}
       class="container flex flex-col items-end justify-end py-4"
     >
       {#if preview || imageContent.src}
@@ -150,8 +147,6 @@
     {/if}
 
     <input
-      in:fade
-      out:fly={{ y: -200, duration: 500 }}
       type="text"
       bind:value={contentHeader}
       class="container mx-auto rounded border-none bg-stone-50 p-4 text-3xl text-stone-900 focus:ring-stone-900 dark:bg-stone-700/50 dark:text-stone-50 focus:dark:bg-stone-900"

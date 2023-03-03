@@ -24,7 +24,7 @@
           <div
             class="mt-4 border-t border-stone-800 pt-4 text-center sm:mt-0 sm:w-2/3 sm:border-l sm:border-t-0 sm:py-8 sm:pl-8 sm:text-left"
           >
-            <div class="flex flex-col space-y-8">
+            <div class="flex flex-col space-y-8 lg:space-y-12">
               <ConnectedDevices />
 
               <RecoveryKit />

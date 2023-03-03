@@ -6,7 +6,6 @@
 
   // If cmsStore.selectedArea changes from private to public, re-run getDocsFromWNFS
   let selectedArea = null;
-  let docsInArea;
   const unsubscribecmsStore = cmsStore.subscribe(async updatedStore => {
     // Get initial selectedArea
     if (!selectedArea) {

@@ -45,7 +45,7 @@
 
   <div class="mt-2 mb-4 h-1 w-12 bg-violet-500 lg:w-24" />
 
-  <div class="flex flex-col rounded-md border bg-violet-600 p-4 text-stone-50">
+  <div class="flex flex-col rounded-md bg-violet-600 p-4 text-stone-50">
     <button
       class="mb-2 flex w-full flex-row justify-center font-semibold"
       on:click={handleCopyUserHash}
@@ -66,7 +66,7 @@
       </svg>
       &nbsp;Token
     </button>
-    <span class=" w-32 break-all text-stone-400">
+    <span class=" w-32 break-all text-stone-50 dark:text-stone-800 font-mono">
       {$sessionStore.username.hashed}
     </span>
   </div>
