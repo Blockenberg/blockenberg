@@ -6,7 +6,7 @@
         aria-label="Email"
         rel="noopener noreferrer"
         href="mailto:adamsobotka@duck.com"
-        class="flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 dark:bg-violet-600 dark:text-gray-50"
+        class="flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-violet-600 text-gray-50"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +24,7 @@
         aria-label="Twitter"
         rel="noopener noreferrer"
         href="https://twitter.com/Blockenberg_dev"
-        class="flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 dark:bg-violet-600 dark:text-gray-50"
+        class="flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-violet-600 text-gray-50"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +41,7 @@
         aria-label="Github"
         rel="noopener noreferrer"
         href="https://github.com/vorcigernix"
-        class="flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 dark:bg-violet-600 dark:text-gray-50"
+        class="flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-violet-600 text-gray-50"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

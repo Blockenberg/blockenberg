@@ -9,7 +9,7 @@
 
   function handleSwitchDarkMode() {
     darkMode = !darkMode;
-
+    localStorage.theme = darkMode ? 'dark' : 'light';
     darkMode
       ? document.documentElement.classList.add('dark')
       : document.documentElement.classList.remove('dark');
