@@ -109,7 +109,7 @@
         </div>
       </section>
       <section>
-        <div class=" bg-stone-50 sm:p-8 sm:dark:bg-stone-900">
+        <div class=" bg-stone-100 sm:p-8 dark:bg-stone-800">
           <div class="flex flex-col p-8 sm:flex-row sm:space-x-8 ">
             <div class="sm:w-1/2 lg:px-4">
               <h2
