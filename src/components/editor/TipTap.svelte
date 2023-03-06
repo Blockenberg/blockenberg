@@ -373,6 +373,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <article
   bind:this={element}
+  on:click={editor.commands.focus()}
   class="mx-auto mt-1 w-full overflow-x-hidden overflow-y-scroll rounded-md bg-stone-50 {editorcontent
     ? 'opacity-100 md:h-96 lg:h-[42rem]'
     : 'lg:h-96'}"
