@@ -27,12 +27,12 @@
 
 <section>
   <div
-    class="container mx-auto flex flex-col items-center px-4 py-8 text-center md:py-12 md:px-10 lg:px-32 xl:max-w-3xl"
+    class="container mx-auto flex flex-col items-center px-4 pt-8 text-center md:pt-12 md:px-10 lg:px-32 xl:max-w-3xl"
   >
-    <h1 class="text-4xl font-bold leading-none sm:text-5xl">
+    <p class="uppercase font-bold tracking-widest">
       Welcome
       <span class="dark:text-violet-600">{$sessionStore.username.trimmed}</span>
-    </h1>
+    </p>
   </div>
 </section>
 <section class="min-h-[calc(100vh-300px)] py-6 sm:py-4">
