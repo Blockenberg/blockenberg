@@ -5,7 +5,7 @@
       <a
         aria-label="Email"
         rel="noopener noreferrer"
-        href="mailto:adamsobotka@duck.com"
+        href="mailto:adam@blockenberg.xyz"
         class="flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-violet-600 text-gray-50"
       >
         <svg
@@ -40,7 +40,7 @@
       <a
         aria-label="Github"
         rel="noopener noreferrer"
-        href="https://github.com/vorcigernix"
+        href="https://github.com/blockenberg"
         class="flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-violet-600 text-gray-50"
       >
         <svg
