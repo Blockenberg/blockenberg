@@ -71,7 +71,7 @@
     "qrcode-svg": "^1.1.0",
     "sanitize-html": "^2.10.0",
     "uint8arrays": "^4.0.2",
-    "webnative": "^0.35.1"
+    "webnative": "^0.36.3"
   },
   "engines": {
     "node": ">=16.14"
