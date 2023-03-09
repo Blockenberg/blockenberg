@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/rome/configuration_schema.json",
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true
+    },
+    "ignore": ["build"]
+  },
+  "formatter": { "enabled": true, "ignore": ["build"] },
+  "javascript": {
+    "formatter": {
+      "semicolons": "always",
+      "quoteProperties": "asNeeded",
+      "quoteStyle": "single",
+      "trailingComma": "all"
+    }
+  }
+}

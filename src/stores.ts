@@ -7,13 +7,13 @@ import type { Notification } from '$lib/notifications';
 import type { Session } from '$lib/session';
 
 export const sessionStore: Writable<Session> = writable({
-  username: null,
-  organization: false,
-  session: null,
-  authStrategy: null,
-  program: null,
-  loading: true,
-  backupCreated: null
+	username: null,
+	organization: false,
+	session: null,
+	authStrategy: null,
+	program: null,
+	loading: true,
+	backupCreated: null,
 });
 
 export const filesystemStore: Writable<FileSystem | null> = writable(null);
@@ -21,8 +21,8 @@ export const filesystemStore: Writable<FileSystem | null> = writable(null);
 export const notificationStore: Writable<Notification[]> = writable([]);
 
 export const accountSettingsStore: Writable<AccountSettings> = writable({
-  avatar: null,
-  loading: true,
-  organization: false,
-  hook: ''
+	avatar: null,
+	loading: true,
+	organization: false,
+	hook: '',
 });
