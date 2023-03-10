@@ -14,7 +14,7 @@
             style="background-image: url(https://images.unsplash.com/photo-1569263975210-c4290a88eab0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80);background-size: cover"
           />
           <div
-            class="relative w-full rounded bg-stone-50 px-1 py-12 text-center text-stone-900 dark:bg-stone-900 dark:text-stone-50 md:-top-24 md:px-8 lg:w-2/3"
+            class="relative w-full rounded-2xl bg-stone-50 px-1 py-12 text-center text-stone-900 dark:bg-stone-900 dark:text-stone-50 md:-top-24 md:px-8 lg:w-2/3"
           >
             <div class="my-6 text-xs font-bold uppercase">
               Blockenberg Content Management System
@@ -31,13 +31,13 @@
             >
               <a
                 href="/register"
-                class="w-full justify-center rounded border-2 border-violet-600  bg-violet-600 px-4 py-2 text-xl font-semibold text-white transition-all delay-150 duration-1000 hover:bg-violet-700 focus:outline-none dark:bg-violet-600  dark:text-violet-50 dark:hover:bg-violet-800  md:w-40"
+                class="w-full justify-center rounded-2xl border-2 border-violet-600  bg-violet-600 px-4 py-2 text-xl font-semibold text-white transition-all delay-150 duration-1000 hover:bg-violet-700 focus:outline-none dark:bg-violet-600  dark:text-violet-50 dark:hover:bg-violet-800  md:w-40"
               >
                 Register
               </a>
               <a
                 href="/recover"
-                class="w-full justify-center rounded border-2 border-violet-600 px-4 py-2 text-xl font-semibold text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 hover:bg-violet-100 focus:outline-none  dark:bg-stone-900  dark:text-violet-50 dark:hover:bg-violet-900  md:w-40"
+                class="w-full justify-center rounded-2xl border-2 border-violet-600 px-4 py-2 text-xl font-semibold text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 hover:bg-violet-100 focus:outline-none  dark:bg-stone-900  dark:text-violet-50 dark:hover:bg-violet-900  md:w-40"
               >
                 Recover
               </a>
@@ -45,71 +45,62 @@
           </div>
         </div>
       </section>
-      <section>
-        <h2 class="text-center text-5xl font-bold dark:text-stone-50">
-          Own everything you create.
-        </h2>
-        <div class="my-16 grid gap-6 lg:mx-24 lg:grid-cols-3 lg:gap-12">
-          <div class="flex flex-col items-center p-8 md:space-y-4 ">
-            <div
-              class="mb-2 flex h-12 w-12 flex-shrink-0 items-center justify-center bg-violet-600 text-xl font-bold text-stone-100 dark:bg-violet-600"
-            >
-              1
-            </div>
-            <p class="text-center text-xl ">
-              <b>Own your data.</b>
-              Blockenberg publishes on your decentralized account
-            </p>
-          </div>
-          <div class="flex flex-col items-center p-8 md:space-y-4 ">
-            <div
-              class="mb-2 flex h-12 w-12 flex-shrink-0 items-center justify-center bg-violet-600 text-xl font-bold text-stone-100 dark:bg-violet-600"
-            >
-              2
-            </div>
-            <p class="text-center text-xl ">
-              <b>Easy to use.</b>
-              No blockchain or development knowledge required
-            </p>
-          </div>
-          <div class="flex flex-col items-center p-8 md:space-y-4 ">
-            <div
-              class="mb-2 flex h-12 w-12 flex-shrink-0 items-center justify-center bg-violet-600 text-xl font-bold text-stone-100 dark:bg-violet-600"
-            >
-              3
-            </div>
-            <p class="text-center text-xl ">
-              <b>Use it anywhere.</b>
-              Build your app using your favourite tools, and deploy!
-            </p>
-          </div>
-        </div>
-      </section>
-      <section>
-        <div class="flex flex-col overflow-hidden lg:mx-40 lg:flex-row">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Remise_du_Prix_Sakharov_%C3%A0_Aung_San_Suu_Kyi_Strasbourg_22_octobre_2013-18.jpg/320px-Remise_du_Prix_Sakharov_%C3%A0_Aung_San_Suu_Kyi_Strasbourg_22_octobre_2013-18.jpg"
-            alt=""
-            class="aspect-video object-cover dark:bg-stone-500 lg:aspect-auto lg:h-72"
-          />
+      <section class=" dark:text-stone-100 rounded-2xl">
+        <div
+          class="container grid gap-6 mx-auto text-center lg:grid-cols-2 xl:grid-cols-5 justify-center"
+        >
           <div
-            class="flex flex-1 flex-col justify-center bg-stone-50 p-6 dark:bg-stone-900"
+            class="w-full px-6 py-16 sm:px-12 md:px-16 xl:col-span-2"
           >
-            <p class="text-xl font-semibold">
-              To view the opposition as dangerous is to misunderstand the basic
-              concepts of democracy. To oppress the opposition is to assault the
-              very foundation of democracy.
-            </p>
-            <p class="my-6 dark:text-stone-200">
-              Aung San Suu Kyi
-              <br />
-              Burmese Disident
-            </p>
+            <h1 class="text-5xl font-extrabold dark:text-stone-50">
+              Own everything you create.
+            </h1>
+
+            <div class="my-16 flex flex-col gap-6 ">
+              <div class="flex flex-col items-center p-8 md:space-y-4 ">
+                <div
+                  class="mb-2 flex h-12 w-12 flex-shrink-0 items-center justify-center bg-violet-600 text-xl font-bold text-stone-100 dark:bg-violet-600 rounded-full"
+                >
+                  1
+                </div>
+                <p class="text-center text-xl ">
+                  <b>Own your data.</b>
+                  Blockenberg publishes on your decentralized account
+                </p>
+              </div>
+              <div class="flex flex-col items-center p-8 md:space-y-4 ">
+                <div
+                  class="mb-2 flex h-12 w-12 flex-shrink-0 items-center justify-center bg-violet-600 text-xl font-bold text-stone-100 dark:bg-violet-600 rounded-full"
+                >
+                  2
+                </div>
+                <p class="text-center text-xl ">
+                  <b>Easy to use.</b>
+                  No blockchain or development knowledge required
+                </p>
+              </div>
+              <div class="flex flex-col items-center p-8 md:space-y-4 ">
+                <div
+                  class="mb-2 flex h-12 w-12 flex-shrink-0 items-center justify-center bg-violet-600 text-xl font-bold text-stone-100 dark:bg-violet-600 rounded-full"
+                >
+                  3
+                </div>
+                <p class="text-center text-xl ">
+                  <b>Use it anywhere.</b>
+                  Build your app using your favourite tools, and deploy!
+                </p>
+              </div>
+            </div>
           </div>
+          <img
+            src="kindagartner.svg"
+            alt="kinda gartner chart"
+            class="object-cover w-full xl:col-span-3"
+          />
         </div>
       </section>
       <section>
-        <div class=" bg-stone-100 sm:p-8 dark:bg-stone-800">
+        <div class=" bg-stone-100 sm:p-8 dark:bg-stone-800 rounded-2xl">
           <div class="flex flex-col p-8 sm:flex-row sm:space-x-8 ">
             <div class="sm:w-1/2 lg:px-4">
               <h2
@@ -146,7 +137,7 @@
           <div class="mt-4 mb-12 flex justify-center">
             <a
               href="/register"
-              class="w-40 justify-center rounded border-2 border-violet-600  bg-violet-600 px-4 py-2 text-center text-xl font-semibold text-white transition-all delay-150 duration-1000 hover:bg-violet-700 focus:outline-none  dark:bg-violet-600 dark:text-violet-50  dark:hover:bg-violet-800"
+              class="w-40 justify-center rounded-2xl border-2 border-violet-600  bg-violet-600 px-4 py-2 text-center text-xl font-semibold text-white transition-all delay-150 duration-1000 hover:bg-violet-700 focus:outline-none  dark:bg-violet-600 dark:text-violet-50  dark:hover:bg-violet-800"
             >
               Register
             </a>
@@ -154,8 +145,8 @@
         </div>
       </section>
       <section>
-        <div class="grid gap-6 lg:mx-40 lg:grid-cols-3">
-          <div class="overflow-hidden lg:col-span-3 lg:flex">
+        <div class="grid gap-6 lg:mx-40 lg:grid-cols-3 ">
+          <div class="overflow-hidden lg:col-span-3 lg:flex rounded-2xl">
             <img
               src="https://images.unsplash.com/photo-1517061391662-b09454c10462?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2133&q=80"
               alt=""
@@ -165,7 +156,7 @@
               class="space-y-6 bg-stone-50 p-6 dark:bg-stone-900 md:flex md:flex-col lg:p-8"
             >
               <span
-                class="self-start bg-violet-600 px-3 py-1 text-sm text-stone-100 dark:bg-violet-600 dark:text-stone-50"
+                class="self-start bg-violet-600 px-3 py-1 text-sm text-stone-100 dark:bg-violet-600 dark:text-stone-50 rounded-2xl"
               >
                 How to
               </span>
@@ -184,7 +175,7 @@
             </div>
           </div>
           <div
-            class="flex justify-center bg-stone-50 p-6 dark:bg-stone-900 lg:p-8 lg:py-12 "
+            class="flex justify-center bg-stone-50 p-6 dark:bg-stone-900 lg:p-8 lg:py-12 rounded-2xl"
           >
             <a
               href="https://cms-blockenberg.vercel.app/"
@@ -222,7 +213,7 @@
             </a>
           </div>
           <div
-            class="flex justify-center bg-stone-50 p-6 dark:bg-stone-900 lg:p-8 lg:py-12"
+            class="flex justify-center bg-stone-50 p-6 dark:bg-stone-900 lg:p-8 lg:py-12 rounded-2xl"
           >
             <a
               href="https://blockenblog.netlify.app/"
@@ -251,7 +242,7 @@
             </a>
           </div>
           <div
-            class="flex justify-center bg-stone-50 p-6 dark:bg-stone-900 lg:p-8 lg:py-12"
+            class="flex justify-center bg-stone-50 p-6 dark:bg-stone-900 lg:p-8 lg:py-12 rounded-2xl"
           >
             <a
               href="https://blockenblog.surge.sh/"
@@ -283,7 +274,7 @@
       </section>
       <section>
         <div
-          class="container mx-auto p-6 py-20 text-center dark:bg-stone-900 lg:px-8"
+          class="container mx-auto p-6 py-20 text-center dark:bg-stone-900 lg:px-8 rounded-2xl"
         >
           <h2 class=" text-5xl font-bold">Our team is here to help you.</h2>
           <p class="mt-6">
@@ -297,8 +288,8 @@
           <div class="flex justify-center p-4 sm:p-8">
             <a
               rel="noopener noreferrer "
-              href="mailto:adamsobotka@duck.com"
-              class="rounded border-2 border-violet-600 px-4 py-2 text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 hover:bg-violet-600 hover:text-stone-50  dark:bg-violet-600 dark:text-violet-50  dark:hover:bg-violet-800"
+              href="mailto:adam@blockenberg.xyz"
+              class="rounded-2xl border-2 border-violet-600 px-4 py-2 text-violet-600 transition-all delay-150 duration-1000 hover:border-violet-600 hover:bg-violet-600 hover:text-stone-50  dark:bg-violet-600 dark:text-violet-50  dark:hover:bg-violet-800"
             >
               Get in touch with Adam
             </a>
@@ -306,7 +297,7 @@
           <img
             src="https://images.unsplash.com/photo-1500405079076-d1d5a841e112?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2196&q=80"
             alt=""
-            class="mt-8 h-auto max-h-96 w-full rounded object-cover dark:bg-stone-500"
+            class="mt-8 h-auto max-h-96 w-full rounded-2xl object-cover dark:bg-stone-500"
           />
         </div>
       </section>
