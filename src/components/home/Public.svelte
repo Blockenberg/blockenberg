@@ -10,7 +10,7 @@
           class="container mx-auto flex max-w-7xl flex-col items-center justify-center md:px-5 "
         >
           <div
-            class="h-80 w-full bg-stone-50 bg-fixed dark:bg-stone-500 md:h-[500px]"
+            class="h-80 w-full bg-stone-50 bg-fixed dark:bg-stone-500 md:h-[500px] rounded"
             style="background-image: url(https://images.unsplash.com/photo-1569263975210-c4290a88eab0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80);background-size: cover"
           />
           <div
