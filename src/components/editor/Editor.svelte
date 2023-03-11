@@ -42,7 +42,9 @@
       CID: CID,
       header: contentHeader,
       tags,
-      content: sanitizeHtml(contentText),
+      content: sanitizeHtml(contentText, {
+        allowedTags: sanitizeHtml.defaults.allowedTags.concat(['button'])
+      }),
       private: !publish,
       updated: Date.now(),
       author: $sessionStore.username.trimmed[0]
@@ -76,9 +78,7 @@
   class="container mx-auto flex flex-col items-start justify-start space-y-2 lg:max-w-5xl"
 >
   {#if showheader}
-    <div
-      class="container flex flex-col items-end justify-end py-4"
-    >
+    <div class="container flex flex-col items-end justify-end py-4">
       {#if preview || imageContent.src}
         <img
           alt="header"
