@@ -13,7 +13,6 @@
         their content on a decentralized network, without relying on centralized
         providers.
       </p>
-      <a href="/register" class="mt-2">Get started</a>
     </div>
 
     <div class="grid lg:grid-cols-2 lg:items-center lg:gap-8">
@@ -25,9 +24,21 @@
         </h3>
         <p class="mt-3 text-lg dark:text-stone-400">
           With Blockenberg, you can leverage the power of IPFS (InterPlanetary
-          File System) to securely upload and publish your content under your
-          own credentials. This means that you maintain complete control over
-          your data, and no one else can claim ownership of your content.
+          File System) and
+          <a
+            href="https://fission.codes"
+            class="dark:text-stone-50 inline-flex items-baseline"
+          >
+            <img
+              alt="fission logo"
+              class="w-4 mr-1"
+              src="https://talk.fission.codes/uploads/default/original/2X/a/a92d4dbf1b27cee0c74e6bc02cdc9f0bf6aeb5e3.svg"
+            />
+            Fission
+          </a>
+          platform to securely upload and publish your content under your own credentials.
+          This means that you maintain complete control over your data, and no one
+          else can claim ownership of your content.
         </p>
         <div class="mt-12 space-y-12">
           <div class="flex">
