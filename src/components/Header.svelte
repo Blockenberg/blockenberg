@@ -10,12 +10,7 @@
 <header
   class="container mx-auto flex h-16 items-center justify-between font-bold"
 >
-  <a
-    rel="noopener noreferrer"
-    href="/"
-    aria-label="Homepage"
-    class="flex space-x-2"
-  >
+  <a href="/" aria-label="Homepage" class="flex space-x-2">
     <BrandLogo />
     <p class="font-bold">Blockenberg</p>
   </a>
@@ -23,9 +18,20 @@
     <div class="hidden flex-grow items-center justify-end space-x-8 lg:flex">
       {#if $sessionStore.session}
         <div class="space-x-4">
-          <a rel="noopener noreferrer" href="/">Manage</a>
-          <a rel="noopener noreferrer" href="/create">Create</a>
-          <a rel="noopener noreferrer" href="/about">About</a>
+          <a href="/">Manage</a>
+          <a href="/create">Create</a>
+          <a href="/about">About</a>
+        </div>
+      {:else}
+        <div class="space-x-4">
+          <a
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://cms-blockenberg.vercel.app/"
+          >
+            Blog
+          </a>
+          <a href="/about">About</a>
         </div>
       {/if}
       <Toggle />
