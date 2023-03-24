@@ -1,29 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="index,follow" />
-    <meta name="googlebot" content="index,follow" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image:alt" content="Blockenberg" />
-    <meta property="og:image:width" content="1250" />
-    <meta property="og:image:height" content="358" />
-    <meta name="twitter:card" content="summary_large_image" />
-    %sveltekit.head%
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;600;700&family=Work+Sans:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <meta name="googlebot" content="index,follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image:alt" content="Blockenberg" />
+  <meta property="og:image:width" content="1250" />
+  <meta property="og:image:height" content="358" />
+  <meta name="twitter:card" content="summary_large_image" />
+  %sveltekit.head%
 
-    <link rel="icon" href="/bb.svg" type="image/svg+xml" />
-    <link rel="manifest" href="/site.webmanifest" />
-  </head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;600;700&family=Work+Sans:wght@400;600;700&display=swap"
+    rel="stylesheet" />
 
-  <body>
-    <div id="svelte" class="h-screen">%sveltekit.body%</div>
-  </body>
+  <link rel="icon" href="/bb.svg" type="image/svg+xml" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <!-- Smartsupp Live Chat script -->
+  <script type="text/javascript">
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = 'cdf7266971a94693a63e1b41354ca91468e62587';
+    window.smartsupp || (function (d) {
+      var s, c, o = smartsupp = function () { o._.push(arguments); }; o._ = [];
+      s = d.getElementsByTagName('script')[0]; c = d.createElement('script');
+      c.type = 'text/javascript'; c.charset = 'utf-8'; c.async = true;
+      c.src = 'https://www.smartsuppchat.com/loader.js?'; s.parentNode.insertBefore(c, s);
+    })(document);
+  </script>
+</head>
+
+<body>
+  <div id="svelte" class="h-screen">%sveltekit.body%</div>
+</body>
+
 </html>
