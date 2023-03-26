@@ -60,7 +60,7 @@
             day: 'numeric'
           })}
         </span>
-        <p class="h-60 overflow-clip text-ellipsis ">
+        <p class="h-60 ">
           {@html doc.content}
         </p>
         {#if !doc.private}
