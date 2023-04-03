@@ -24,7 +24,7 @@
     "events": "^3.3.0",
     "one-webcrypto": "^1.0.3",
     "postcss": "^8.4.21",
-    "rome": "^11.0.0",
+    "rome": "^12.0.0",
     "svelte": "^3.57.0",
     "svelte-check": "^3.1.4",
     "svelte-preprocess": "^5.0.3",
