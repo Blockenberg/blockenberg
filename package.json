@@ -59,7 +59,7 @@
     "clipboard-copy": "^4.0.1",
     "multiformats": "^11.0.2",
     "qrcode-svg": "^1.1.0",
-    "sanitize-html": "^2.10.0",
+    "sanitize-html": "^2.11.0",
     "uint8arrays": "^4.0.3",
     "webnative": "^0.36.3"
   },
