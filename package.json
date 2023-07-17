@@ -23,7 +23,7 @@
     "ava": "^5.3.1",
     "events": "^3.3.0",
     "one-webcrypto": "^1.0.3",
-    "postcss": "^8.4.24",
+    "postcss": "^8.4.26",
     "rome": "^12.0.0",
     "svelte": "^3.59.2",
     "svelte-check": "^3.1.4",
