@@ -36,8 +36,8 @@ dependencies:
     specifier: ^2.11.0
     version: 2.11.0
   uint8arrays:
-    specifier: ^4.0.3
-    version: 4.0.3
+    specifier: ^4.0.6
+    version: 4.0.6
   webnative:
     specifier: ^0.36.3
     version: 0.36.3
@@ -481,7 +481,7 @@ packages:
       '@libp2p/interface-peer-id': 1.1.2
       err-code: 3.0.1
       multiformats: 10.0.3
-      uint8arrays: 4.0.3
+      uint8arrays: 4.0.6
     dev: false
 
   /@linaria/core@3.0.0-beta.13:
@@ -496,7 +496,7 @@ packages:
       dns-over-http-resolver: 2.1.1
       err-code: 3.0.1
       multiformats: 11.0.2
-      uint8arrays: 4.0.3
+      uint8arrays: 4.0.6
       varint: 6.0.0
     transitivePeerDependencies:
       - supports-color
@@ -511,7 +511,7 @@ packages:
       dns-over-http-resolver: 2.1.1
       err-code: 3.0.1
       multiformats: 11.0.2
-      uint8arrays: 4.0.3
+      uint8arrays: 4.0.6
       varint: 6.0.0
     transitivePeerDependencies:
       - supports-color
@@ -1547,7 +1547,7 @@ packages:
       it-pipe: 2.0.5
       it-pushable: 3.1.2
       it-take: 2.0.1
-      uint8arrays: 4.0.3
+      uint8arrays: 4.0.6
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -2006,7 +2006,7 @@ packages:
     dependencies:
       interface-store: 3.0.4
       nanoid: 4.0.1
-      uint8arrays: 4.0.3
+      uint8arrays: 4.0.6
     dev: false
 
   /interface-datastore@8.2.0:
@@ -2015,7 +2015,7 @@ packages:
     dependencies:
       interface-store: 5.1.0
       nanoid: 4.0.1
-      uint8arrays: 4.0.3
+      uint8arrays: 4.0.6
     dev: false
 
   /interface-store@3.0.4:
@@ -2061,7 +2061,7 @@ packages:
       it-length: 2.0.1
       multiformats: 10.0.3
       protobufjs: 7.2.4
-      uint8arrays: 4.0.3
+      uint8arrays: 4.0.6
       varint: 6.0.0
     transitivePeerDependencies:
       - supports-color
@@ -2097,7 +2097,7 @@ packages:
       proper-lockfile: 4.1.2
       quick-lru: 6.1.1
       sort-keys: 5.0.0
-      uint8arrays: 4.0.3
+      uint8arrays: 4.0.6
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -2603,6 +2603,11 @@ packages:
 
   /multiformats@11.0.2:
     resolution: {integrity: sha512-b5mYMkOkARIuVZCpvijFj9a6m5wMVLC7cf/jIPd5D/ARDOfLC5+IFkbgDXQgcU2goIsTD/O9NY4DI/Mt4OGvlg==}
+    engines: {node: '>=16.0.0', npm: '>=7.0.0'}
+    dev: false
+
+  /multiformats@12.1.0:
+    resolution: {integrity: sha512-/qTOKKnU8nwcVURjRcS+UN0QYgdS5BPZzY10Aiciu2SqncyCVMGV8KtD83EBFmsuJDsSEmT4sGvzcTkCoMw0sQ==}
     engines: {node: '>=16.0.0', npm: '>=7.0.0'}
     dev: false
 
@@ -3703,7 +3708,7 @@ packages:
     resolution: {integrity: sha512-oEVZr4/GrH87K0kjNce6z8pSCzLEPqHNLNR5sj8cJOySrTP8Vb/pMIbZKLJGhQKxm1TiZ31atNrpn820Pyqpow==}
     engines: {node: '>=16.0.0', npm: '>=7.0.0'}
     dependencies:
-      uint8arrays: 4.0.3
+      uint8arrays: 4.0.6
     dev: false
 
   /uint8arrays@3.1.1:
@@ -3712,11 +3717,10 @@ packages:
       multiformats: 9.9.0
     dev: false
 
-  /uint8arrays@4.0.3:
-    resolution: {integrity: sha512-b+aKlI2oTnxnfeSQWV1sMacqSNxqhtXySaH6bflvONGxF8V/fT3ZlYH7z2qgGfydsvpVo4JUgM/Ylyfl2YouCg==}
-    engines: {node: '>=16.0.0', npm: '>=7.0.0'}
+  /uint8arrays@4.0.6:
+    resolution: {integrity: sha512-4ZesjQhqOU2Ip6GPReIwN60wRxIupavL8T0Iy36BBHr2qyMrNxsPJvr7vpS4eFt8F8kSguWUPad6ZM9izs/vyw==}
     dependencies:
-      multiformats: 11.0.2
+      multiformats: 12.1.0
     dev: false
 
   /undici@5.22.1:
