@@ -59,8 +59,8 @@ devDependencies:
     specifier: ^0.5.9
     version: 0.5.9(tailwindcss@3.3.3)
   '@types/qrcode-svg':
-    specifier: ^1.1.1
-    version: 1.1.1
+    specifier: ^1.1.2
+    version: 1.1.2
   autoprefixer:
     specifier: ^10.4.14
     version: 10.4.14(postcss@8.4.26)
@@ -1046,8 +1046,8 @@ packages:
     resolution: {integrity: sha512-SnHmG9wN1UVmagJOnyo/qkk0Z7gejYxOYYmaAwr5u2yFYfsupN3sg10kyzN8Hep/2zbHxCnsumxOoRIRMBwKCg==}
     dev: true
 
-  /@types/qrcode-svg@1.1.1:
-    resolution: {integrity: sha512-uTuEgFXMknpun//Jj6b1R8T8LiMi9fNpH+cnhZr4b7col2HHTMmjYfm/WOZ7nzjuGpk+oTrpHhePe1qlWtHWTA==}
+  /@types/qrcode-svg@1.1.2:
+    resolution: {integrity: sha512-bz36jcD7773J7+Pjygvr7UCxt/0TZw4isRaifJyXByOyZDUs52YhW4hinMMqN5XOa8i6mz4u55mEmahLqlfx4w==}
     dev: true
 
   /@types/throttle-debounce@2.1.0:
