@@ -12,8 +12,8 @@ dependencies:
     specifier: 2.1.7
     version: 2.1.7(@tiptap/core@2.0.3)
   '@tiptap/extension-link':
-    specifier: 2.0.3
-    version: 2.0.3(@tiptap/core@2.0.3)(@tiptap/pm@2.1.8)
+    specifier: 2.1.10
+    version: 2.1.10(@tiptap/core@2.0.3)(@tiptap/pm@2.1.8)
   '@tiptap/pm':
     specifier: 2.1.8
     version: 2.1.8
@@ -907,8 +907,8 @@ packages:
       '@tiptap/core': 2.1.6(@tiptap/pm@2.1.8)
     dev: false
 
-  /@tiptap/extension-link@2.0.3(@tiptap/core@2.0.3)(@tiptap/pm@2.1.8):
-    resolution: {integrity: sha512-H72tXQ5rkVCkAhFaf08fbEU7EBUCK0uocsqOF+4th9sOlrhfgyJtc8Jv5EXPDpxNgG5jixSqWBo0zKXQm9s9eg==}
+  /@tiptap/extension-link@2.1.10(@tiptap/core@2.0.3)(@tiptap/pm@2.1.8):
+    resolution: {integrity: sha512-dXxPTWzJzpbDRAewM4P8jN/n9h8uUH83lOLwweuODYCqHRdjQL/uGkQworFFrgqmRHs+9JjHZ4DETILZVawJ+Q==}
     peerDependencies:
       '@tiptap/core': ^2.0.0
       '@tiptap/pm': ^2.0.0
