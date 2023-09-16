@@ -60,7 +60,7 @@
     "multiformats": "^11.0.2",
     "qrcode-svg": "^1.1.0",
     "sanitize-html": "^2.11.0",
-    "uint8arrays": "^4.0.3",
+    "uint8arrays": "^4.0.6",
     "webnative": "^0.36.3"
   },
   "engines": {
